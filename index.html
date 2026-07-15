@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Career Guide</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h1>🎓 AI Career Guide</h1>
+
+<form method="post">
+
+<label>Student Name</label><br>
+<input type="text" name="name"
+placeholder="Enter Your Name">
+
+<label>Select Education</label><br>
+
+<select name="education">
+
+<option>10th</option>
+
+<option>2nd PUC</option>
+
+<option>Degree</option>
+
+</select>
+
+<br><br>
+
+<label>Select Stream</label><br>
+
+<select name="stream">
+
+<option>PCM</option>
+
+<option>PCB</option>
+
+<option>Commerce</option>
+
+<option>Arts</option>
+
+</select>
+
+<br><br>
+
+<label>KCET Rank / Percentage</label><br>
+
+<input type="text" name="rank" placeholder="Enter KCET Rank">
+
+<br><br>
+
+<button type="submit">Get Career Recommendation</button>
+
+</form>
+{% if student_name %}
+<h2>Welcome, {{ student_name }} 🙋‍♂️</h2>
+{% endif %}
+
+{% if percentage %}
+<h3>📊 Percentage: {{ percentage }}%</h3>
+{% endif %}
+
+{% if recommendations %}
+
+
+<h2>Recommended Courses</h2>
+
+<ul>
+    {% for course in recommendations %}
+        <li>{{ course }}</li>
+    {% endfor %}
+</ul>
+
+{% endif %}
+{% if colleges %}
+<h2>College Suggestions</h2>
+
+<ul>
+    {% for college in colleges %}
+        <li>{{ college }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</body>
+</html>
