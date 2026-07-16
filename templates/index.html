@@ -54,6 +54,30 @@ placeholder="Enter Your Name">
 <button type="submit">Get Career Recommendation</button>
 
 </form>
+<hr>
+
+<h2>🤖 AI Career Chatbot</h2>
+
+<form method="POST">
+
+    <input type="text"
+           name="message"
+           placeholder="Ask me about career, KCET, college or scholarship..."
+           style="width:300px; padding:10px;">
+
+    <button type="submit">Ask AI</button>
+
+</form>
+
+{% if user_message %}
+<p><b>🙋 You:</b> {{ user_message }}</p>
+{% endif %}
+
+{% if bot_reply %}
+<p><b>🤖 AI:</b> {{ bot_reply }}</p>
+{% endif %}
+
+<hr>
 {% if student_name %}
 <h2>Welcome, {{ student_name }} 🙋‍♂️</h2>
 {% endif %}
