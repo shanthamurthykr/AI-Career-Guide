@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request
+import os
+from google import genai
 from career_data import career_data, kcet_colleges, percentage_courses, scholarships, chatbot_responses
 
 app = Flask(__name__)
+client = genai.Client(api_key="AQ.Ab8RN6KxAHAHIJgFMFCiQB6VhuGNrr-cG7k3cIMfu2MEwW4AJg")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -12,6 +15,10 @@ def home():
     user_message = ""
     student_name = ""
     percentage = None
+    stream = ""
+    rank = ""
+    education = ""
+    value = None
 
     if request.method == "POST":
         student_name = request.form.get("name")
@@ -19,15 +26,20 @@ def home():
         rank = request.form.get("rank")
         education = request.form.get("education")
         user_message = request.form.get("message")
+    
+    recommendations = career_data.get(stream, [])
 
     if user_message:
-        message = user_message.lower().strip()
-        bot_reply = chatbot_responses.get(
-            message,
-            chatbot_responses["default"]
-        )
+        try:
+            response = client.models.generate_content(
+               model="gemini-3.5-flash",
+               contents=user_message
+            )
 
-    recommendations = career_data.get(stream, [])
+            bot_reply = response.text
+        except Exception as e:
+            bot_reply = f"AI Error: {e}"
+
 
     if education:
         scholarship_list = scholarships.get(education, [])

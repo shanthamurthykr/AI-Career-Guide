@@ -70,11 +70,17 @@ placeholder="Enter Your Name">
 </form>
 
 {% if user_message %}
-<p><b>🙋 You:</b> {{ user_message }}</p>
+<div class="chat user">
+    <b>🙋 You:</b><br>
+    {{ user_message }}
+</div>
 {% endif %}
 
 {% if bot_reply %}
-<p><b>🤖 AI:</b> {{ bot_reply }}</p>
+<div class="chat ai">
+    <b>🤖 AI:</b><br>
+    <pre>{{ bot_reply }}</pre>
+</div>
 {% endif %}
 
 <hr>
