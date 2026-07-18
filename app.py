@@ -3,6 +3,7 @@ from google import genai
 from career_data import career_data, kcet_colleges, percentage_courses, scholarships
 
 app = Flask(__name__)
+app.config["THEME"] = "blue-black"
 
 client = genai.Client(api_key="GEMINI_API_KEY")
 
