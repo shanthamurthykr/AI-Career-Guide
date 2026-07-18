@@ -1,28 +1,56 @@
-
 from flask import Flask, render_template, request
-from career_data import career_data, kcet_colleges, percentage_courses
+from google import genai
+from career_data import career_data, kcet_colleges, percentage_courses, scholarships
 
 app = Flask(__name__)
+
+client = genai.Client(api_key="GEMINI_API_KEY")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
     recommendations = []
     college_recommendations = []
+    scholarship_list = []
+    bot_reply = ""
+    user_message = ""
     student_name = ""
+    percentage = None
+    stream = ""
+    rank = ""
+    education = ""
+    value = None
 
     if request.method == "POST":
         student_name = request.form.get("name")
         stream = request.form.get("stream")
         rank = request.form.get("rank")
+        education = request.form.get("education")
+        user_message = request.form.get("message")
 
         recommendations = career_data.get(stream, [])
 
+        # Gemini AI Chatbot
+        if user_message:
+            try:
+                response = client.models.generate_content(
+                    model="gemini-3.5-flash",
+                    contents=user_message
+                )
+                bot_reply = response.text
+            except Exception as e:
+                bot_reply = f"AI Error: {e}"
+
+        # Scholarships
+        if education:
+            scholarship_list = scholarships.get(education, [])
+
         if rank:
             value = int(rank)
-            print(value)
 
             # Percentage Logic
             if value <= 100:
+                percentage = value
+
                 if value >= 90:
                     recommendations = percentage_courses["90-100"]
                 elif value >= 80:
@@ -48,8 +76,10 @@ def home():
         recommendations=recommendations,
         student_name=student_name,
         colleges=college_recommendations,
-        percentage=value if value <= 100
-    else None
+        percentage=percentage,
+        scholarships=scholarship_list,
+        bot_reply=bot_reply,
+        user_message=user_message
     )
 
 if __name__ == "__main__":

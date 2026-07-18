@@ -1,3 +1,107 @@
+career_data = {
+    "PCM": [
+        "Computer Science Engineering",
+        "Artificial Intelligence",
+        "Electronics and Communication Engineering",
+        "Mechanical Engineering"
+    ],
+
+    "PCB": [
+        "MBBS",
+        "BDS",
+        "B.Pharm",
+        "Nursing"
+    ],
+
+    "Commerce": [
+        "BCom",
+        "BBA",
+        "CA",
+        "BCA"
+    ],
+
+    "Arts": [
+        "BA",
+        "Journalism",
+        "Law",
+        "Psychology"
+    ]
+}
+
+kcet_colleges = {
+    "1-1000": [
+        "IISc Bangalore",
+        "RV College of Engineering",
+        "PES University"
+    ],
+
+    "1001-5000": [
+        "BMS College of Engineering",
+        "MS Ramaiah Institute of Technology",
+        "Dayananda Sagar College of Engineering"
+    ],
+
+    "5001-10000": [
+        "New Horizon College of Engineering",
+        "CMR Institute of Technology",
+        "REVA University"
+    ],
+
+    "10001-300000": [
+        "Karnataka Tier-3 Private Engineering Colleges",
+        "Diploma Options"
+    ]
+}
+
+percentage_courses = {
+    "90-100": [
+        "Computer Science Engineering",
+        "Artificial Intelligence & Machine Learning",
+        "Data Science",
+        "Electronics & Communication Engineering"
+    ],
+
+    "80-89": [
+        "Information Science Engineering",
+        "Cyber Security",
+        "BCA",
+        "B.Sc Computer Science"
+    ],
+
+    "70-79": [
+        "BCA",
+        "B.Com",
+        "BBA",
+        "Diploma"
+    ],
+
+    "50-69": [
+        "Diploma",
+        "ITI",
+        "BA",
+        "B.Com"
+    ]
+}
+
+scholarships = {
+    "10th": [
+        "National Means-cum-Merit Scholarship (NMMS)",
+        "SSP Karnataka Scholarship"
+    ],
+
+    "2nd PUC": [
+        "SSP Scholarship",
+        "Vidyasiri Scholarship",
+        "Pragati Scholarship (AICTE)"
+    ],
+
+    "Degree": [
+        "AICTE Scholarship",
+        "National Scholarship Portal (NSP)",
+        "Post Matric Scholarship"
+    ]
+}
+
 chatbot_responses = {
     "hello": "Hello! 👋 Welcome to AI Career Guide. How can I help you?",
     "hi": "Hi! 😊 Ask me about careers, KCET rank, colleges, or scholarships.",
