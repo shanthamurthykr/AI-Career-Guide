@@ -168,3 +168,82 @@ select{
     color:#FFFFFF;
     font-weight:500;
 }
+
+.resume-box{
+    margin-top:30px;
+    background:#111827;
+    border:2px solid #3B82F6;
+    border-radius:15px;
+    padding:25px;
+    color:white;
+    box-shadow:0 0 20px rgba(59,130,246,.4);
+    text-align:left;
+}
+
+.resume-box h3{
+    color:#60A5FA;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.resume-box p{
+    margin:12px 0;
+}
+
+.resume-box pre{
+    white-space:pre-wrap;
+    color:#E2E8F0;
+}
+
+.resume-projects{
+    white-space:pre-wrap;
+    background:#0f172a;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #3b82f6;
+    margin-top:10px;
+}
+
+/* ===== Resume Preview ===== */
+
+.resume-box{
+    margin-top:30px;
+    background:#111827;
+    border:2px solid #3B82F6;
+    border-radius:18px;
+    padding:30px;
+    text-align:left;
+    color:white;
+    box-shadow:0 0 25px rgba(59,130,246,.35);
+}
+
+.resume-box h1{
+    text-align:center;
+    color:#60A5FA;
+    margin-bottom:5px;
+    font-size:34px;
+}
+
+.resume-box h3{
+    color:#38BDF8;
+    margin-top:25px;
+    border-bottom:1px solid #334155;
+    padding-bottom:8px;
+}
+
+.resume-box p{
+    line-height:1.8;
+    color:#E2E8F0;
+}
+
+.resume-box hr{
+    border:1px solid #334155;
+    margin:20px 0;
+}
+
+.download-btn,
+form button{
+    width:100%;
+    margin-top:20px;
+}

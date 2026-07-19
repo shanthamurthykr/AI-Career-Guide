@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Builder</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 class="main-title">📄 AI Resume Builder</h1>
+    <p class="subtitle">Create your professional resume in minutes</p>
+
+    <form method="POST">
+
+        <label>Full Name</label>
+        <input type="text" name="fullname" placeholder="Enter your full name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter your email" required>
+
+        <label>Phone Number</label>
+        <input type="text" name="phone" placeholder="Enter your phone number" required>
+
+        <label>Education</label>
+        <input type="text" name="education" placeholder="B.E CSE / B.Tech AIML" required>
+
+        <label>Skills</label>
+        <input type="text" name="skills" placeholder="Python, AI, ML, Flask" required>
+
+        <label>Projects</label>
+        <textarea name="projects" rows="5" placeholder="Describe your projects"></textarea>
+
+        <button type="submit">
+            ✨ Generate Resume
+        </button>
+
+    </form>
+
+    {% if fullname %}
+
+    <hr>
+
+    <h2 class="main-title" style="font-size:28px;">
+        📄 Resume Preview
+    </h2>
+
+    <div class="resume-box">
+
+        <h2>{{ fullname }}</h2>
+
+        <p><strong>📧 Email :</strong> {{ email }}</p>
+
+        <p><strong>📱 Phone :</strong> {{ phone }}</p>
+
+        <p><strong>🎓 Education :</strong> {{ education }}</p>
+
+        <p><strong>💻 Skills :</strong> {{ skills }}</p>
+
+        <p><strong>🚀 Projects :</strong></p>
+
+        <pre>{{ projects }}</pre>
+
+    </div>
+
+    <form action="/download_resume" method="POST">
+
+        <input type="hidden" name="fullname" value="{{ fullname }}">
+        <input type="hidden" name="email" value="{{ email }}">
+        <input type="hidden" name="phone" value="{{ phone }}">
+        <input type="hidden" name="education" value="{{ education }}">
+        <input type="hidden" name="skills" value="{{ skills }}">
+        <input type="hidden" name="projects" value="{{ projects }}">
+
+        <button type="submit">
+            📄 Download Resume PDF
+        </button>
+
+    </form>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
