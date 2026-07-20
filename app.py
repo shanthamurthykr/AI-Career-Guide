@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from google import genai
-from career_data import career_data, kcet_colleges, percentage_courses, scholarships
+from career_data import career_data, kcet_colleges, percentage_courses, scholarships,roadmaps
 from flask import send_file
 from reportlab.pdfgen import canvas
 import io
@@ -15,6 +15,7 @@ client = genai.Client(api_key="YOUR_GEMINI_API_KEY")
 def home():
     recommendations = []
     college_recommendations = []
+    roadmap = []
     scholarship_list = []
     bot_reply = ""
     user_message = ""
@@ -31,8 +32,11 @@ def home():
         rank = request.form.get("rank")
         education = request.form.get("education")
         user_message = request.form.get("message")
+        career_goal = request.form.get("career_goal")
 
         recommendations = career_data.get(stream, [])
+        if career_goal:
+            roadmap = roadmaps.get(career_goal, [])
 
         # Gemini AI Chatbot
         if user_message:
@@ -79,6 +83,7 @@ def home():
     return render_template(
         "index.html",
         recommendations=recommendations,
+        roadmap=roadmap,
         student_name=student_name,
         colleges=college_recommendations,
         percentage=percentage,

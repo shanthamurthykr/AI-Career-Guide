@@ -112,3 +112,33 @@ chatbot_responses = {
     "bye": "Thank you for using AI Career Guide. Have a great day! 👋",
     "default": "Sorry, I didn't understand. Please ask about careers, colleges or scholarships."
 }
+
+roadmaps = {
+    "AI Engineer": [
+        "Learn Python",
+        "Learn Data Structures & Algorithms",
+        "Learn Machine Learning",
+        "Build 5 AI Projects",
+        "Learn Deep Learning",
+        "Create GitHub Portfolio",
+        "Apply for AI Internships"
+    ],
+
+    "Software Engineer": [
+        "Learn C / Python",
+        "Master DSA",
+        "Learn Git & GitHub",
+        "Build Full Stack Projects",
+        "Practice LeetCode",
+        "Prepare for Interviews"
+    ],
+
+    "Data Scientist": [
+        "Learn Python",
+        "Learn SQL",
+        "Learn Statistics",
+        "Learn Pandas & NumPy",
+        "Learn Machine Learning",
+        "Build Data Science Projects"
+    ]
+}

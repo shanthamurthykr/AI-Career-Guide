@@ -49,6 +49,22 @@ placeholder="Enter Your Name">
 
 <br><br>
 
+<label>Career Goal</label><br>
+
+<select name="career_goal">
+
+    <option value="">Select Career Goal</option>
+
+    <option value="AI Engineer">AI Engineer</option>
+
+    <option value="Software Engineer">Software Engineer</option>
+
+    <option value="Data Scientist">Data Scientist</option>
+
+</select>
+
+<br><br>
+
 <label>KCET Rank / Percentage</label><br>
 
 <input type="text" name="rank" placeholder="Enter KCET Rank">
@@ -99,33 +115,61 @@ placeholder="Enter Your Name">
 {% if recommendations %}
 
 
-<h2>Recommended Courses</h2>
+<h2>👉Recommended Courses</h2>
 
-<ul>
-    {% for course in recommendations %}
-        <li>{{ course }}</li>
-    {% endfor %}
-</ul>
+<div class="result-box">
+    <ul>
+        {% for course in recommendations %}
+            <li>{{ course }}</li>
+        {% endfor %}
+    </ul>
+</div>
 
 {% endif %}
 {% if colleges %}
 <h2>College Suggestions</h2>
 
-<ul>
-    {% for college in colleges %}
-        <li>{{ college }}</li>
-    {% endfor %}
-</ul>
+<div class="result-box">
+    <ul>
+        {% for college in colleges %}
+            <li>{{ college }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% if roadmap %}
+
+<hr>
+
+<h2>🗺️ AI Career Roadmap</h2>
+
+<div class="result-box">
+
+    <ol>
+
+        {% for step in roadmap %}
+
+            <li>{{ step }}</li>
+
+        {% endfor %}
+
+    </ol>
+
+</div>
+
 {% endif %}
 
 {% if scholarships %}
 <h2>🎓 Available Scholarships</h2>
 
-<ul>
-    {% for scholarship in scholarships %}
-        <li>{{ scholarship }}</li>
-    {% endfor %}
-</ul>
+<div class="result-box">
+    <ul>
+        {% for scholarship in scholarships %}
+            <li>{{ scholarship }}</li>
+        {% endfor %}
+    </ul>
+</div>
 {% endif %}
 
 </body>

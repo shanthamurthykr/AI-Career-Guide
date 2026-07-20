@@ -76,15 +76,17 @@ pre{
     margin-top:10px;
 }
 body{
-    background:#0F172A;
+    background:
+    linear-gradient(rgba(10,15,30,0.85),
+    rgba(10,15,30,0.85)),
+    url("/static/images/bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
     color:white;
     font-family:'Poppins',sans-serif;
-}
-
-.container{
-    background:#1E293B;
-    border-radius:15px;
-    box-shadow:0 0 25px rgba(37,99,235,.35);
 }
 
 button{
@@ -246,4 +248,176 @@ select{
 form button{
     width:100%;
     margin-top:20px;
+}
+
+/* ===== Main Container ===== */
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+    padding:30px;
+    background:#1E293B;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(59,130,246,.35);
+}
+
+/* ===== Form ===== */
+
+form{
+    width:100%;
+    max-width:700px;
+    margin:auto;
+}
+
+/* ===== Resume Roadmap Box ===== */
+
+.chat,
+.resume-box{
+    width:100%;
+    box-sizing:border-box;
+}
+
+/* ===== Lists ===== */
+
+ul{
+    margin-left:25px;
+    text-align:left;
+}
+
+li{
+    margin:8px 0;
+}
+
+/* ===== AI Roadmap ===== */
+
+.chat{
+    text-align:left;
+    padding:25px;
+}
+
+/* ===== Responsive ===== */
+
+@media(max-width:768px){
+
+.container{
+    width:95%;
+    padding:20px;
+}
+
+form{
+    max-width:100%;
+}
+
+}
+
+/* ===== Center All Result Sections ===== */
+
+h2,
+h3{
+    text-align:center;
+}
+
+.chat{
+    width:80%;
+    margin:25px auto;
+    text-align:center;
+}
+
+.chat ul{
+    list-style-position:inside;
+    display:inline-block;
+    text-align:left;
+    margin:15px auto;
+    padding:0;
+}
+
+.chat li{
+    margin:10px 0;
+}
+
+/* College Suggestions */
+
+.colleges{
+    text-align:center;
+}
+
+.colleges ul{
+    list-style-position:inside;
+    display:inline-block;
+    text-align:left;
+}
+
+/* Scholarships */
+
+.scholarships{
+    text-align:center;
+}
+
+.scholarships ul{
+    list-style-position:inside;
+    display:inline-block;
+    text-align:left;
+}
+
+.chat{
+    width:80%;
+    margin:30px auto;
+    text-align:center;
+}
+
+.chat ul,
+.chat ol{
+    display:inline-block;
+    text-align:left;
+    margin:0 auto;
+    padding-left:25px;
+}
+
+.chat li{
+    margin:10px 0;
+}
+
+h2{
+    text-align:center;
+}
+
+.container{
+    max-width:1100px;
+    margin:40px auto;
+    padding:30px;
+    border-radius:20px;
+    background:transparent;
+    box-shadow:none;
+}
+
+.result-box{
+    width:80%;
+    max-width:900px;
+    margin:30px auto;
+    padding:25px;
+
+    background:rgba(15,23,42,0.45);   /* Transparent Black */
+    backdrop-filter:blur(8px);
+
+    border:2px solid #EC4899;
+    border-radius:18px;
+
+    box-shadow:
+        0 0 18px rgba(236,72,153,.35),
+        0 0 25px rgba(59,130,246,.25);
+
+    text-align:center;
+}
+
+.result-box ul,
+.result-box ol{
+    display:inline-block;
+    text-align:left;
+    margin-top:15px;
+}
+
+.result-box h2{
+    margin-bottom:15px;
+    color:white;
 }
