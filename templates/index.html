@@ -112,9 +112,8 @@ placeholder="Enter Your Name">
 <h3>📊 Percentage: {{ percentage }}%</h3>
 {% endif %}
 
+
 {% if recommendations %}
-
-
 <h2>👉Recommended Courses</h2>
 
 <div class="result-box">
@@ -126,6 +125,29 @@ placeholder="Enter Your Name">
 </div>
 
 {% endif %}
+
+
+{% if skill_recommendations %}
+
+<h2>💻 Recommended Skills</h2>
+
+<div class="chat">
+
+    <ul>
+
+        {% for skill in skill_recommendations %}
+
+            <li>{{ skill }}</li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endif %}
+
+
 {% if colleges %}
 <h2>College Suggestions</h2>
 
@@ -137,6 +159,8 @@ placeholder="Enter Your Name">
     </ul>
 </div>
 {% endif %}
+
+
 
 {% if roadmap %}
 

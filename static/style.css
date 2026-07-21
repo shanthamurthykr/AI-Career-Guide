@@ -421,3 +421,32 @@ h2{
     margin-bottom:15px;
     color:white;
 }
+
+.chat{
+    width:70%;
+    margin:25px auto;
+    padding:20px;
+    background:rgba(17,24,39,0.75);
+    border:2px solid #EC4899;
+    border-radius:18px;
+    box-shadow:
+        0 0 15px rgba(236,72,153,.35),
+        0 0 25px rgba(59,130,246,.25);
+    color:white;
+    text-align:center;
+    backdrop-filter:blur(8px);
+}
+
+.chat ul,
+.chat ol{
+    width: fit-content;
+    margin: 0 auto;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.chat li{
+    margin:12px 0;
+    color:#E2E8F0;
+    
+}

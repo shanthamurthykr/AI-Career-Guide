@@ -142,3 +142,43 @@ roadmaps = {
         "Build Data Science Projects"
     ]
 }
+
+skills_data = {
+
+    "AI Engineer": [
+        "Python",
+        "Machine Learning",
+        "Deep Learning",
+        "TensorFlow",
+        "PyTorch",
+        "SQL",
+        "Git & GitHub",
+        "Flask",
+        "Problem Solving"
+    ],
+
+    "Software Engineer": [
+        "C++",
+        "Java",
+        "Python",
+        "Data Structures",
+        "Algorithms",
+        "SQL",
+        "Git & GitHub",
+        "OOP",
+        "Problem Solving"
+    ],
+
+    "Data Scientist": [
+        "Python",
+        "Pandas",
+        "NumPy",
+        "Statistics",
+        "Machine Learning",
+        "SQL",
+        "Power BI",
+        "Data Visualization",
+        "Communication"
+    ]
+
+}
