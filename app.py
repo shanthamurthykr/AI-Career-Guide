@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from google import genai
-from career_data import (career_data, kcet_colleges, percentage_courses, scholarships,roadmaps,skills_data)
+from career_data import (career_data, kcet_colleges, percentage_courses, scholarships,roadmaps,skills_data,free_courses)
 from flask import send_file
 from reportlab.pdfgen import canvas
 import io
@@ -18,6 +18,7 @@ def home():
     roadmap = []
     scholarship_list = []
     skill_recommendations = []
+    free_course_list = []
     bot_reply = ""
     user_message = ""
     student_name = ""
@@ -26,6 +27,7 @@ def home():
     rank = ""
     education = ""
     value = None
+    career_goal = ""
 
     if request.method == "POST":
         student_name = request.form.get("name")
@@ -34,13 +36,14 @@ def home():
         rank = request.form.get("rank")
         education = request.form.get("education")
         user_message = request.form.get("message")
-        career_goal = request.form.get("career_goal")
+        
+        
+    recommendations = career_data.get(stream, [])
 
-        recommendations = career_data.get(stream, [])
-        if career_goal:
-            skill_recommendations = skills_data.get(career_goal, [])
-        if career_goal:
-            roadmap = roadmaps.get(career_goal, [])
+    if career_goal:
+        roadmap = roadmaps.get(career_goal, [])
+        skill_recommendations = skills_data.get(career_goal, [])
+        free_course_list = free_courses.get(career_goal, [])
 
         # Gemini AI Chatbot
         if user_message:
@@ -94,7 +97,8 @@ def home():
         scholarships=scholarship_list,
         bot_reply=bot_reply,
         user_message=user_message,
-        skill_recommendations=skill_recommendations
+        skill_recommendations=skill_recommendations,
+        free_courses=free_course_list
     )
 
 @app.route("/resume", methods=["GET", "POST"])

@@ -448,5 +448,48 @@ h2{
 .chat li{
     margin:12px 0;
     color:#E2E8F0;
-    
+}
+
+.result-box{
+    width:80%;
+    max-width:700px;
+    margin:25px auto;
+    padding:25px;
+    background:rgba(17,24,39,.85);
+    border:2px solid #EC4899;
+    border-radius:18px;
+    box-shadow:0 0 18px rgba(236,72,153,.35);
+    text-align:center;
+}
+
+.result-box ul{
+    list-style:none;
+    padding:0;
+}
+
+.result-box li{
+    margin:12px 0;
+}
+
+.result-box a{
+    color:#60A5FA;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+}
+
+.result-box a:hover{
+    color:#93C5FD;
+    text-decoration:underline;
+}
+
+.result-box a{
+    color:#00e5ff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.result-box a:hover{
+    color:white;
+    text-decoration:underline;
 }

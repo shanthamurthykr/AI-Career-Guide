@@ -182,3 +182,64 @@ skills_data = {
     ]
 
 }
+
+free_courses = {
+
+    "AI Engineer": [
+        {
+            "name": "CS50 AI - Harvard",
+            "link": "https://cs50.harvard.edu/ai/"
+        },
+        {
+            "name": "Google Machine Learning Crash Course",
+            "link": "https://developers.google.com/machine-learning/crash-course"
+        },
+        {
+            "name": "Elements of AI",
+            "link": "https://www.elementsofai.com/"
+        },
+        {
+            "name": "Kaggle Learn Machine Learning",
+            "link": "https://www.kaggle.com/learn"
+        }
+    ],
+
+    "Software Engineer": [
+        {
+            "name": "CS50x - Harvard",
+            "link": "https://cs50.harvard.edu/x/"
+        },
+        {
+            "name": "freeCodeCamp",
+            "link": "https://www.freecodecamp.org/"
+        },
+        {
+            "name": "Python for Everybody",
+            "link": "https://www.py4e.com/"
+        },
+        {
+            "name": "The Odin Project",
+            "link": "https://www.theodinproject.com/"
+        }
+    ],
+
+    "Data Scientist": [
+        {
+            "name": "Google Data Analytics",
+            "link": "https://www.coursera.org/professional-certificates/google-data-analytics"
+        },
+        {
+            "name": "IBM Data Science",
+            "link": "https://www.coursera.org/professional-certificates/ibm-data-science"
+        },
+        {
+            "name": "Kaggle Learn",
+            "link": "https://www.kaggle.com/learn"
+        },
+        {
+            "name": "freeCodeCamp Data Analysis",
+            "link": "https://www.freecodecamp.org/learn/data-analysis-with-python/"
+        }
+    ]
+
+}

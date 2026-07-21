@@ -184,6 +184,27 @@ placeholder="Enter Your Name">
 
 {% endif %}
 
+{% if free_courses %}
+
+<h2>📚 Free Courses</h2>
+
+<div class="result-box">
+
+    <ul>
+        {% for course in free_courses %}
+            <li>
+               <a href="{{ course.link }}" target="_blank">
+                   {{ course.name }}
+               </a>
+           </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endif %}
+
+
 {% if scholarships %}
 <h2>🎓 Available Scholarships</h2>
 
