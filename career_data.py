@@ -146,39 +146,30 @@ roadmaps = {
 skills_data = {
 
     "AI Engineer": [
-        "Python",
-        "Machine Learning",
-        "Deep Learning",
-        "TensorFlow",
-        "PyTorch",
-        "SQL",
-        "Git & GitHub",
-        "Flask",
-        "Problem Solving"
+        "🟢 Beginner - Python",
+        "🟢 Beginner - Mathematics",
+        "🟡 Intermediate - Machine Learning",
+        "🟡 Intermediate - Deep Learning",
+        "🔴 Advanced - TensorFlow",
+        "🔴 Advanced - AI Projects"
     ],
 
     "Software Engineer": [
-        "C++",
-        "Java",
-        "Python",
-        "Data Structures",
-        "Algorithms",
-        "SQL",
-        "Git & GitHub",
-        "OOP",
-        "Problem Solving"
+        "🟢 Beginner - C Programming",
+        "🟢 Beginner - Python",
+        "🟡 Intermediate - HTML & CSS",
+        "🟡 Intermediate - JavaScript",
+        "🔴 Advanced - Flask",
+        "🔴 Advanced - Git & GitHub"
     ],
 
     "Data Scientist": [
-        "Python",
-        "Pandas",
-        "NumPy",
-        "Statistics",
-        "Machine Learning",
-        "SQL",
-        "Power BI",
-        "Data Visualization",
-        "Communication"
+        "🟢 Beginner - Python",
+        "🟢 Beginner - Statistics",
+        "🟡 Intermediate - Pandas",
+        "🟡 Intermediate - NumPy",
+        "🔴 Advanced - Machine Learning",
+        "🔴 Advanced - Data Visualization"
     ]
 
 }

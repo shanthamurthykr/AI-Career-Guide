@@ -493,3 +493,9 @@ h2{
     color:white;
     text-decoration:underline;
 }
+
+.chat ul li{
+    font-size:18px;
+    padding:8px;
+    font-weight:600;
+}
