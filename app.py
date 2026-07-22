@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from google import genai
-from career_data import (career_data, kcet_colleges, percentage_courses, scholarships,roadmaps,skills_data,free_courses)
+from career_data import (career_data, kcet_colleges,comedk_colleges, percentage_courses, scholarships,roadmaps,skills_data,free_courses)
 from flask import send_file
 from reportlab.pdfgen import canvas
 import io
@@ -15,6 +15,7 @@ client = genai.Client(api_key="YOUR_GEMINI_API_KEY")
 def home():
     recommendations = []
     college_recommendations = []
+    comedk_recommendations = []
     roadmap = []
     scholarship_list = []
     skill_recommendations = []
@@ -34,58 +35,73 @@ def home():
         stream = request.form.get("stream")
         career_goal = request.form.get("career_goal")
         rank = request.form.get("rank")
+        comedk_rank = request.form.get("comedk_rank")
         education = request.form.get("education")
         user_message = request.form.get("message")
         
         
     recommendations = career_data.get(stream, [])
 
+       
+    # Roadmap
     if career_goal:
         roadmap = roadmaps.get(career_goal, [])
         skill_recommendations = skills_data.get(career_goal, [])
         free_course_list = free_courses.get(career_goal, [])
 
-        # Gemini AI Chatbot
-        if user_message:
-            try:
-                response = client.models.generate_content(
-                    model="gemini-3.5-flash",
-                    contents=user_message
-                )
-                bot_reply = response.text
-            except Exception as e:
-                bot_reply = f"AI Error: {e}"
+    # Gemini AI
+    if user_message:
+        try:
+            response = client.models.generate_content(
+                model="gemini-3.5-flash",
+                contents=user_message
+            )
+            bot_reply = response.text
+        except Exception as e:
+            bot_reply = f"AI Error: {e}"
 
-        # Scholarships
-        if education:
-            scholarship_list = scholarships.get(education, [])
+    # Scholarships
+    if education:
+        scholarship_list = scholarships.get(education, [])
 
-        if rank:
-            value = int(rank)
+    # KCET Rank / Percentage
+    if rank:
+        value = int(rank)
 
-            # Percentage Logic
-            if value <= 100:
-                percentage = value
+        if value <= 100:
+            percentage = value
 
-                if value >= 90:
-                    recommendations = percentage_courses["90-100"]
-                elif value >= 80:
-                    recommendations = percentage_courses["80-89"]
-                elif value >= 70:
-                    recommendations = percentage_courses["70-79"]
-                elif value >= 50:
-                    recommendations = percentage_courses["50-69"]
+            if value >= 90:
+                recommendations = percentage_courses["90-100"]
+            elif value >= 80:
+                recommendations = percentage_courses["80-89"]
+            elif value >= 70:
+                recommendations = percentage_courses["70-79"]
+            elif value >= 50:
+                recommendations = percentage_courses["50-69"]
 
-            # KCET Rank Logic
+        else:
+            if value <= 1000:
+                college_recommendations = kcet_colleges["1-1000"]
+            elif value <= 5000:
+                college_recommendations = kcet_colleges["1001-5000"]
+            elif value <= 10000:
+                college_recommendations = kcet_colleges["5001-10000"]
             else:
-                if value <= 1000:
-                    college_recommendations = kcet_colleges["1-1000"]
-                elif value <= 5000:
-                    college_recommendations = kcet_colleges["1001-5000"]
-                elif value <= 10000:
-                    college_recommendations = kcet_colleges["5001-10000"]
-                else:
-                    college_recommendations = kcet_colleges["10001-300000"]
+                college_recommendations = kcet_colleges["10001-300000"]
+
+    # COMEDK Rank
+    if comedk_rank:
+        comedk_value = int(comedk_rank)
+
+        if comedk_value <= 1000:
+            comedk_recommendations = comedk_colleges["1-1000"]
+        elif comedk_value <= 5000:
+            comedk_recommendations = comedk_colleges["1001-5000"]
+        elif comedk_value <= 10000:
+            comedk_recommendations = comedk_colleges["5001-10000"]
+        else:
+            comedk_recommendations = comedk_colleges["10001-30000"]
 
     return render_template(
         "index.html",
@@ -93,6 +109,7 @@ def home():
         roadmap=roadmap,
         student_name=student_name,
         colleges=college_recommendations,
+        comedk_colleges=comedk_recommendations,
         percentage=percentage,
         scholarships=scholarship_list,
         bot_reply=bot_reply,
@@ -100,7 +117,6 @@ def home():
         skill_recommendations=skill_recommendations,
         free_courses=free_course_list
     )
-
 @app.route("/resume", methods=["GET", "POST"])
 def resume():
 

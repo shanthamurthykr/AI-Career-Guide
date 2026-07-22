@@ -234,3 +234,31 @@ free_courses = {
     ]
 
 }
+
+comedk_colleges = {
+
+    "1-1000": [
+        "RV College of Engineering",
+        "BMS College of Engineering",
+        "MS Ramaiah Institute of Technology"
+    ],
+
+    "1001-5000": [
+        "Dayananda Sagar College",
+        "NIE Mysore",
+        "SJCE Mysore"
+    ],
+
+    "5001-10000": [
+        "CMR Institute of Technology",
+        "BNMIT",
+        "New Horizon College"
+    ],
+
+    "10001-30000": [
+        "Acharya Institute",
+        "Presidency University",
+        "Reva University"
+    ]
+
+}

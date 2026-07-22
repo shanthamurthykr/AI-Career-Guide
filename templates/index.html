@@ -65,11 +65,19 @@ placeholder="Enter Your Name">
 
 <br><br>
 
+
 <label>KCET Rank / Percentage</label><br>
 
 <input type="text" name="rank" placeholder="Enter KCET Rank">
 
 <br><br>
+
+<label>COMEDK Rank</label><br>
+
+<input type="text" name="comedk_rank" placeholder="Enter COMEDK Rank">
+
+<br><br>
+
 
 <button type="submit">Get Career Recommendation</button>
 
@@ -149,7 +157,7 @@ placeholder="Enter Your Name">
 
 
 {% if colleges %}
-<h2>College Suggestions</h2>
+<h2>🏫 KCET College Suggestions</h2>
 
 <div class="result-box">
     <ul>
@@ -160,7 +168,21 @@ placeholder="Enter Your Name">
 </div>
 {% endif %}
 
+{% if comedk_colleges %}
 
+<h2>🏫 COMEDK College Suggestions</h2>
+
+<div class="result-box">
+
+    <ul>
+        {% for college in comedk_colleges %}
+            <li>{{ college }}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endif %}
 
 {% if roadmap %}
 
