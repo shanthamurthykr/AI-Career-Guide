@@ -2,12 +2,79 @@
 <html>
 <head>
     <title>10th Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<h1>🎓 10th Students Page</h1>
+<div class="hero">
+    <h1>🎓 10th Students Career Guide</h1>
+    <p>Choose your future after SSLC</p>
+</div>
 
-<a href="/">⬅ Back Home</a>
+<div class="dashboard">
+
+<form>
+
+<label>Student Name</label><br>
+<input type="text" placeholder="Enter Name">
+
+<br><br>
+
+<label>SSLC Percentage</label><br>
+<input type="number" placeholder="Enter Percentage">
+
+<br><br>
+
+<label>Recommended Stream</label>
+
+<select>
+
+<option>Science (PCM)</option>
+
+<option>Science (PCB)</option>
+
+<option>Commerce</option>
+
+<option>Arts</option>
+
+</select>
+
+<br><br>
+
+<button type="submit">
+Get Recommendation
+</button>
+
+</form>
+
+</div>
+
+<div class="result-box">
+
+<h2>💡 Career Tips</h2>
+
+<ul>
+
+<li>Choose a stream based on your interests.</li>
+
+<li>Focus on strong fundamentals.</li>
+
+<li>Participate in Olympiads and competitions.</li>
+
+<li>Start learning communication and computer skills.</li>
+
+</ul>
+
+</div>
+
+<br>
+
+<center>
+
+<a href="/">⬅ Back to Home</a>
+
+</center>
 
 </body>
 </html>
