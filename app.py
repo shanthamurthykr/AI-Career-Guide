@@ -29,6 +29,8 @@ def home():
     education = ""
     value = None
     career_goal = ""
+    comedk_rank = ""
+    comedk_value = None
 
     if request.method == "POST":
         student_name = request.form.get("name")
@@ -117,6 +119,27 @@ def home():
         skill_recommendations=skill_recommendations,
         free_courses=free_course_list
     )
+
+@app.route("/youngstars")
+def youngstars():
+    return render_template("youngstars.html")
+
+
+@app.route("/tenth")
+def tenth():
+    return render_template("tenth.html")
+
+
+@app.route("/puc")
+def puc():
+    return render_template("puc.html")
+
+
+@app.route("/degree")
+def degree():
+    return render_template("degree.html")
+
+
 @app.route("/resume", methods=["GET", "POST"])
 def resume():
 
@@ -212,3 +235,5 @@ def download_resume():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+  

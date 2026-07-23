@@ -8,10 +8,39 @@
 
 <body>
 
-<h1 class="main-title">🎓 AI Career Guide</h1>
-<p class="subtitle">
-    AI Powered Career Guidance with Gemini 🚀
-</p>
+<div class="sidebar">
+
+    <h2>🎓 AI Career</h2>
+
+    <a href="/">🏠 Home</a>
+
+    <a href="#career">🎯 Career Guide</a>
+
+    <a href="#kcet">📊 KCET Predictor</a>
+
+    <a href="#comedk">🏫 COMEDK Predictor</a>
+
+    <a href="/resume">📄 Resume Builder</a>
+
+    <a href="#chatbot">🤖 AI Chat</a>
+
+    <a href="#courses">📚 Free Courses</a>
+
+    <a href="#scholarships">🎓 Scholarships</a>
+
+</div>
+
+<div class="hero">
+
+    <h1 class="main-title">
+        🚀 AI Career Guide
+    </h1>
+
+    <p class="subtitle">
+        Your Personal AI Career Companion
+    </p>
+
+</div>
 
 <form method="post">
 
@@ -84,7 +113,11 @@ placeholder="Enter Your Name">
 </form>
 <hr>
 
-<h2>🤖 AI Career Chatbot</h2>
+<h2 class="chat-title">🤖 AI Career Assistant</h2>
+
+<p class="chat-subtitle">
+    Ask anything about your career journey 🚀
+</p>
 
 <form method="POST">
 
@@ -97,6 +130,37 @@ placeholder="Enter Your Name">
 
 </form>
 
+<div class="dashboard">
+
+    <a href="/youngstars" class="card-link">
+        <div class="card">
+            <h3>🌟 Young Stars</h3>
+            <p>LKG - 9th Students</p>
+        </div>
+    </a>
+
+    <a href="/tenth" class="card-link">
+        <div class="card">
+            <h3>🎓 10th Students</h3>
+            <p>Career Guidance</p>
+        </div>
+    </a>
+
+    <a href="/puc" class="card-link">
+        <div class="card">
+            <h3>📘 12th Students</h3>
+            <p>KCET • COMEDK • Scholarships</p>
+        </div>
+    </a>
+
+    <a href="/degree" class="card-link">
+        <div class="card">
+            <h3>💼 Degree Students</h3>
+            <p>Roadmaps • Skills • Resume</p>
+        </div>
+    </a>
+
+</div>
 {% if user_message %}
 <div class="chat user">
     <b>🙋 You:</b><br>

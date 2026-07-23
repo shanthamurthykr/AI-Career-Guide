@@ -499,3 +499,134 @@ h2{
     padding:8px;
     font-weight:600;
 }
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:230px;
+    height:100%;
+    background:#111827;
+    padding-top:30px;
+}
+
+.sidebar h2{
+    color:white;
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px 25px;
+    font-size:18px;
+}
+
+.sidebar a:hover{
+    background:#2563eb;
+}
+
+body{
+    margin-left:230px;
+}
+
+.chat-title{
+    text-align:center;
+    font-size:32px;
+    color:white;
+    margin-top:40px;
+}
+
+.chat-subtitle{
+    text-align:center;
+    color:#bdbdbd;
+    margin-bottom:25px;
+    font-size:18px;
+}
+
+.hero{
+    text-align:center;
+    margin-top:30px;
+    margin-bottom:40px;
+}
+
+.main-title{
+    font-size:48px;
+    font-weight:bold;
+    color:white;
+}
+
+.subtitle{
+    color:#b8b8b8;
+    font-size:20px;
+    margin-top:10px;
+}
+
+.dashboard{
+
+display:flex;
+
+justify-content:center;
+
+gap:25px;
+
+flex-wrap:wrap;
+
+margin-top:40px;
+
+margin-bottom:50px;
+
+}
+
+.card{
+
+background:#1f2937;
+
+width:240px;
+
+padding:25px;
+
+border-radius:18px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:0.3s;
+
+box-shadow:0 5px 15px rgba(0,0,0,.35);
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+background:#2563eb;
+
+}
+
+.card h3{
+
+color:white;
+
+margin-bottom:10px;
+
+}
+
+.card p{
+
+color:#d1d5db;
+
+}
+
+.card-link {
+    text-decoration: none;
+    color: white;
+}
+
+.card-link:hover {
+    text-decoration: none;
+}
