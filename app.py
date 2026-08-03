@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+﻿from flask import Flask, render_template, request
 from google import genai
 from career_data import (career_data, kcet_colleges,comedk_colleges, percentage_courses, scholarships,roadmaps,skills_data,free_courses)
 from flask import send_file
@@ -232,8 +232,6 @@ def download_resume():
         download_name="Resume.pdf",
         mimetype="application/pdf"
     )
-
 if __name__ == "__main__":
     app.run(debug=True)
 
-  
