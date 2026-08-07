@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,77 +41,6 @@
 
 </div>
 
-<form method="post">
-
-<label>Student Name</label><br>
-<input type="text" name="name"
-placeholder="Enter Your Name">
-
-<label>Select Education</label><br>
-
-<select name="education">
-
-<option>10th</option>
-
-<option>2nd PUC</option>
-
-<option>Degree</option>
-
-</select>
-
-<br><br>
-
-<label>Select Stream</label><br>
-
-<select name="stream">
-
-<option>PCM</option>
-
-<option>PCB</option>
-
-<option>Commerce</option>
-
-<option>Arts</option>
-
-</select>
-
-<br><br>
-
-<label>Career Goal</label><br>
-
-<select name="career_goal">
-
-    <option value="">Select Career Goal</option>
-
-    <option value="AI Engineer">AI Engineer</option>
-
-    <option value="Software Engineer">Software Engineer</option>
-
-    <option value="Data Scientist">Data Scientist</option>
-
-</select>
-
-<br><br>
-
-
-<label>KCET Rank / Percentage</label><br>
-
-<input type="text" name="rank" placeholder="Enter KCET Rank">
-
-<br><br>
-
-<label>COMEDK Rank</label><br>
-
-<input type="text" name="comedk_rank" placeholder="Enter COMEDK Rank">
-
-<br><br>
-
-
-<button type="submit">Get Career Recommendation</button>
-
-</form>
-<hr>
-
 <h2 class="chat-title">🤖 AI Career Assistant</h2>
 
 <p class="chat-subtitle">
@@ -153,154 +81,123 @@ placeholder="Enter Your Name">
         </div>
     </a>
 
+<div class="degree-card">
     <a href="/degree" class="card-link">
         <div class="card">
             <h3>💼 Degree Students</h3>
             <p>Roadmaps • Skills • Resume</p>
         </div>
     </a>
+</div>
+
+   
+<section class="resume-section">
+
+    <h2>📄 AI Resume Builder</h2>
+
+    <p>Create a professional ATS-friendly resume in minutes.</p>
+
+    <div class="resume-box">
+
+        <a href="/resume" class="resume-btn">
+            Build My Resume →
+        </a>
+
+    </div>
+
+</section>
 
 </div>
-{% if user_message %}
-<div class="chat user">
-    <b>🙋 You:</b><br>
-    {{ user_message }}
-</div>
-{% endif %}
-
 {% if bot_reply %}
-<div class="chat ai">
-    <b>🤖 AI:</b><br>
-    <pre>{{ bot_reply }}</pre>
-</div>
-{% endif %}
-
-<hr>
-{% if student_name %}
-<h2>Welcome, {{ student_name }} 🙋‍♂️</h2>
-{% endif %}
-
-{% if percentage %}
-<h3>📊 Percentage: {{ percentage }}%</h3>
-{% endif %}
-
-
-{% if recommendations %}
-<h2>👉Recommended Courses</h2>
 
 <div class="result-box">
+
+    <h2>🤖 AI Career Assistant</h2>
+
+    <p>
+        <b>🙋 You:</b><br>
+        {{ user_message }}
+    </p>
+
+    <p>
+        <b>🤖 AI:</b><br>
+        {{ bot_reply }}
+    </p>
+
+    {% if percentage %}
+    <h4>📊 Percentage</h4>
+    <p>{{ percentage }}%</p>
+    {% endif %}
+
+    {% if recommendations %}
+    <h4>🎯 Career Recommendations</h4>
     <ul>
-        {% for course in recommendations %}
-            <li>{{ course }}</li>
+        {% for career in recommendations %}
+        <li>{{ career }}</li>
         {% endfor %}
     </ul>
-</div>
+    {% endif %}
 
-{% endif %}
-
-
-{% if skill_recommendations %}
-
-<h2>💻 Recommended Skills</h2>
-
-<div class="chat">
-
+    {% if skill_recommendations %}
+    <h4>🛠 Skills to Learn</h4>
     <ul>
-
         {% for skill in skill_recommendations %}
-
-            <li>{{ skill }}</li>
-
+        <li>{{ skill }}</li>
         {% endfor %}
-
     </ul>
+    {% endif %}
 
-</div>
-
-{% endif %}
-
-
-{% if colleges %}
-<h2>🏫 KCET College Suggestions</h2>
-
-<div class="result-box">
+    {% if colleges %}
+    <h4>🏫 KCET Colleges</h4>
     <ul>
         {% for college in colleges %}
-            <li>{{ college }}</li>
+        <li>{{ college }}</li>
         {% endfor %}
     </ul>
-</div>
-{% endif %}
+    {% endif %}
 
-{% if comedk_colleges %}
-
-<h2>🏫 COMEDK College Suggestions</h2>
-
-<div class="result-box">
-
+    {% if comedk_colleges %}
+    <h4>🏫 COMEDK Colleges</h4>
     <ul>
         {% for college in comedk_colleges %}
-            <li>{{ college }}</li>
+        <li>{{ college }}</li>
         {% endfor %}
     </ul>
+    {% endif %}
 
-</div>
-
-{% endif %}
-
-{% if roadmap %}
-
-<hr>
-
-<h2>🗺️ AI Career Roadmap</h2>
-
-<div class="result-box">
-
+    {% if roadmap %}
+    <h4>🗺 Career Roadmap</h4>
     <ol>
-
         {% for step in roadmap %}
-
-            <li>{{ step }}</li>
-
+        <li>{{ step }}</li>
         {% endfor %}
-
     </ol>
+    {% endif %}
 
-</div>
-
-{% endif %}
-
-{% if free_courses %}
-
-<h2>📚 Free Courses</h2>
-
-<div class="result-box">
-
+    {% if free_courses %}
+    <h4>📚 Free Courses</h4>
     <ul>
         {% for course in free_courses %}
-            <li>
-               <a href="{{ course.link }}" target="_blank">
-                   {{ course.name }}
-               </a>
-           </li>
+        <li>
+            <a href="{{ course.link }}" target="_blank">
+                {{ course.name }}
+            </a>
+        </li>
         {% endfor %}
     </ul>
+    {% endif %}
 
-</div>
-
-{% endif %}
-
-
-{% if scholarships %}
-<h2>🎓 Available Scholarships</h2>
-
-<div class="result-box">
+    {% if scholarships %}
+    <h4>🎓 Scholarships</h4>
     <ul>
         {% for scholarship in scholarships %}
-            <li>{{ scholarship }}</li>
+        <li>{{ scholarship }}</li>
         {% endfor %}
     </ul>
+    {% endif %}
+
 </div>
+
 {% endif %}
 
 </body>
