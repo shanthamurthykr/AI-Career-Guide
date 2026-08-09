@@ -1,0 +1,540 @@
+/* =========================================================
+   YOUNG STARS - COMMON DESIGN
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(35, 80, 180, 0.28),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(120, 40, 180, 0.20),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #050a1c,
+            #0b1430,
+            #070b1d
+        );
+
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   MENU BUTTON
+   ========================================================= */
+
+.menu-btn {
+
+    position: fixed;
+
+    top: 20px;
+    left: 20px;
+
+    width: 46px;
+    height: 46px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(20, 35, 65, 0.95);
+
+    color: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    z-index: 1001;
+
+    box-shadow:
+        0 0 15px rgba(40, 120, 255, 0.35);
+
+    transition: 0.3s;
+}
+
+
+.menu-btn:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 25px rgba(50, 140, 255, 0.75);
+
+}
+
+
+/* =========================================================
+   SIDEBAR OVERLAY
+   ========================================================= */
+
+.sidebar-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.3s;
+
+    z-index: 999;
+}
+
+
+.sidebar-overlay.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+
+    position: fixed;
+
+    top: 0;
+    left: -300px;
+
+    width: 280px;
+    height: 100vh;
+
+    padding: 80px 20px 30px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #101a33,
+            #080d20
+        );
+
+    border-right: 1px solid rgba(70, 130, 255, 0.35);
+
+    box-shadow:
+        5px 0 30px rgba(0, 0, 0, 0.5);
+
+    transition: left 0.3s ease;
+
+    z-index: 1000;
+
+    overflow-y: auto;
+}
+
+
+.sidebar.open {
+
+    left: 0;
+
+}
+
+
+.sidebar h2 {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    font-size: 24px;
+
+    color: white;
+
+}
+
+
+.sidebar a {
+
+    display: block;
+
+    padding: 14px 15px;
+
+    margin-bottom: 8px;
+
+    border-radius: 10px;
+
+    color: #e7efff;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+
+}
+
+
+.sidebar a:hover {
+
+    background: rgba(45, 110, 255, 0.18);
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 15px rgba(40, 120, 255, 0.35);
+
+    transform: translateX(4px);
+
+}
+
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+.youngstars-page {
+
+    width: min(1200px, 92%);
+
+    margin: 0 auto;
+
+    padding: 100px 20px 60px;
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.page-header {
+
+    text-align: center;
+
+    margin-bottom: 50px;
+
+}
+
+
+.page-header h1 {
+
+    font-size: clamp(34px, 5vw, 55px);
+
+    margin-bottom: 15px;
+
+    font-weight: 800;
+
+    text-shadow:
+        0 0 12px rgba(70, 150, 255, 0.35);
+
+}
+
+
+.page-header p {
+
+    font-size: 18px;
+
+    color: #d9e3f7;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   SKILLS GRID
+   ========================================================= */
+
+.skills-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 28px;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   SKILL CARD
+   ========================================================= */
+
+.skill-card {
+
+    position: relative;
+
+    display: block;
+
+    padding: 35px 30px;
+
+    min-height: 260px;
+
+    border-radius: 20px;
+
+    text-decoration: none;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 44, 67, 0.97),
+            rgba(20, 30, 48, 0.97)
+        );
+
+    border: 1px solid rgba(90, 145, 255, 0.35);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Blue glowing border */
+
+.skill-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(50, 130, 255, 0.9),
+            transparent,
+            rgba(120, 70, 255, 0.8),
+            transparent
+        );
+
+    opacity: 0;
+
+    z-index: -1;
+
+    transition: opacity 0.3s ease;
+
+}
+
+
+/* Hover */
+
+.skill-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: rgba(60, 145, 255, 0.95);
+
+    box-shadow:
+        0 0 15px rgba(40, 120, 255, 0.35),
+        0 0 35px rgba(70, 100, 255, 0.20),
+        0 15px 40px rgba(0, 0, 0, 0.45);
+
+}
+
+
+.skill-card:hover::before {
+
+    opacity: 1;
+
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.skill-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 18px;
+
+}
+
+
+/* =========================================================
+   CARD TITLE
+   ========================================================= */
+
+.skill-card h2 {
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   CARD DESCRIPTION
+   ========================================================= */
+
+.skill-card p {
+
+    color: #d6e0f2;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================================================
+   LEARN MORE
+   ========================================================= */
+
+.learn-more {
+
+    display: inline-block;
+
+    color: #5da9ff;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+
+}
+
+
+.skill-card:hover .learn-more {
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px rgba(70, 150, 255, 0.8);
+
+}
+
+
+/* =========================================================
+   BACK LINK
+   ========================================================= */
+
+.back-link {
+
+    display: block;
+
+    width: fit-content;
+
+    margin: 45px auto 0;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    color: #62adff;
+
+    text-decoration: none;
+
+    border: 1px solid rgba(70, 140, 255, 0.35);
+
+    background: rgba(20, 35, 65, 0.45);
+
+    transition: 0.3s;
+
+}
+
+
+.back-link:hover {
+
+    color: white;
+
+    border-color: #4c9aff;
+
+    box-shadow:
+        0 0 18px rgba(50, 130, 255, 0.5);
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .youngstars-page {
+
+        padding-top: 90px;
+
+    }
+
+
+    .skills-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+    }
+
+
+    .skill-card {
+
+        min-height: auto;
+
+    }
+
+
+    .page-header h1 {
+
+        font-size: 36px;
+
+    }
+
+
+    .page-header p {
+
+        font-size: 16px;
+
+    }
+
+}

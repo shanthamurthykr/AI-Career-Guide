@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Memory Skills | Young Stars</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            color: white;
+
+            background:
+                radial-gradient(circle at 15% 20%, rgba(0,130,255,.18), transparent 30%),
+                radial-gradient(circle at 85% 20%, rgba(130,40,255,.18), transparent 30%),
+                linear-gradient(135deg,#07142e,#12153d,#080b22);
+
+            padding: 70px 5%;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 25px rgba(60,150,255,.4);
+        }
+
+        .hero p {
+            color: #dbe7ff;
+            font-size: 18px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 25px;
+        }
+
+        .card {
+            padding: 32px;
+            min-height: 210px;
+
+            border-radius: 20px;
+
+            background: rgba(28,42,65,.9);
+            border: 1px solid rgba(70,150,255,.35);
+
+            box-shadow: 0 15px 40px rgba(0,0,0,.35);
+
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: #3195ff;
+
+            box-shadow:
+                0 0 20px rgba(0,140,255,.55),
+                0 15px 40px rgba(0,0,0,.4);
+        }
+
+        .icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #d8e5fa;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 40px;
+
+            color: #59adff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back:hover {
+            color: white;
+        }
+
+        @media(max-width:800px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="hero">
+        <h1>🧠 Memory Skills</h1>
+
+        <p>
+            Train your brain and improve your memory with simple techniques.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🔢</div>
+            <h2>Remember Numbers</h2>
+            <p>
+                Group numbers into small chunks to make them easier to remember.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🖼️</div>
+            <h2>Visual Memory</h2>
+            <p>
+                Create pictures in your mind to remember information more easily.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔁</div>
+            <h2>Spaced Repetition</h2>
+            <p>
+                Review important information at regular intervals to remember it longer.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📝</div>
+            <h2>Active Recall</h2>
+            <p>
+                Close your notes and try to remember what you learned without looking.
+            </p>
+        </div>
+
+    </div>
+
+    <a class="back"
+       href="{{ url_for('learning_skills') }}">
+        ← Back to Learning Skills
+    </a>
+
+</div>
+
+</body>
+</html>

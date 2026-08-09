@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Young Stars</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0d1117;
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           MENU BUTTON
+        ========================= */
+
+        .menu-btn {
+            position: fixed;
+            top: 18px;
+            left: 18px;
+
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+            border: none;
+
+            background: #111827;
+            color: white;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            z-index: 2000;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-btn:hover {
+            background: #2563eb;
+        }
+
+
+        /* =========================
+           OVERLAY
+        ========================= */
+
+        .sidebar-overlay {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.55);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.3s;
+
+            z-index: 1500;
+        }
+
+        .sidebar-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 240px;
+            height: 100vh;
+
+            background: #111827;
+
+            padding-top: 75px;
+
+            transform: translateX(-100%);
+
+            transition: transform 0.3s ease;
+
+            z-index: 1800;
+
+            box-shadow: 5px 0 20px rgba(0,0,0,0.4);
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+
+        /* SIDEBAR TITLE */
+
+        .sidebar h2 {
+            text-align: center;
+
+            margin-bottom: 30px;
+
+            color: white;
+        }
+
+
+        /* SIDEBAR LINKS */
+
+        .sidebar a {
+            display: block;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 14px 22px;
+
+            margin: 5px 12px;
+
+            border-radius: 8px;
+
+            font-size: 17px;
+        }
+
+        .sidebar a:hover {
+            background: #2563eb;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .main-content {
+
+            min-height: 100vh;
+
+            padding: 100px 30px 50px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(10,15,30,0.85),
+                    rgba(10,15,30,0.9)
+                ),
+                url("/static/images/bg.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
+        .main-content h1 {
+
+            font-size: 48px;
+
+            margin-bottom: 10px;
+
+            text-shadow:
+                0 0 15px rgba(59,130,246,0.6);
+        }
+
+        .main-content > p {
+
+            color: #cbd5e1;
+
+            font-size: 19px;
+
+            margin-bottom: 45px;
+        }
+
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .dashboard {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 25px;
+        }
+
+        .card-link {
+
+            text-decoration: none;
+
+            color: white;
+        }
+
+        .card {
+
+            min-height: 180px;
+
+            padding: 25px 20px;
+
+            background: #1f2937;
+
+            border: 1px solid #334155;
+
+            border-radius: 18px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            text-align: center;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.35);
+        }
+
+        .card:hover {
+
+            transform: translateY(-7px);
+
+            background: #2563eb;
+
+            border-color: #60a5fa;
+        }
+
+        .card h3 {
+
+            margin-bottom: 12px;
+
+            color: white;
+        }
+
+        .card p {
+
+            color: #d1d5db;
+
+            line-height: 1.5;
+
+            margin: 0;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-link {
+
+            display: inline-block;
+
+            margin-top: 45px;
+
+            color: #60a5fa;
+
+            text-decoration: none;
+
+            font-size: 17px;
+        }
+
+        .back-link:hover {
+
+            color: white;
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            .dashboard {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .main-content {
+
+                padding:
+                    90px 18px 40px;
+            }
+
+            .main-content h1 {
+
+                font-size: 35px;
+            }
+
+            .dashboard {
+
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+
+                width: 230px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- MENU BUTTON -->
+
+    <button
+        class="menu-btn"
+        id="menuBtn">
+
+        ☰
+
+    </button>
+
+
+
+    <!-- OVERLAY -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay">
+    </div>
+
+
+
+    <!-- SIDEBAR -->
+
+    <div
+        class="sidebar"
+        id="sidebar">
+
+
+        <h2>
+            🎓 AI Career
+        </h2>
+
+
+        <a href="/">
+            🏠 Home
+        </a>
+
+
+        <a href="/youngstars">
+            🌟 Young Stars
+        </a>
+
+
+        <a href="/youngstars/learning-skills">
+            🧠 Learning Skills
+        </a>
+
+
+        <a href="/tenth">
+            🎓 10th Students
+        </a>
+
+
+        <a href="/puc">
+            📚 12th Students
+        </a>
+
+
+        <a href="/degree">
+            💼 Degree Students
+        </a>
+
+
+        <a href="/resume">
+            📄 Resume Builder
+        </a>
+
+
+    </div>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-content">
+
+
+        <h1>
+            🌟 Young Stars
+        </h1>
+
+
+        <p>
+            Career guidance and learning resources
+            for LKG to 9th students.
+        </p>
+
+
+
+        <!-- CARDS -->
+
+        <div class="dashboard">
+
+
+            <a
+                href="/youngstars/learning-skills"
+                class="card-link">
+
+                <div class="card">
+
+                    <h3>
+                        🧠 Learning Skills
+                    </h3>
+
+                    <p>
+                        Memory, communication,
+                        creativity and critical thinking.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/youngstars/future-careers"
+                class="card-link">
+
+                <div class="card">
+
+                    <h3>
+                        🎯 Future Careers
+                    </h3>
+
+                    <p>
+                        Explore different careers
+                        and understand what they do.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/youngstars/daily-learning"
+                class="card-link">
+
+                <div class="card">
+
+                    <h3>
+                        📚 Daily Learning
+                    </h3>
+
+                    <p>
+                        Build good study habits
+                        and daily learning routines.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/youngstars/competitions"
+                class="card-link">
+
+                <div class="card">
+
+                    <h3>
+                        🏆 Competitions
+                    </h3>
+
+                    <p>
+                        Olympiads, quizzes,
+                        science fairs and coding.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/youngstars/ai-quiz"
+                class="card-link">
+
+                <div class="card">
+
+                    <h3>
+                        🤖 AI Quiz
+                    </h3>
+
+                    <p>
+                        Test your knowledge
+                        with fun AI quizzes.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/youngstars/ai-story"
+                class="card-link">
+
+                <div class="card">
+
+                    <h3>
+                        📖 AI Story Generator
+                    </h3>
+
+                    <p>
+                        Create interesting
+                        educational stories.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/youngstars/motivation"
+                class="card-link">
+
+                <div class="card">
+
+                    <h3>
+                        🌟 AI Motivation
+                    </h3>
+
+                    <p>
+                        Get positive learning
+                        motivation.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/youngstars/parent-guide"
+                class="card-link">
+
+                <div class="card">
+
+                    <h3>
+                        👨‍👩‍👧 Parent Guide
+                    </h3>
+
+                    <p>
+                        Helpful guidance for
+                        parents and young learners.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- BACK -->
+
+        <a
+            href="/"
+            class="back-link">
+
+            🏠 Back to AI Career Guide
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const sidebarOverlay =
+            document.getElementById("sidebarOverlay");
+
+
+        /* OPEN / CLOSE */
+
+        menuBtn.addEventListener("click", function () {
+
+            sidebar.classList.toggle("open");
+
+            sidebarOverlay.classList.toggle("show");
+
+        });
+
+
+        /* OUTSIDE CLICK */
+
+        sidebarOverlay.addEventListener(
+            "click",
+            function () {
+
+                sidebar.classList.remove("open");
+
+                sidebarOverlay.classList.remove("show");
+
+            }
+        );
+
+
+        /* LINK CLICK */
+
+        const sidebarLinks =
+            document.querySelectorAll(".sidebar a");
+
+
+        sidebarLinks.forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    sidebar.classList.remove("open");
+
+                    sidebarOverlay.classList.remove("show");
+
+                }
+            );
+
+        });
+
+
+        /* ESC KEY */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Escape") {
+
+                    sidebar.classList.remove("open");
+
+                    sidebarOverlay.classList.remove("show");
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

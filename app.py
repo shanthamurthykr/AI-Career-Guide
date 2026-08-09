@@ -1,4 +1,4 @@
-﻿from flask import Flask, render_template, request
+﻿from flask import Flask, render_template, request,redirect
 from google import genai
 from career_data import (career_data, kcet_colleges,comedk_colleges, percentage_courses, scholarships,roadmaps,skills_data,free_courses)
 from flask import send_file
@@ -122,8 +122,45 @@ def home():
 
 @app.route("/youngstars")
 def youngstars():
-    return render_template("youngstars.html")
+    return render_template("youngstars/home.html")
 
+
+@app.route("/youngstars/home")
+def youngstars_home():
+    return render_template("youngstars/home.html")
+
+
+@app.route("/youngstars/learning-skills")
+def learning_skills():
+    return render_template("youngstars/learning_skills.html")
+
+
+@app.route("/youngstars/learning-skills/memory-skills")
+def memory_skills():
+    return render_template(
+        "youngstars/learning_skills/memory_skills/memory_skills.html"
+    )
+
+
+@app.route("/youngstars/learning-skills/communication")
+def communication():
+    return render_template(
+        "youngstars/learning_skills/communication/communication.html"
+    )
+
+
+@app.route("/youngstars/learning-skills/creativity")
+def creativity():
+    return render_template(
+        "youngstars/learning_skills/creativity/creativity.html"
+    )
+
+
+@app.route("/youngstars/learning-skills/critical-thinking")
+def critical_thinking():
+    return render_template(
+        "youngstars/learning_skills/critical_thinking/critical_thinking.html"
+    )
 
 @app.route("/tenth")
 def tenth():

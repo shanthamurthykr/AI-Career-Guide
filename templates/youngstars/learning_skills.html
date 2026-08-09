@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning Skills | Young Stars</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(circle at top left, #102d62, transparent 40%),
+                radial-gradient(circle at bottom right, #26105c, transparent 40%),
+                #070d25;
+
+            color: white;
+            min-height: 100vh;
+            padding: 50px 8%;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title h1 {
+            font-size: 52px;
+            margin-bottom: 15px;
+
+            text-shadow:
+                0 0 10px #4da3ff,
+                0 0 25px #4da3ff;
+        }
+
+        .title p {
+            font-size: 18px;
+            color: #d5e5ff;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .skill-card {
+            position: relative;
+
+            background: rgba(24, 39, 65, 0.92);
+
+            border: 1px solid rgba(65, 150, 255, 0.45);
+
+            border-radius: 22px;
+
+            padding: 35px;
+
+            min-height: 250px;
+
+            transition: all 0.35s ease;
+
+            overflow: hidden;
+        }
+
+        /* Blue shining border */
+
+        .skill-card::before {
+            content: "";
+
+            position: absolute;
+
+            inset: -2px;
+
+            border-radius: 22px;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #168cff,
+                #8b5cf6,
+                #168cff,
+                transparent
+            );
+
+            opacity: 0;
+
+            z-index: -1;
+
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+
+            border-color: #329cff;
+
+            box-shadow:
+                0 0 15px #168cff,
+                0 0 35px rgba(22, 140, 255, 0.45);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(25, 100, 190, 0.85),
+                    rgba(75, 35, 170, 0.85)
+                );
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .skill-card h2 {
+            font-size: 27px;
+            margin-bottom: 15px;
+        }
+
+        .skill-card p {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #dbeafe;
+            margin-bottom: 25px;
+        }
+
+        .learn-btn {
+            display: inline-block;
+
+            text-decoration: none;
+
+            color: white;
+
+            font-weight: bold;
+
+            padding: 10px 18px;
+
+            border-radius: 10px;
+
+            background: #147ff5;
+
+            transition: 0.3s;
+        }
+
+        .learn-btn:hover {
+            background: #6d4aff;
+
+            box-shadow:
+                0 0 10px #329cff,
+                0 0 25px #6d4aff;
+
+            transform: translateX(5px);
+        }
+
+        /* Mobile */
+
+        @media (max-width: 750px) {
+
+            body {
+                padding: 30px 5%;
+            }
+
+            .title h1 {
+                font-size: 38px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">
+
+        <h1>🧠 Learning Skills</h1>
+
+        <p>
+            Improve your memory, communication, creativity and critical thinking.
+        </p>
+
+    </div>
+
+
+    <div class="skills-grid">
+
+
+        <!-- MEMORY -->
+
+        <div class="skill-card">
+
+            <div class="icon">🧠</div>
+
+            <h2>Memory Skills</h2>
+
+            <p>
+                Improve your memory and learning ability with simple
+                and fun techniques.
+            </p>
+
+            <a
+                href="{{ url_for('memory_skills') }}"
+                class="learn-btn"
+            >
+                Learn More →
+            </a>
+
+        </div>
+
+
+        <!-- COMMUNICATION -->
+
+        <div class="skill-card">
+
+            <div class="icon">💬</div>
+
+            <h2>Communication</h2>
+
+            <p>
+                Build confidence and improve your speaking,
+                listening and communication skills.
+            </p>
+
+            <a
+                href="{{ url_for('communication') }}"
+                class="learn-btn"
+            >
+                Learn More →
+            </a>
+
+        </div>
+
+
+        <!-- CREATIVITY -->
+
+        <div class="skill-card">
+
+            <div class="icon">🎨</div>
+
+            <h2>Creativity</h2>
+
+            <p>
+                Learn how to think differently, imagine new ideas
+                and solve problems creatively.
+            </p>
+
+            <a
+                href="{{ url_for('creativity') }}"
+                class="learn-btn"
+            >
+                Learn More →
+            </a>
+
+        </div>
+
+
+        <!-- CRITICAL THINKING -->
+
+        <div class="skill-card">
+
+            <div class="icon">💡</div>
+
+            <h2>Critical Thinking</h2>
+
+            <p>
+                Improve your problem-solving ability and learn
+                how to make smart decisions.
+            </p>
+
+            <a
+                href="{{ url_for('critical_thinking') }}"
+                class="learn-btn"
+            >
+                Learn More →
+            </a>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</body>
+</html>
