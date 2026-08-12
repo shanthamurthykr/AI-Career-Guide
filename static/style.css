@@ -1180,3 +1180,20 @@ color:#d1d5db;
         grid-template-columns: 1fr;
     }
 }
+.learn-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 11px 18px;
+    background: linear-gradient(90deg, #2563EB, #7C3AED);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: .3s;
+    box-shadow: 0 0 12px rgba(59,130,246,.3);
+}
+
+.learn-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(59,130,246,.6);
+}
