@@ -1192,8 +1192,3 @@ color:#d1d5db;
     transition: .3s;
     box-shadow: 0 0 12px rgba(59,130,246,.3);
 }
-
-.learn-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 20px rgba(59,130,246,.6);
-}
