@@ -162,6 +162,12 @@ def critical_thinking():
         "youngstars/learning_skills/critical_thinking/critical_thinking.html"
     )
 
+@app.route('/youngstars/future-skills')
+def future_skills():
+    return render_template(
+        'youngstars/learning_skills/future_skills/future_skills.html'
+    )
+
 @app.route("/tenth")
 def tenth():
     return render_template("tenth.html")
