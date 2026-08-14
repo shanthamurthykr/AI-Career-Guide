@@ -167,6 +167,62 @@ def future_skills():
     return render_template(
         'youngstars/learning_skills/future_skills/future_skills.html'
     )
+@app.route('/youngstars/future-careers')
+def future_careers():
+    return render_template(
+        'youngstars/future_careers/future_careers.html'
+    )
+
+@app.route('/youngstars/future-careers/government')
+def government():
+    return render_template(
+        'youngstars/future_careers/government/government.html'
+    )
+@app.route('/youngstars/future-careers/defence')
+def defence():
+    return render_template(
+        'youngstars/future_careers/defence/defence.html'
+    )
+@app.route('/youngstars/future-careers/medicine')
+def medicine():
+    return render_template(
+        'youngstars/future_careers/medicine/medicine.html'
+    )
+@app.route('/youngstars/future-careers/science')
+def science():
+    return render_template(
+        'youngstars/future_careers/science/science.html'
+    )
+@app.route('/youngstars/future-careers/technology')
+def technology():
+    return render_template(
+        'youngstars/future_careers/technology/technology.html'
+    )
+@app.route('/youngstars/future-careers/engineering')
+def engineering():
+    return render_template(
+        'youngstars/future_careers/engineering/engineering.html'
+    )
+@app.route('/youngstars/future-careers/business')
+def business():
+    return render_template(
+        'youngstars/future_careers/business/business.html'
+    )
+@app.route('/youngstars/future-careers/law')
+def law():
+    return render_template(
+        'youngstars/future_careers/law/law.html'
+    )
+@app.route('/youngstars/future-careers/creative')
+def creative():
+    return render_template(
+        'youngstars/future_careers/creative/creative.html'
+    )
+@app.route('/youngstars/future-careers/sports')
+def sports():
+    return render_template(
+        'youngstars/future_careers/sports/sports.html'
+    )
 
 @app.route("/tenth")
 def tenth():
