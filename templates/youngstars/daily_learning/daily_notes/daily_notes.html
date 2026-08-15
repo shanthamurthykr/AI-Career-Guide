@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Daily Notes | Young Stars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="hero">
+
+        <h1>📝 Daily Notes</h1>
+
+        <p>
+            Write down what you learned today,
+            what you enjoyed and what you want to learn next.
+        </p>
+
+    </div>
+
+
+    <div class="cards-container">
+
+
+        <div class="card">
+
+            <div class="icon">📚</div>
+
+            <h2>What Did I Learn?</h2>
+
+            <p>
+                Write one or two things you learned today.
+                It can be from school, a book, a video or
+                something you discovered yourself.
+            </p>
+
+            <textarea
+                rows="6"
+                placeholder="Today I learned..."></textarea>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">💡</div>
+
+            <h2>What Was Interesting?</h2>
+
+            <p>
+                Write about the most interesting thing
+                you discovered today.
+            </p>
+
+            <textarea
+                rows="6"
+                placeholder="The most interesting thing was..."></textarea>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">❓</div>
+
+            <h2>What Do I Want to Know?</h2>
+
+            <p>
+                Write one question you would like to
+                find the answer to tomorrow.
+            </p>
+
+            <textarea
+                rows="6"
+                placeholder="Tomorrow I want to know..."></textarea>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">⭐</div>
+
+            <h2>Today's Achievement</h2>
+
+            <p>
+                Write one small achievement that made
+                you feel proud today.
+            </p>
+
+            <textarea
+                rows="6"
+                placeholder="Today I achieved..."></textarea>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🎯</div>
+
+            <h2>Tomorrow's Goal</h2>
+
+            <p>
+                Choose one simple learning goal for
+                tomorrow.
+            </p>
+
+            <textarea
+                rows="6"
+                placeholder="Tomorrow I will..."></textarea>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🌟</div>
+
+            <h2>My Learning Promise</h2>
+
+            <p>
+                Make one small promise to yourself to
+                keep learning every day.
+            </p>
+
+            <textarea
+                rows="6"
+                placeholder="I promise myself that..."></textarea>
+
+        </div>
+
+
+    </div>
+
+
+    <a class="back"
+       href="/youngstars/daily-learning">
+
+        ← Back to Daily Learning
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

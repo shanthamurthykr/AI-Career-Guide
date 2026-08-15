@@ -223,6 +223,56 @@ def sports():
     return render_template(
         'youngstars/future_careers/sports/sports.html'
     )
+@app.route('/youngstars/daily-learning')
+def daily_learning():
+    return render_template(
+        'youngstars/daily_learning/daily_learning.html'
+    )
+@app.route('/youngstars/daily-learning/daily-plan')
+def daily_plan():
+    return render_template(
+        'youngstars/daily_learning/daily_plan/daily_plan.html'
+    )
+@app.route('/youngstars/daily-learning/today-topic')
+def today_topic():
+    return render_template(
+        'youngstars/daily_learning/today_topic/today_topic.html'
+    )
+@app.route('/youngstars/daily-learning/learn-something-new')
+def learn_something_new():
+    return render_template(
+        'youngstars/daily_learning/learn_something_new/learn_something_new.html'
+    )
+@app.route('/youngstars/daily-learning/practice-time')
+def practice_time():
+    return render_template(
+        'youngstars/daily_learning/practice_time/practice_time.html'
+    )
+@app.route('/youngstars/daily-learning/daily-challenge')
+def daily_challenge():
+    return render_template(
+        'youngstars/daily_learning/daily_challenge/daily_challenge.html'
+    )
+@app.route('/youngstars/daily-learning/daily-notes')
+def daily_notes():
+    return render_template(
+        'youngstars/daily_learning/daily_notes/daily_notes.html'
+    )
+@app.route('/youngstars/daily-learning/general-knowledge')
+def general_knowledge():
+    return render_template(
+        'youngstars/daily_learning/general_knowledge/general_knowledge.html'
+    )
+@app.route('/youngstars/daily-learning/technology-of-day')
+def technology_of_day():
+    return render_template(
+        'youngstars/daily_learning/technology_of_day/technology_of_day.html'
+    )
+@app.route('/youngstars/daily-learning/think-solve')
+def think_solve():
+    return render_template(
+        'youngstars/daily_learning/think_solve/think_solve.html'
+    )
 
 @app.route("/tenth")
 def tenth():
