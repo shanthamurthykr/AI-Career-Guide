@@ -219,7 +219,7 @@ def creative():
         'youngstars/future_careers/creative/creative.html'
     )
 @app.route('/youngstars/future-careers/sports')
-def sports():
+def future_career_sports():
     return render_template(
         'youngstars/future_careers/sports/sports.html'
     )
@@ -273,6 +273,62 @@ def think_solve():
     return render_template(
         'youngstars/daily_learning/think_solve/think_solve.html'
     )
+@app.route('/youngstars/daily-learning/english-communication')
+def english_communication():
+    return render_template(
+        'youngstars/daily_learning/english_communication/english_communication.html'
+    )
+@app.route('/youngstars/daily-learning/todays-goal')
+def todays_goal():
+    return render_template(
+        'youngstars/daily_learning/todays_goal/todays_goal.html'
+    )
+@app.route('/youngstars/competitions')
+def competitions():
+    return render_template(
+        'youngstars/competitions/competitions.html'
+    )
+@app.route('/youngstars/competitions/olympiads')
+def olympiads():
+    return render_template(
+        'youngstars/competitions/olympiads/olympiads.html'
+    )
+@app.route('/youngstars/competitions/quizzes')
+def quizzes():
+    return render_template(
+        'youngstars/competitions/quizzes/quizzes.html'
+    )
+@app.route('/youngstars/competitions/science-fairs')
+def science_fairs():
+    return render_template(
+        'youngstars/competitions/science_fairs/science_fairs.html'
+    )
+@app.route('/youngstars/competitions/coding')
+def coding():
+    return render_template(
+        'youngstars/competitions/coding/coding.html'
+    )
+@app.route('/youngstars/competitions/debate')
+def debate():
+    return render_template(
+        'youngstars/competitions/debate/debate.html'
+    )
+@app.route('/youngstars/competitions/sports')
+def sports():
+    return render_template(
+        'youngstars/competitions/sports/sports.html'
+    )
+@app.route('/youngstars/competitions/art-creative')
+def art_creative():
+    return render_template(
+        'youngstars/competitions/art_creative/art_creative.html'
+)
+@app.route('/youngstars/competitions/scholarships')
+def scholarships():
+    return render_template(
+        'youngstars/competitions/scholarships/scholarships.html'
+    )
+
 
 @app.route("/tenth")
 def tenth():

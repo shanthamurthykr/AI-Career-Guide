@@ -1192,3 +1192,30 @@ color:#d1d5db;
     transition: .3s;
     box-shadow: 0 0 12px rgba(59,130,246,.3);
 }
+/* Official Olympiad Websites */
+
+.official-websites {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.official-websites h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.official-websites p {
+    max-width: 700px;
+    margin: 0 auto 25px;
+}
+
+.official-websites > div {
+    justify-content: center;
+}
+
+.official-websites .learn-btn {
+    min-width: 210px;
+    text-align: center;
+}

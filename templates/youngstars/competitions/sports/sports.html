@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sports Competitions | Young Stars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .sports-tools {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .sports-search {
+            width: 90%;
+            max-width: 600px;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 16px;
+            margin: 15px auto;
+            display: block;
+        }
+
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .category-btn {
+            border: none;
+            padding: 10px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .sports-count {
+            font-weight: bold;
+            margin: 15px;
+        }
+
+        .sport-card {
+            transition: 0.2s;
+        }
+
+        .sport-card.hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="hero">
+
+        <h1>🏃 Sports Competitions</h1>
+
+        <p>
+            Explore 100 different sports, discover competitions,
+            learn the basics and build teamwork, discipline and confidence.
+        </p>
+
+    </div>
+
+
+    <!-- Sports Resources -->
+
+    <div class="card official-websites">
+
+        <div class="icon">🌐</div>
+
+        <h2>🏆 Sports Resources</h2>
+
+        <p>
+            Explore sports information, rules, training ideas
+            and youth sports resources.
+        </p>
+
+        <div style="margin-top:20px;
+                    display:flex;
+                    flex-wrap:wrap;
+                    gap:12px;
+                    justify-content:center;">
+
+            <a class="learn-btn"
+               href="https://olympics.com/"
+               target="_blank"
+               rel="noopener noreferrer">
+                🌐 Olympics
+            </a>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=sports+training+Kannada+students"
+               target="_blank"
+               rel="noopener noreferrer">
+                🎥 Kannada Sports Videos
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Search & Filter -->
+
+    <div class="sports-tools">
+
+        <h2>🔎 Find Your Sport</h2>
+
+        <input
+            type="text"
+            id="sportSearch"
+            class="sports-search"
+            placeholder="Search sports... e.g. Cricket, Tennis, Swimming"
+            onkeyup="filterSports()"
+        >
+
+        <div class="category-buttons">
+
+            <button class="category-btn"
+                    onclick="showCategory('all')">
+                🌍 All
+            </button>
+
+            <button class="category-btn"
+                    onclick="showCategory('team')">
+                👥 Team
+            </button>
+
+            <button class="category-btn"
+                    onclick="showCategory('racket')">
+                🎾 Racket
+            </button>
+
+            <button class="category-btn"
+                    onclick="showCategory('combat')">
+                🥋 Combat
+            </button>
+
+            <button class="category-btn"
+                    onclick="showCategory('water')">
+                🏊 Water
+            </button>
+
+            <button class="category-btn"
+                    onclick="showCategory('athletics')">
+                🏃 Athletics
+            </button>
+
+            <button class="category-btn"
+                    onclick="showCategory('winter')">
+                ❄️ Winter
+            </button>
+
+            <button class="category-btn"
+                    onclick="showCategory('precision')">
+                🎯 Precision
+            </button>
+
+        </div>
+
+        <div class="sports-count" id="sportsCount">
+            Showing 100 sports
+        </div>
+
+    </div>
+
+
+    <!-- 100 Sports -->
+
+    <div class="cards-container" id="sportsContainer">
+
+
+        <!-- 1 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏏</div>
+
+            <h2>1. Cricket</h2>
+
+            <p>Batting, bowling, fielding and team strategy.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=cricket+training+Kannada"
+               target="_blank">
+                🎥 Learn Cricket
+            </a>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">⚽</div>
+
+            <h2>2. Football</h2>
+
+            <p>Passing, shooting, defending and teamwork.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=football+training+Kannada"
+               target="_blank">
+                🎥 Learn Football
+            </a>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏀</div>
+
+            <h2>3. Basketball</h2>
+
+            <p>Dribbling, passing, shooting and defence.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=basketball+training+Kannada"
+               target="_blank">
+                🎥 Learn Basketball
+            </a>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏐</div>
+
+            <h2>4. Volleyball</h2>
+
+            <p>Serving, passing, setting and teamwork.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=volleyball+training+Kannada"
+               target="_blank">
+                🎥 Learn Volleyball
+            </a>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏑</div>
+
+            <h2>5. Field Hockey</h2>
+
+            <p>Stick skills, passing, shooting and teamwork.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=field+hockey+training+Kannada"
+               target="_blank">
+                🎥 Learn Hockey
+            </a>
+
+        </div>
+
+
+        <!-- 6 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏉</div>
+
+            <h2>6. Rugby</h2>
+
+            <p>Running, passing and team strategy.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=rugby+training+Kannada"
+               target="_blank">
+                🎥 Learn Rugby
+            </a>
+
+        </div>
+
+
+        <!-- 7 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏈</div>
+
+            <h2>7. American Football</h2>
+
+            <p>Team strategy, passing and running.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=american+football+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 8 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">⚾</div>
+
+            <h2>8. Baseball</h2>
+
+            <p>Batting, pitching, catching and fielding.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=baseball+training+Kannada"
+               target="_blank">
+                🎥 Learn Baseball
+            </a>
+
+        </div>
+
+
+        <!-- 9 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🤽</div>
+
+            <h2>9. Water Polo</h2>
+
+            <p>Swimming, passing and team tactics in water.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=water+polo+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 10 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🥍</div>
+
+            <h2>10. Lacrosse</h2>
+
+            <p>Stick handling, passing and team play.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=lacrosse+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 11 -->
+
+        <div class="card sport-card" data-category="racket">
+
+            <div class="icon">🎾</div>
+
+            <h2>11. Tennis</h2>
+
+            <p>Serve, rally, footwork and match strategy.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=tennis+training+Kannada"
+               target="_blank">
+                🎥 Learn Tennis
+            </a>
+
+        </div>
+
+
+        <!-- 12 -->
+
+        <div class="card sport-card" data-category="racket">
+
+            <div class="icon">🏸</div>
+
+            <h2>12. Badminton</h2>
+
+            <p>Footwork, serving, strokes and rallies.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=badminton+training+Kannada"
+               target="_blank">
+                🎥 Learn Badminton
+            </a>
+
+        </div>
+
+
+        <!-- 13 -->
+
+        <div class="card sport-card" data-category="racket">
+
+            <div class="icon">🏓</div>
+
+            <h2>13. Table Tennis</h2>
+
+            <p>Serve, spin, footwork and quick reactions.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=table+tennis+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 14 -->
+
+        <div class="card sport-card" data-category="racket">
+
+            <div class="icon">🏸</div>
+
+            <h2>14. Squash</h2>
+
+            <p>Racket control, movement and strategy.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=squash+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 15 -->
+
+        <div class="card sport-card" data-category="racket">
+
+            <div class="icon">🎾</div>
+
+            <h2>15. Padel</h2>
+
+            <p>Racket skills, teamwork and court movement.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=padel+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 16 -->
+
+        <div class="card sport-card" data-category="racket">
+
+            <div class="icon">🏸</div>
+
+            <h2>16. Pickleball</h2>
+
+            <p>Racket control, serving and court strategy.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=pickleball+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 17 -->
+
+        <div class="card sport-card" data-category="racket">
+
+            <div class="icon">🎾</div>
+
+            <h2>17. Racquetball</h2>
+
+            <p>Fast rallies, movement and racket skills.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=racquetball+training"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 18 -->
+
+        <div class="card sport-card" data-category="racket">
+
+            <div class="icon">🏓</div>
+
+            <h2>18. Real Tennis</h2>
+
+            <p>Traditional racket sport with strategic play.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=real+tennis+sport"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 19 -->
+
+        <div class="card sport-card" data-category="racket">
+
+            <div class="icon">🎾</div>
+
+            <h2>19. Soft Tennis</h2>
+
+            <p>Racket sport using softer balls and equipment.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=soft+tennis+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 20 -->
+
+        <div class="card sport-card" data-category="racket">
+
+            <div class="icon">🏓</div>
+
+            <h2>20. Fistball</h2>
+
+            <p>Ball sport combining movement and teamwork.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=fistball+sport"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 21 -->
+
+        <div class="card sport-card" data-category="combat">
+
+            <div class="icon">🥋</div>
+
+            <h2>21. Karate</h2>
+
+            <p>Martial arts focused on technique, discipline and control.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=karate+training+Kannada"
+               target="_blank">
+                🎥 Learn Karate
+            </a>
+
+        </div>
+
+
+        <!-- 22 -->
+
+        <div class="card sport-card" data-category="combat">
+
+            <div class="icon">🥋</div>
+
+            <h2>22. Judo</h2>
+
+            <p>Martial art based on throws, balance and technique.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=judo+training+Kannada"
+               target="_blank">
+                🎥 Learn Judo
+            </a>
+
+        </div>
+
+
+        <!-- 23 -->
+
+        <div class="card sport-card" data-category="combat">
+
+            <div class="icon">🥊</div>
+
+            <h2>23. Boxing</h2>
+
+            <p>Footwork, fitness, defence and controlled technique.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=boxing+training+Kannada"
+               target="_blank">
+                🎥 Learn Boxing
+            </a>
+
+        </div>
+
+
+        <!-- 24 -->
+
+        <div class="card sport-card" data-category="combat">
+
+            <div class="icon">🤼</div>
+
+            <h2>24. Wrestling</h2>
+
+            <p>Strength, balance, technique and athletic movement.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=wrestling+training+Kannada"
+               target="_blank">
+                🎥 Learn Wrestling
+            </a>
+
+        </div>
+
+
+        <!-- 25 -->
+
+        <div class="card sport-card" data-category="combat">
+
+            <div class="icon">🥋</div>
+
+            <h2>25. Taekwondo</h2>
+
+            <p>Martial arts focused on technique, movement and discipline.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=taekwondo+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 26 -->
+
+        <div class="card sport-card" data-category="combat">
+
+            <div class="icon">🥋</div>
+
+            <h2>26. Wushu</h2>
+
+            <p>Traditional Chinese martial arts and athletic movement.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=wushu+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 27 -->
+
+        <div class="card sport-card" data-category="combat">
+
+            <div class="icon">🥋</div>
+
+            <h2>27. Brazilian Jiu-Jitsu</h2>
+
+            <p>Grappling, technique, balance and controlled movement.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=BJJ+training+beginners"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 28 -->
+
+        <div class="card sport-card" data-category="combat">
+
+            <div class="icon">🥋</div>
+
+            <h2>28. Fencing</h2>
+
+            <p>Footwork, timing and precision with fencing equipment.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=fencing+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 29 -->
+
+        <div class="card sport-card" data-category="combat">
+
+            <div class="icon">🥋</div>
+
+            <h2>29. Sambo</h2>
+
+            <p>Martial arts and wrestling-based sport.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=sambo+sport"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 30 -->
+
+        <div class="card sport-card" data-category="combat">
+
+            <div class="icon">🥋</div>
+
+            <h2>30. Sumo</h2>
+
+            <p>Traditional Japanese wrestling sport.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=sumo+wrestling"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 31 -->
+
+        <div class="card sport-card" data-category="water">
+
+            <div class="icon">🏊</div>
+
+            <h2>31. Swimming</h2>
+
+            <p>Learn different strokes, technique and water fitness.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=swimming+training+Kannada"
+               target="_blank">
+                🎥 Learn Swimming
+            </a>
+
+        </div>
+
+
+        <!-- 32 -->
+
+        <div class="card sport-card" data-category="water">
+
+            <div class="icon">🤿</div>
+
+            <h2>32. Diving</h2>
+
+            <p>Controlled aquatic sport involving jumps and dives.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=diving+sport+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 33 -->
+
+        <div class="card sport-card" data-category="water">
+
+            <div class="icon">🚣</div>
+
+            <h2>33. Rowing</h2>
+
+            <p>Team and individual water sport using rowing technique.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=rowing+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 34 -->
+
+        <div class="card sport-card" data-category="water">
+
+            <div class="icon">🛶</div>
+
+            <h2>34. Canoeing</h2>
+
+            <p>Paddling sport performed on water.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=canoeing+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 35 -->
+
+        <div class="card sport-card" data-category="water">
+
+            <div class="icon">🛶</div>
+
+            <h2>35. Kayaking</h2>
+
+            <p>Water sport based on paddling and boat control.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=kayaking+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 36 -->
+
+        <div class="card sport-card" data-category="water">
+
+            <div class="icon">🏄</div>
+
+            <h2>36. Surfing</h2>
+
+            <p>Balance and board skills on waves.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=surfing+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 37 -->
+
+        <div class="card sport-card" data-category="water">
+
+            <div class="icon">⛵</div>
+
+            <h2>37. Sailing</h2>
+
+            <p>Learn sailing, wind awareness and boat control.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=sailing+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 38 -->
+
+        <div class="card sport-card" data-category="water">
+
+            <div class="icon">🤽</div>
+
+            <h2>38. Artistic Swimming</h2>
+
+            <p>Water-based sport combining swimming and choreography.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=artistic+swimming"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 39 -->
+
+        <div class="card sport-card" data-category="water">
+
+            <div class="icon">🏄</div>
+
+            <h2>39. Windsurfing</h2>
+
+            <p>Board sport combining sailing and balance.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=windsurfing+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 40 -->
+
+        <div class="card sport-card" data-category="water">
+
+            <div class="icon">🏄</div>
+
+            <h2>40. Kitesurfing</h2>
+
+            <p>Board sport using wind and a kite.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=kitesurfing+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 41 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏃</div>
+
+            <h2>41. Sprinting</h2>
+
+            <p>Short-distance running focused on speed and technique.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=sprinting+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 42 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏃</div>
+
+            <h2>42. Marathon</h2>
+
+            <p>Long-distance running requiring endurance and pacing.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=marathon+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 43 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏃</div>
+
+            <h2>43. Hurdles</h2>
+
+            <p>Running combined with controlled hurdle technique.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=hurdles+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 44 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏃</div>
+
+            <h2>44. Long Jump</h2>
+
+            <p>Jumping sport based on speed, takeoff and landing.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=long+jump+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 45 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏃</div>
+
+            <h2>45. High Jump</h2>
+
+            <p>Jumping over a horizontal bar using technique and timing.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=high+jump+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 46 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🥏</div>
+
+            <h2>46. Discus Throw</h2>
+
+            <p>Track and field throwing event focused on technique.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=discus+throw+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 47 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏋️</div>
+
+            <h2>47. Shot Put</h2>
+
+            <p>Track and field throwing event using controlled technique.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=shot+put+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 48 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏹</div>
+
+            <h2>48. Javelin Throw</h2>
+
+            <p>Throwing event requiring technique and coordination.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=javelin+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 49 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏃</div>
+
+            <h2>49. Race Walking</h2>
+
+            <p>Competitive walking with specific technique rules.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=race+walking+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 50 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏃</div>
+
+            <h2>50. Cross Country</h2>
+
+            <p>Running over natural outdoor terrain.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=cross+country+running+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 51 -->
+
+        <div class="card sport-card" data-category="winter">
+
+            <div class="icon">⛷️</div>
+
+            <h2>51. Alpine Skiing</h2>
+
+            <p>Snow sport involving controlled downhill skiing.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=alpine+skiing+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 52 -->
+
+        <div class="card sport-card" data-category="winter">
+
+            <div class="icon">🏂</div>
+
+            <h2>52. Snowboarding</h2>
+
+            <p>Board sport performed on snow.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=snowboarding+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 53 -->
+
+        <div class="card sport-card" data-category="winter">
+
+            <div class="icon">⛸️</div>
+
+            <h2>53. Figure Skating</h2>
+
+            <p>Ice sport combining skating, balance and choreography.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=figure+skating+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 54 -->
+
+        <div class="card sport-card" data-category="winter">
+
+            <div class="icon">🏒</div>
+
+            <h2>54. Ice Hockey</h2>
+
+            <p>Fast team sport played on ice.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=ice+hockey+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 55 -->
+
+        <div class="card sport-card" data-category="winter">
+
+            <div class="icon">🥌</div>
+
+            <h2>55. Curling</h2>
+
+            <p>Team ice sport involving precision and strategy.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=curling+sport+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 56 -->
+
+        <div class="card sport-card" data-category="winter">
+
+            <div class="icon">🛷</div>
+
+            <h2>56. Bobsleigh</h2>
+
+            <p>Team winter sport using a racing sled.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=bobsleigh+sport"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 57 -->
+
+        <div class="card sport-card" data-category="winter">
+
+            <div class="icon">🛷</div>
+
+            <h2>57. Luge</h2>
+
+            <p>Winter sled sport performed on an ice track.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=luge+sport"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 58 -->
+
+        <div class="card sport-card" data-category="winter">
+
+            <div class="icon">🛷</div>
+
+            <h2>58. Skeleton</h2>
+
+            <p>Winter sliding sport using a small sled.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=skeleton+winter+sport"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 59 -->
+
+        <div class="card sport-card" data-category="winter">
+
+            <div class="icon">🎿</div>
+
+            <h2>59. Ski Jumping</h2>
+
+            <p>Winter sport combining skiing, jumping and flight.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=ski+jumping+sport"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 60 -->
+
+        <div class="card sport-card" data-category="winter">
+
+            <div class="icon">🎿</div>
+
+            <h2>60. Biathlon</h2>
+
+            <p>Winter sport combining cross-country skiing and target shooting.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=biathlon+sport"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 61 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🏹</div>
+
+            <h2>61. Archery</h2>
+
+            <p>Precision sport based on controlled target shooting.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=archery+training+Kannada"
+               target="_blank">
+                🎥 Learn Archery
+            </a>
+
+        </div>
+
+
+        <!-- 62 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🎯</div>
+
+            <h2>62. Darts</h2>
+
+            <p>Precision throwing sport using a dartboard.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=darts+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 63 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">⛳</div>
+
+            <h2>63. Golf</h2>
+
+            <p>Precision sport focused on controlled shots and strategy.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=golf+training+Kannada"
+               target="_blank">
+                🎥 Learn Golf
+            </a>
+
+        </div>
+
+
+        <!-- 64 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🎱</div>
+
+            <h2>64. Billiards</h2>
+
+            <p>Precision cue sport involving angles and control.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=billiards+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 65 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🎱</div>
+
+            <h2>65. Snooker</h2>
+
+            <p>Cue sport combining precision, planning and control.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=snooker+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 66 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🎯</div>
+
+            <h2>66. Sport Shooting</h2>
+
+            <p>Competitive precision sport using regulated equipment.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=sport+shooting+Olympics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 67 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🎳</div>
+
+            <h2>67. Bowling</h2>
+
+            <p>Precision sport involving controlled ball rolling.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=bowling+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 68 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🥏</div>
+
+            <h2>68. Disc Golf</h2>
+
+            <p>Flying-disc sport combining accuracy and strategy.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=disc+golf+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 69 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🪃</div>
+
+            <h2>69. Boomerang</h2>
+
+            <p>Throwing sport based on flight and accuracy.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=boomerang+sport"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 70 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🎯</div>
+
+            <h2>70. Petanque</h2>
+
+            <p>Precision ball sport involving controlled throws.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=petanque+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 71 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🥅</div>
+
+            <h2>71. Handball</h2>
+
+            <p>Fast team sport involving passing and shooting.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=handball+training+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 72 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏉</div>
+
+            <h2>72. Gaelic Football</h2>
+
+            <p>Traditional Irish team sport combining running and ball skills.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=gaelic+football"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 73 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🥏</div>
+
+            <h2>73. Ultimate Frisbee</h2>
+
+            <p>Team flying-disc sport focused on passing and movement.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=ultimate+frisbee+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 74 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏑</div>
+
+            <h2>74. Floorball</h2>
+
+            <p>Indoor team sport using sticks and a lightweight ball.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=floorball+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 75 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🥅</div>
+
+            <h2>75. Netball</h2>
+
+            <p>Team ball sport focused on passing and shooting.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=netball+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 76 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏏</div>
+
+            <h2>76. Baseball Softball</h2>
+
+            <p>Bat-and-ball team sport with throwing and fielding.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=softball+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 77 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏐</div>
+
+            <h2>77. Beach Volleyball</h2>
+
+            <p>Volleyball played on sand with teamwork and movement.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=beach+volleyball+training"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 78 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏏</div>
+
+            <h2>78. Kabaddi</h2>
+
+            <p>Traditional team sport involving agility and strategy.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=kabaddi+training+Kannada"
+               target="_blank">
+                🎥 Learn Kabaddi
+            </a>
+
+        </div>
+
+
+        <!-- 79 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏑</div>
+
+            <h2>79. Kho Kho</h2>
+
+            <p>Traditional Indian team sport based on speed and strategy.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=kho+kho+training+Kannada"
+               target="_blank">
+                🎥 Learn Kho Kho
+            </a>
+
+        </div>
+
+
+        <!-- 80 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🤾</div>
+
+            <h2>80. Dodgeball</h2>
+
+            <p>Team game involving movement, throwing and teamwork.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=dodgeball+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 81 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🚴</div>
+
+            <h2>81. Road Cycling</h2>
+
+            <p>Competitive cycling on roads and organised courses.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=cycling+training+Kannada"
+               target="_blank">
+                🎥 Learn Cycling
+            </a>
+
+        </div>
+
+
+        <!-- 82 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🚵</div>
+
+            <h2>82. Mountain Biking</h2>
+
+            <p>Off-road cycling involving balance and bike control.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=mountain+biking+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 83 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🛹</div>
+
+            <h2>83. Skateboarding</h2>
+
+            <p>Board sport involving balance, movement and tricks.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=skateboarding+beginners"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 84 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🛼</div>
+
+            <h2>84. Roller Skating</h2>
+
+            <p>Skating sport focused on balance and movement.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=roller+skating+beginners"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 85 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🤸</div>
+
+            <h2>85. Gymnastics</h2>
+
+            <p>Sport involving balance, flexibility and body control.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=gymnastics+beginners+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 86 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🤸</div>
+
+            <h2>86. Trampoline</h2>
+
+            <p>Gymnastics discipline based on controlled aerial movement.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=trampoline+gymnastics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 87 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🤸</div>
+
+            <h2>87. Rhythmic Gymnastics</h2>
+
+            <p>Gymnastics combining movement, flexibility and choreography.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=rhythmic+gymnastics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 88 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🏇</div>
+
+            <h2>88. Equestrian</h2>
+
+            <p>Competitive sport involving horse riding and control.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=equestrian+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 89 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🪂</div>
+
+            <h2>89. Paragliding</h2>
+
+            <p>Aerial sport involving controlled gliding and flight.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=paragliding+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 90 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🪂</div>
+
+            <h2>90. Skydiving</h2>
+
+            <p>Aerial sport performed under professional supervision.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=skydiving+sport"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 91 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🤺</div>
+
+            <h2>91. Modern Pentathlon</h2>
+
+            <p>Multi-discipline sport combining several athletic skills.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=modern+pentathlon"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 92 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏋️</div>
+
+            <h2>92. Weightlifting</h2>
+
+            <p>Strength sport based on technical lifting movements.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=weightlifting+basics+Kannada"
+               target="_blank">
+                🎥 Learn More
+            </a>
+
+        </div>
+
+
+        <!-- 93 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🤸</div>
+
+            <h2>93. Sport Aerobics</h2>
+
+            <p>Competitive movement combining fitness and coordination.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=sports+aerobics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 94 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🧗</div>
+
+            <h2>94. Sport Climbing</h2>
+
+            <p>Climbing discipline involving strength, balance and planning.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=sport+climbing+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 95 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏄</div>
+
+            <h2>95. Skate Surfing</h2>
+
+            <p>Board-based activity combining balance and movement.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=board+sports+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 96 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🥏</div>
+
+            <h2>96. Sepak Takraw</h2>
+
+            <p>Team sport combining volleyball-style play with foot skills.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=sepak+takraw+basics"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 97 -->
+
+        <div class="card sport-card" data-category="precision">
+
+            <div class="icon">🎱</div>
+
+            <h2>97. Carrom</h2>
+
+            <p>Indoor precision game based on aiming and controlled shots.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=carrom+training+Kannada"
+               target="_blank">
+                🎥 Learn Carrom
+            </a>
+
+        </div>
+
+
+        <!-- 98 -->
+
+        <div class="card sport-card" data-category="team">
+
+            <div class="icon">🏏</div>
+
+            <h2>98. Baseball Cricket Skills</h2>
+
+            <p>Explore bat-and-ball skills across different sports.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=bat+and+ball+sports"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 99 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏃</div>
+
+            <h2>99. Triathlon</h2>
+
+            <p>Multi-sport endurance event combining swimming, cycling and running.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=triathlon+training+beginners"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+        <!-- 100 -->
+
+        <div class="card sport-card" data-category="athletics">
+
+            <div class="icon">🏆</div>
+
+            <h2>100. Decathlon</h2>
+
+            <p>Multi-event athletics competition testing a range of skills.</p>
+
+            <a class="learn-btn"
+               href="https://www.youtube.com/results?search_query=decathlon+athletics+events"
+               target="_blank">
+                🎥 Explore
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <a class="back"
+       href="/youngstars/competitions">
+
+        ← Back to Competitions
+
+    </a>
+
+</div>
+
+
+<script>
+
+let selectedCategory = "all";
+
+function filterSports() {
+
+    const search =
+        document.getElementById("sportSearch")
+        .value
+        .toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".sport-card");
+
+    let visible = 0;
+
+    cards.forEach(card => {
+
+        const text =
+            card.innerText.toLowerCase();
+
+        const category =
+            card.dataset.category;
+
+        const matchesSearch =
+            text.includes(search);
+
+        const matchesCategory =
+            selectedCategory === "all" ||
+            category === selectedCategory;
+
+        if (matchesSearch && matchesCategory) {
+
+            card.classList.remove("hidden");
+
+            visible++;
+
+        } else {
+
+            card.classList.add("hidden");
+
+        }
+
+    });
+
+    document.getElementById("sportsCount").innerText =
+        "Showing " + visible + " sports";
+
+}
+
+
+function showCategory(category) {
+
+    selectedCategory = category;
+
+    filterSports();
+
+}
+
+</script>
+
+</body>
+
+</html>
