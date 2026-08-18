@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Quiz | Young Stars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .quiz-box {
+            max-width: 850px;
+            margin: 30px auto;
+        }
+
+        .quiz-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .quiz-card h2 {
+            margin-bottom: 20px;
+        }
+
+        .option {
+            display: block;
+            width: 100%;
+            padding: 14px 18px;
+            margin: 12px 0;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            background: #fff;
+            cursor: pointer;
+            text-align: left;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .option:hover {
+            border-color: #6366f1;
+            background: #f5f5ff;
+        }
+
+        .option.correct {
+            border-color: #22c55e;
+            background: #ecfdf5;
+        }
+
+        .option.wrong {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .result-box {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .result-score {
+            font-size: 42px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .category-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .category-btn {
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            background: #f3f4f6;
+        }
+
+        .category-btn:hover {
+            background: #e0e7ff;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="hero">
+
+        <h1>🤖 AI Quiz</h1>
+
+        <p>
+            Test your knowledge with fun quizzes in science,
+            technology, history, general knowledge and more.
+        </p>
+
+    </div>
+
+
+    <div class="quiz-box">
+
+        <!-- Category Selection -->
+
+        <div id="category-section" class="quiz-card">
+
+            <h2>🎯 Choose a Quiz</h2>
+
+            <p>
+                Select a topic and challenge yourself!
+            </p>
+
+            <div class="category-buttons">
+
+                <button class="category-btn"
+                        onclick="startQuiz('general')">
+                    🌍 General Knowledge
+                </button>
+
+                <button class="category-btn"
+                        onclick="startQuiz('science')">
+                    🔬 Science
+                </button>
+
+                <button class="category-btn"
+                        onclick="startQuiz('technology')">
+                    💻 Technology
+                </button>
+
+                <button class="category-btn"
+                        onclick="startQuiz('history')">
+                    📜 History
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Quiz -->
+
+        <div id="quiz-section" class="quiz-card hidden">
+
+            <div class="quiz-info">
+
+                <span id="question-number">
+                    Question 1
+                </span>
+
+                <span id="score">
+                    ⭐ Score: 0
+                </span>
+
+            </div>
+
+
+            <h2 id="question">
+                Question
+            </h2>
+
+
+            <div id="options"></div>
+
+
+            <button id="next-btn"
+                    class="learn-btn hidden"
+                    onclick="nextQuestion()">
+
+                Next Question →
+
+            </button>
+
+        </div>
+
+
+        <!-- Result -->
+
+        <div id="result-section"
+             class="result-box hidden">
+
+            <h2>🎉 Quiz Complete!</h2>
+
+            <p>Your final score is:</p>
+
+            <div id="final-score"
+                 class="result-score">
+
+                0 / 5
+
+            </div>
+
+            <p id="result-message"></p>
+
+            <button class="learn-btn"
+                    onclick="restartQuiz()">
+
+                🔄 Try Another Quiz
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <a class="back"
+       href="/youngstars">
+
+        ← Back to Young Stars
+
+    </a>
+
+</div>
+
+
+<script>
+
+const quizzes = {
+
+    general: [
+
+        {
+            question: "What is the capital of India?",
+            options: ["Mumbai", "New Delhi", "Bengaluru", "Chennai"],
+            answer: 1
+        },
+
+        {
+            question: "Which planet is known as the Red Planet?",
+            options: ["Earth", "Venus", "Mars", "Jupiter"],
+            answer: 2
+        },
+
+        {
+            question: "How many continents are there?",
+            options: ["5", "6", "7", "8"],
+            answer: 2
+        },
+
+        {
+            question: "Which is the largest ocean?",
+            options: [
+                "Atlantic Ocean",
+                "Indian Ocean",
+                "Pacific Ocean",
+                "Arctic Ocean"
+            ],
+            answer: 2
+        },
+
+        {
+            question: "Which animal is known as the King of the Jungle?",
+            options: ["Tiger", "Lion", "Elephant", "Leopard"],
+            answer: 1
+        }
+
+    ],
+
+
+    science: [
+
+        {
+            question: "What gas do plants mainly use for photosynthesis?",
+            options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
+            answer: 2
+        },
+
+        {
+            question: "What is the nearest star to Earth?",
+            options: ["Sirius", "The Sun", "Polaris", "Vega"],
+            answer: 1
+        },
+
+        {
+            question: "What force pulls objects toward Earth?",
+            options: ["Magnetism", "Gravity", "Friction", "Electricity"],
+            answer: 1
+        },
+
+        {
+            question: "What is H2O commonly called?",
+            options: ["Salt", "Water", "Oxygen", "Hydrogen"],
+            answer: 1
+        },
+
+        {
+            question: "Which organ pumps blood around the body?",
+            options: ["Brain", "Lungs", "Heart", "Kidney"],
+            answer: 2
+        }
+
+    ],
+
+
+    technology: [
+
+        {
+            question: "What does AI stand for?",
+            options: [
+                "Automated Internet",
+                "Artificial Intelligence",
+                "Advanced Information",
+                "Automatic Input"
+            ],
+            answer: 1
+        },
+
+        {
+            question: "Which device is commonly used to type on a computer?",
+            options: ["Monitor", "Keyboard", "Speaker", "Printer"],
+            answer: 1
+        },
+
+        {
+            question: "What does CPU stand for?",
+            options: [
+                "Central Processing Unit",
+                "Computer Power Unit",
+                "Central Program Utility",
+                "Computer Processing Utility"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which language is commonly used for web page structure?",
+            options: ["HTML", "Python", "SQL", "C++"],
+            answer: 0
+        },
+
+        {
+            question: "What is used to store files online?",
+            options: [
+                "Cloud storage",
+                "Keyboard",
+                "Monitor",
+                "Mouse"
+            ],
+            answer: 0
+        }
+
+    ],
+
+
+    history: [
+
+        {
+            question: "Who is known as the Father of the Indian Constitution?",
+            options: [
+                "Mahatma Gandhi",
+                "Dr. B. R. Ambedkar",
+                "Jawaharlal Nehru",
+                "Sardar Patel"
+            ],
+            answer: 1
+        },
+
+        {
+            question: "Who was the first Prime Minister of India?",
+            options: [
+                "Mahatma Gandhi",
+                "Jawaharlal Nehru",
+                "Sardar Patel",
+                "Rajendra Prasad"
+            ],
+            answer: 1
+        },
+
+        {
+            question: "Which monument is located in Agra?",
+            options: [
+                "Taj Mahal",
+                "Gateway of India",
+                "India Gate",
+                "Charminar"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which ancient civilization built the pyramids of Giza?",
+            options: [
+                "Roman",
+                "Egyptian",
+                "Greek",
+                "Indus Valley"
+            ],
+            answer: 1
+        },
+
+        {
+            question: "The Indian independence movement was primarily against which colonial power?",
+            options: [
+                "France",
+                "Portugal",
+                "Britain",
+                "Spain"
+            ],
+            answer: 2
+        }
+
+    ]
+
+};
+
+
+let currentQuiz = [];
+let currentQuestion = 0;
+let currentScore = 0;
+
+
+function startQuiz(category) {
+
+    currentQuiz = quizzes[category];
+
+    currentQuestion = 0;
+
+    currentScore = 0;
+
+    document.getElementById("category-section")
+        .classList.add("hidden");
+
+    document.getElementById("quiz-section")
+        .classList.remove("hidden");
+
+    document.getElementById("result-section")
+        .classList.add("hidden");
+
+    showQuestion();
+
+}
+
+
+function showQuestion() {
+
+    const question = currentQuiz[currentQuestion];
+
+    document.getElementById("question-number")
+        .textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " / " +
+        currentQuiz.length;
+
+    document.getElementById("score")
+        .textContent =
+        "⭐ Score: " +
+        currentScore;
+
+    document.getElementById("question")
+        .textContent =
+        question.question;
+
+    const optionsContainer =
+        document.getElementById("options");
+
+    optionsContainer.innerHTML = "";
+
+    question.options.forEach((option, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "option";
+
+        button.textContent =
+            option;
+
+        button.onclick = function () {
+
+            selectAnswer(index, button);
+
+        };
+
+        optionsContainer.appendChild(button);
+
+    });
+
+    document.getElementById("next-btn")
+        .classList.add("hidden");
+
+}
+
+
+function selectAnswer(selected, selectedButton) {
+
+    const question =
+        currentQuiz[currentQuestion];
+
+    const optionButtons =
+        document.querySelectorAll(".option");
+
+    optionButtons.forEach(button => {
+
+        button.disabled = true;
+
+    });
+
+
+    if (selected === question.answer) {
+
+        selectedButton.classList.add("correct");
+
+        currentScore++;
+
+    } else {
+
+        selectedButton.classList.add("wrong");
+
+        optionButtons[question.answer]
+            .classList.add("correct");
+
+    }
+
+
+    document.getElementById("score")
+        .textContent =
+        "⭐ Score: " +
+        currentScore;
+
+    document.getElementById("next-btn")
+        .classList.remove("hidden");
+
+}
+
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion >= currentQuiz.length) {
+
+        showResult();
+
+        return;
+
+    }
+
+    showQuestion();
+
+}
+
+
+function showResult() {
+
+    document.getElementById("quiz-section")
+        .classList.add("hidden");
+
+    document.getElementById("result-section")
+        .classList.remove("hidden");
+
+    document.getElementById("final-score")
+        .textContent =
+        currentScore +
+        " / " +
+        currentQuiz.length;
+
+
+    let message = "";
+
+    if (currentScore === currentQuiz.length) {
+
+        message =
+            "🏆 Perfect score! Excellent work!";
+
+    } else if (currentScore >= 3) {
+
+        message =
+            "🌟 Great job! Keep learning and improving.";
+
+    } else {
+
+        message =
+            "💪 Good try! Revise the topic and try again.";
+
+    }
+
+
+    document.getElementById("result-message")
+        .textContent = message;
+
+}
+
+
+function restartQuiz() {
+
+    document.getElementById("result-section")
+        .classList.add("hidden");
+
+    document.getElementById("category-section")
+        .classList.remove("hidden");
+
+}
+
+</script>
+
+</body>
+
+</html>

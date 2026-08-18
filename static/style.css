@@ -1219,3 +1219,718 @@ color:#d1d5db;
     min-width: 210px;
     text-align: center;
 }
+/* ================================
+   AI QUIZ - DARK BLUE THEME
+   ================================ */
+
+body {
+    background:
+        radial-gradient(circle at top, rgba(20, 80, 180, 0.25), transparent 40%),
+        linear-gradient(135deg, #020617, #07142f 55%, #020617);
+    color: #ffffff;
+}
+
+/* Main quiz container */
+.quiz-container,
+.quiz-box,
+.quiz-card,
+.container {
+    color: #ffffff;
+}
+
+/* White quiz panel -> dark blue glass */
+.quiz-box,
+.quiz-card,
+.quiz-container > div {
+    background: rgba(5, 18, 45, 0.88) !important;
+    border: 1px solid rgba(0, 140, 255, 0.55) !important;
+    box-shadow:
+        0 0 15px rgba(0, 110, 255, 0.25),
+        0 0 35px rgba(0, 80, 200, 0.12) !important;
+    color: #ffffff !important;
+}
+
+/* Question area */
+.question,
+.question-box,
+.quiz-question {
+    background: rgba(8, 25, 58, 0.95) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(0, 140, 255, 0.45);
+    border-radius: 14px;
+}
+
+/* Answer buttons */
+.option,
+.answer,
+.option-btn,
+.answer-btn,
+.quiz-option {
+    background: linear-gradient(
+        135deg,
+        #071a3d,
+        #0b2b61
+    ) !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid #1877ff !important;
+
+    box-shadow:
+        0 0 8px rgba(24, 119, 255, 0.25);
+
+    transition: all 0.25s ease;
+}
+
+/* Hover */
+.option:hover,
+.answer:hover,
+.option-btn:hover,
+.answer-btn:hover,
+.quiz-option:hover {
+    background: linear-gradient(
+        135deg,
+        #0b3d91,
+        #155dcc
+    ) !important;
+
+    border-color: #52a8ff !important;
+
+    box-shadow:
+        0 0 10px rgba(30, 140, 255, 0.65),
+        0 0 25px rgba(30, 100, 255, 0.25);
+
+    transform: translateY(-2px);
+}
+
+/* Selected answer */
+.option.selected,
+.answer.selected,
+.option-btn.selected,
+.quiz-option.selected {
+    background: linear-gradient(
+        135deg,
+        #0754c9,
+        #293cff
+    ) !important;
+
+    border-color: #70b7ff !important;
+
+    box-shadow:
+        0 0 12px rgba(40, 140, 255, 0.8),
+        0 0 30px rgba(40, 80, 255, 0.35);
+}
+
+/* Category buttons */
+.category,
+.category-btn,
+.quiz-category {
+    background: linear-gradient(
+        135deg,
+        #071a3d,
+        #102b60
+    ) !important;
+
+    color: white !important;
+
+    border: 1px solid rgba(40, 130, 255, 0.5) !important;
+
+    box-shadow:
+        0 0 10px rgba(0, 100, 255, 0.18);
+}
+
+.category:hover,
+.category-btn:hover,
+.quiz-category:hover {
+    border-color: #3d9bff !important;
+
+    box-shadow:
+        0 0 15px rgba(40, 140, 255, 0.65);
+}
+
+/* Input boxes */
+input,
+select {
+    background: #061735 !important;
+    color: white !important;
+
+    border: 1px solid #1877ff !important;
+
+    box-shadow:
+        0 0 8px rgba(0, 120, 255, 0.2);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+
+    border-color: #4da3ff !important;
+
+    box-shadow:
+        0 0 12px rgba(30, 140, 255, 0.65);
+}
+
+/* Main buttons */
+button,
+.start-btn,
+.quiz-btn {
+    background: linear-gradient(
+        135deg,
+        #075cff,
+        #4c2cff
+    ) !important;
+
+    color: white !important;
+
+    border: 1px solid #54a8ff !important;
+
+    box-shadow:
+        0 0 12px rgba(30, 100, 255, 0.5);
+
+    transition: 0.25s ease;
+}
+
+button:hover,
+.start-btn:hover,
+.quiz-btn:hover {
+    box-shadow:
+        0 0 15px rgba(40, 140, 255, 0.85),
+        0 0 30px rgba(70, 60, 255, 0.35);
+
+    transform: translateY(-2px);
+}
+
+/* Text */
+h1,
+h2,
+h3,
+p,
+label {
+    color: #ffffff;
+}
+
+/* Small blue glow around important text */
+.quiz-title {
+    text-shadow:
+        0 0 8px rgba(70, 160, 255, 0.7);
+}
+
+/* Back link */
+.back {
+    color: #55aaff !important;
+}
+
+.back:hover {
+    color: #9bcbff !important;
+    text-shadow: 0 0 8px #188cff;
+}
+/* CORRECT ANSWER */
+.answer.correct,
+.option.correct,
+.quiz-option.correct,
+.answer-btn.correct {
+    background: linear-gradient(135deg, #064e3b, #16a34a) !important;
+    border: 2px solid #22c55e !important;
+    color: #ffffff !important;
+
+    box-shadow:
+        0 0 10px rgba(34, 197, 94, 0.8),
+        0 0 25px rgba(34, 197, 94, 0.45) !important;
+}
+
+
+/* WRONG ANSWER */
+.answer.wrong,
+.option.wrong,
+.quiz-option.wrong,
+.answer-btn.wrong {
+    background: linear-gradient(135deg, #7f1d1d, #dc2626) !important;
+    border: 2px solid #ef4444 !important;
+    color: #ffffff !important;
+
+    box-shadow:
+        0 0 10px rgba(239, 68, 68, 0.8),
+        0 0 25px rgba(239, 68, 68, 0.45) !important;
+}
+
+
+/* Normal answer */
+.answer,
+.option,
+.quiz-option,
+.answer-btn {
+    background: linear-gradient(
+        135deg,
+        #071a3d,
+        #0b2f66
+    ) !important;
+
+    border: 1px solid #1683ff !important;
+    color: white !important;
+
+    transition: 0.25s ease;
+}
+/* =========================================
+   QUIZ COMPLETE - BLACK + BLUE THEME
+   ========================================= */
+
+/* Main result outer box */
+.quiz-result,
+.result-container,
+.result-box,
+.quiz-complete,
+.completion-card,
+.result-card {
+    background: linear-gradient(
+        145deg,
+        #020817 0%,
+        #061735 50%,
+        #020617 100%
+    ) !important;
+
+    color: #ffffff !important;
+
+    border: 2px solid #1683ff !important;
+    border-radius: 22px !important;
+
+    box-shadow:
+        0 0 12px rgba(0, 119, 255, 0.55),
+        0 0 30px rgba(0, 100, 255, 0.25),
+        inset 0 0 25px rgba(0, 80, 180, 0.08) !important;
+}
+
+
+/* The INNER WHITE BOX
+   This catches the white result panel */
+.quiz-result > div,
+.result-container > div,
+.result-box > div,
+.quiz-complete > div,
+.completion-card > div,
+.result-card > div {
+    background: transparent !important;
+    color: #ffffff !important;
+}
+
+
+/* Result heading */
+.quiz-result h1,
+.quiz-result h2,
+.quiz-result h3,
+.result-container h1,
+.result-container h2,
+.result-container h3,
+.result-box h1,
+.result-box h2,
+.result-box h3,
+.quiz-complete h1,
+.quiz-complete h2,
+.quiz-complete h3,
+.completion-card h1,
+.completion-card h2,
+.completion-card h3 {
+    color: #ffffff !important;
+
+    text-shadow:
+        0 0 8px rgba(70, 160, 255, 0.75);
+}
+
+
+/* Result text */
+.quiz-result p,
+.result-container p,
+.result-box p,
+.quiz-complete p,
+.completion-card p,
+.result-card p {
+    color: #dbeafe !important;
+}
+
+
+/* Score */
+.quiz-result strong,
+.result-container strong,
+.result-box strong,
+.quiz-complete strong,
+.completion-card strong {
+    color: #4da3ff !important;
+
+    font-size: 1.5rem;
+
+    text-shadow:
+        0 0 10px rgba(40, 140, 255, 0.8);
+}
+
+
+/* Perfect score */
+.quiz-result .perfect,
+.result-container .perfect,
+.quiz-complete .perfect {
+    color: #22c55e !important;
+
+    text-shadow:
+        0 0 10px rgba(34, 197, 94, 0.8);
+}
+
+
+/* Try Another Quiz button */
+.quiz-result button,
+.result-container button,
+.result-box button,
+.quiz-complete button,
+.completion-card button,
+.result-card button {
+    background: linear-gradient(
+        135deg,
+        #0866ff,
+        #422cff
+    ) !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid #55aaff !important;
+    border-radius: 12px !important;
+
+    box-shadow:
+        0 0 10px rgba(30, 120, 255, 0.65),
+        0 0 25px rgba(50, 70, 255, 0.25) !important;
+
+    transition: all 0.25s ease;
+}
+
+
+.quiz-result button:hover,
+.result-container button:hover,
+.result-box button:hover,
+.quiz-complete button:hover,
+.completion-card button:hover,
+.result-card button:hover {
+    transform: translateY(-2px);
+
+    background: linear-gradient(
+        135deg,
+        #1683ff,
+        #633cff
+    ) !important;
+
+    box-shadow:
+        0 0 15px rgba(40, 140, 255, 0.9),
+        0 0 35px rgba(70, 70, 255, 0.45) !important;
+}
+
+
+/* =========================================
+   FORCE WHITE BACKGROUNDS TO DARK
+   ========================================= */
+
+.quiz-result [style*="background"],
+.result-container [style*="background"],
+.result-box [style*="background"],
+.quiz-complete [style*="background"] {
+    background: transparent !important;
+}
+
+
+/* White cards / panels inside result */
+.quiz-result .card,
+.result-container .card,
+.result-box .card,
+.quiz-complete .card {
+    background: #061735 !important;
+
+    color: white !important;
+
+    border: 1px solid #1683ff !important;
+}
+
+
+/* Back to Young Stars */
+.back {
+    color: #55aaff !important;
+
+    text-shadow:
+        0 0 6px rgba(40, 140, 255, 0.5);
+}
+
+.back:hover {
+    color: #9dccff !important;
+
+    text-shadow:
+        0 0 12px #1683ff;
+}
+/* =========================================================
+   AI QUIZ - COMPLETE DARK BLACK + BLUE THEME
+   ========================================================= */
+
+body {
+    background:
+        radial-gradient(circle at top, #0a2a5a 0%, #020817 42%, #01040b 100%) !important;
+    color: #ffffff !important;
+}
+
+
+/* Main quiz/result wrapper */
+.quiz-container,
+.quiz-wrapper,
+.quiz-box,
+.quiz-result,
+.result-container,
+.result-box,
+.quiz-complete,
+.completion-card,
+.result-card {
+    background: linear-gradient(
+        145deg,
+        #020817,
+        #061a38,
+        #020817
+    ) !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid #1683ff !important;
+    border-radius: 20px !important;
+
+    box-shadow:
+        0 0 12px rgba(0, 119, 255, 0.65),
+        0 0 30px rgba(0, 119, 255, 0.25),
+        inset 0 0 25px rgba(0, 100, 255, 0.08) !important;
+}
+
+
+/* Remove white backgrounds from children */
+.quiz-container *,
+.quiz-wrapper *,
+.quiz-box *,
+.quiz-result *,
+.result-container *,
+.result-box *,
+.quiz-complete *,
+.completion-card *,
+.result-card * {
+    color: #ffffff !important;
+}
+
+
+/* Result inner panels */
+.quiz-result > div,
+.result-container > div,
+.result-box > div,
+.quiz-complete > div,
+.completion-card > div,
+.result-card > div {
+    background: transparent !important;
+}
+
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+.quiz-result h1,
+.quiz-result h2,
+.quiz-result h3,
+.result-container h1,
+.result-container h2,
+.result-container h3,
+.result-box h1,
+.result-box h2,
+.result-box h3,
+.quiz-complete h1,
+.quiz-complete h2,
+.quiz-complete h3 {
+    color: #ffffff !important;
+
+    text-shadow:
+        0 0 8px #1683ff,
+        0 0 18px rgba(22, 131, 255, 0.5);
+}
+
+
+/* Normal text */
+
+.quiz-result p,
+.result-container p,
+.result-box p,
+.quiz-complete p,
+.completion-card p,
+.result-card p {
+    color: #dbeafe !important;
+}
+
+
+/* =========================================================
+   SCORE
+   ========================================================= */
+
+.quiz-result strong,
+.result-container strong,
+.result-box strong,
+.quiz-complete strong,
+.completion-card strong,
+.result-card strong {
+    color: #4da3ff !important;
+
+    font-size: 1.5rem;
+
+    text-shadow:
+        0 0 8px #1683ff,
+        0 0 20px rgba(22, 131, 255, 0.7);
+}
+
+
+/* =========================================================
+   PERFECT SCORE
+   ========================================================= */
+
+.quiz-result .perfect,
+.quiz-complete .perfect,
+.result-container .perfect {
+    color: #22c55e !important;
+
+    text-shadow:
+        0 0 8px #22c55e,
+        0 0 20px rgba(34, 197, 94, 0.6);
+}
+
+
+/* =========================================================
+   TRY ANOTHER QUIZ BUTTON
+   ========================================================= */
+
+.quiz-result button,
+.result-container button,
+.result-box button,
+.quiz-complete button,
+.completion-card button,
+.result-card button,
+.try-again,
+.retry-btn {
+    background: linear-gradient(
+        135deg,
+        #0866ff,
+        #4c2cff
+    ) !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid #55aaff !important;
+    border-radius: 12px !important;
+
+    padding: 12px 25px !important;
+
+    font-weight: 700 !important;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px rgba(22, 131, 255, 0.7),
+        0 0 25px rgba(76, 44, 255, 0.35) !important;
+
+    transition: all 0.25s ease;
+}
+
+
+.quiz-result button:hover,
+.result-container button:hover,
+.result-box button:hover,
+.quiz-complete button:hover,
+.completion-card button:hover,
+.result-card button:hover,
+.try-again:hover,
+.retry-btn:hover {
+    transform: translateY(-3px) !important;
+
+    background: linear-gradient(
+        135deg,
+        #1683ff,
+        #633cff
+    ) !important;
+
+    box-shadow:
+        0 0 15px #1683ff,
+        0 0 35px rgba(76, 60, 255, 0.7) !important;
+}
+
+
+/* =========================================================
+   EMOJIS
+   ========================================================= */
+
+.quiz-result .emoji,
+.result-container .emoji,
+.quiz-complete .emoji {
+    filter:
+        drop-shadow(0 0 8px rgba(0, 140, 255, 0.7));
+}
+
+
+/* =========================================================
+   BACK TO YOUNG STARS
+   ========================================================= */
+
+.back {
+    color: #55aaff !important;
+
+    text-shadow:
+        0 0 7px rgba(22, 131, 255, 0.6);
+
+    transition: 0.2s ease;
+}
+
+
+.back:hover {
+    color: #ffffff !important;
+
+    text-shadow:
+        0 0 10px #1683ff,
+        0 0 20px #1683ff;
+}
+
+
+/* =========================================================
+   REMOVE WHITE INLINE BACKGROUNDS
+   ========================================================= */
+
+.quiz-result [style*="background-color: white"],
+.quiz-result [style*="background: white"],
+.quiz-result [style*="background-color:#fff"],
+.quiz-result [style*="background:#fff"],
+.result-container [style*="background-color: white"],
+.result-container [style*="background: white"],
+.result-box [style*="background-color: white"],
+.result-box [style*="background: white"],
+.quiz-complete [style*="background-color: white"],
+.quiz-complete [style*="background: white"] {
+    background: #061735 !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .quiz-result,
+    .result-container,
+    .result-box,
+    .quiz-complete,
+    .completion-card,
+    .result-card {
+        width: 92% !important;
+        margin: auto !important;
+
+        padding: 25px !important;
+    }
+
+    .quiz-result h1,
+    .quiz-complete h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .quiz-result button,
+    .quiz-complete button {
+        width: 100% !important;
+    }
+}

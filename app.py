@@ -328,6 +328,11 @@ def scholarships():
     return render_template(
         'youngstars/competitions/scholarships/scholarships.html'
     )
+@app.route('/youngstars/ai-quiz')
+def ai_quiz():
+    return render_template(
+        'youngstars/ai_quiz/ai_quiz.html'
+    )
 
 
 @app.route("/tenth")
