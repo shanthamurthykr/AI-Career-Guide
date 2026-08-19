@@ -333,6 +333,31 @@ def ai_quiz():
     return render_template(
         'youngstars/ai_quiz/ai_quiz.html'
     )
+@app.route('/youngstars/ai-story', methods=['GET', 'POST'])
+def ai_story():
+    story = None
+
+    if request.method == 'POST':
+        topic = request.form.get('topic')
+        category = request.form.get('category')
+        length = request.form.get('length')
+        idea = request.form.get('idea')
+
+        # Story generation will be connected here
+        story = f"""
+        📖 Educational Story
+
+        Topic: {topic}
+        Category: {category}
+        Length: {length}
+
+        {idea}
+        """
+
+    return render_template(
+        'youngstars/ai_story/ai_story.html',
+        story=story
+    )
 
 
 @app.route("/tenth")

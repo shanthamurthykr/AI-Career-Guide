@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Story Generator | Young Stars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            background:
+                radial-gradient(circle at top, #0b2a55, #020617 55%, #00040b);
+            color: white;
+        }
+
+        .story-page {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .story-hero {
+            text-align: center;
+            padding: 35px 20px;
+            margin-bottom: 25px;
+
+            background: linear-gradient(
+                145deg,
+                #020817,
+                #061b3d,
+                #020817
+            );
+
+            border: 1px solid #1683ff;
+            border-radius: 22px;
+
+            box-shadow:
+                0 0 15px rgba(22, 131, 255, 0.55),
+                0 0 35px rgba(22, 131, 255, 0.2);
+        }
+
+        .story-hero h1 {
+            color: #ffffff;
+            text-shadow:
+                0 0 10px #1683ff,
+                0 0 25px rgba(22, 131, 255, 0.6);
+        }
+
+        .story-hero p {
+            color: #cfe5ff;
+        }
+
+        .story-card {
+            background: linear-gradient(
+                145deg,
+                #020817,
+                #071a38
+            );
+
+            border: 1px solid #1683ff;
+            border-radius: 20px;
+            padding: 28px;
+
+            box-shadow:
+                0 0 12px rgba(22, 131, 255, 0.45);
+        }
+
+        .story-card label {
+            display: block;
+            margin-bottom: 8px;
+            color: #8ecbff;
+            font-weight: bold;
+        }
+
+        .story-card input,
+        .story-card select,
+        .story-card textarea {
+            width: 100%;
+            box-sizing: border-box;
+
+            padding: 13px;
+            margin-bottom: 20px;
+
+            background: #020817;
+            color: white;
+
+            border: 1px solid #1683ff;
+            border-radius: 10px;
+
+            outline: none;
+        }
+
+        .story-card input:focus,
+        .story-card select:focus,
+        .story-card textarea:focus {
+            border-color: #55aaff;
+
+            box-shadow:
+                0 0 10px rgba(22, 131, 255, 0.55);
+        }
+
+        .generate-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid #55aaff;
+            border-radius: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #0866ff,
+                #4c2cff
+            );
+
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 12px rgba(22, 131, 255, 0.65);
+
+            transition: 0.25s ease;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 0 18px #1683ff,
+                0 0 35px rgba(76, 44, 255, 0.5);
+        }
+
+        .story-output {
+            margin-top: 25px;
+
+            padding: 28px;
+
+            background: linear-gradient(
+                145deg,
+                #030b1c,
+                #061b3d
+            );
+
+            border: 1px solid #1683ff;
+            border-radius: 20px;
+
+            box-shadow:
+                0 0 15px rgba(22, 131, 255, 0.4);
+        }
+
+        .story-output h2 {
+            color: #55aaff;
+
+            text-shadow:
+                0 0 8px #1683ff;
+        }
+
+        .story-text {
+            line-height: 1.8;
+            color: #e5f1ff;
+            white-space: pre-line;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+
+            margin: 25px auto 0;
+
+            padding: 10px 20px;
+
+            color: #55aaff;
+            text-decoration: none;
+
+            border: 1px solid #1683ff;
+            border-radius: 10px;
+
+            transition: 0.25s ease;
+        }
+
+        .back-btn:hover {
+            color: white;
+
+            background: #06265a;
+
+            box-shadow:
+                0 0 15px rgba(22, 131, 255, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="story-page">
+
+    <div class="story-hero">
+
+        <h1>📖 AI Story Generator</h1>
+
+        <p>
+            Create interesting educational stories and
+            learn something new through imagination.
+        </p>
+
+    </div>
+
+
+    <div class="story-card">
+
+        <form method="POST">
+
+            <label for="topic">
+                💡 What should the story be about?
+            </label>
+
+            <input
+                type="text"
+                id="topic"
+                name="topic"
+                placeholder="Example: Space, AI, friendship, science..."
+                required
+            >
+
+
+            <label for="category">
+                🎓 Choose a learning category
+            </label>
+
+            <select id="category" name="category">
+
+                <option value="Science">
+                    🔬 Science
+                </option>
+
+                <option value="Technology">
+                    💻 Technology
+                </option>
+
+                <option value="History">
+                    📜 History
+                </option>
+
+                <option value="General Knowledge">
+                    🌍 General Knowledge
+                </option>
+
+                <option value="Environment">
+                    🌱 Environment
+                </option>
+
+                <option value="Life Skills">
+                    🧠 Life Skills
+                </option>
+
+            </select>
+
+
+            <label for="length">
+                📚 Story Length
+            </label>
+
+            <select id="length" name="length">
+
+                <option value="short">
+                    ⚡ Short
+                </option>
+
+                <option value="medium">
+                    📖 Medium
+                </option>
+
+                <option value="long">
+                    📚 Long
+                </option>
+
+            </select>
+
+
+            <label for="idea">
+                ✨ Optional idea
+            </label>
+
+            <textarea
+                id="idea"
+                name="idea"
+                rows="4"
+                placeholder="Give the AI a small idea for the story..."
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="generate-btn">
+
+                🤖 Generate Educational Story
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    {% if story %}
+
+    <div class="story-output">
+
+        <h2>📚 Your Story</h2>
+
+        <div class="story-text">
+            {{ story }}
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
+    <a
+        class="back-btn"
+        href="/youngstars">
+
+        ← Back to Young Stars
+
+    </a>
+
+</div>
+
+</body>
+
+</html>
