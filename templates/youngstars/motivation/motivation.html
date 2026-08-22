@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Motivation | Young Stars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            background:
+                radial-gradient(circle at top, #0b2a55, #020617 55%, #00040b);
+            color: white;
+        }
+
+        .motivation-page {
+            max-width: 950px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .motivation-hero,
+        .motivation-card,
+        .result-card {
+            background: linear-gradient(145deg, #020817, #071a38);
+            border: 1px solid #1683ff;
+            border-radius: 20px;
+            box-shadow: 0 0 18px rgba(22, 131, 255, 0.45);
+        }
+
+        .motivation-hero {
+            text-align: center;
+            padding: 35px 20px;
+            margin-bottom: 25px;
+        }
+
+        .motivation-hero h1 {
+            text-shadow: 0 0 12px #1683ff;
+        }
+
+        .motivation-hero p {
+            color: #cfe5ff;
+        }
+
+        .motivation-card {
+            padding: 28px;
+        }
+
+        .motivation-card label {
+            display: block;
+            color: #8ecbff;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .motivation-card input,
+        .motivation-card select,
+        .motivation-card textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px;
+            margin-bottom: 20px;
+
+            background: #020817;
+            color: white;
+
+            border: 1px solid #1683ff;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .motivation-card input:focus,
+        .motivation-card textarea:focus,
+        .motivation-card select:focus {
+            box-shadow: 0 0 12px rgba(22, 131, 255, 0.6);
+            border-color: #55aaff;
+        }
+
+        .motivate-btn {
+            width: 100%;
+            padding: 14px;
+
+            border: 1px solid #55aaff;
+            border-radius: 12px;
+
+            background: linear-gradient(135deg, #0866ff, #4c2cff);
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+
+            box-shadow: 0 0 15px rgba(22, 131, 255, 0.6);
+            transition: 0.25s ease;
+        }
+
+        .motivate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 0 20px #1683ff,
+                0 0 35px rgba(76, 44, 255, 0.5);
+        }
+
+        .result-card {
+            margin-top: 25px;
+            padding: 28px;
+        }
+
+        .result-card h2 {
+            color: #55aaff;
+            text-shadow: 0 0 10px #1683ff;
+        }
+
+        .motivation-text {
+            color: #e5f1ff;
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 25px auto 0;
+
+            padding: 10px 20px;
+
+            color: #55aaff;
+            text-decoration: none;
+
+            border: 1px solid #1683ff;
+            border-radius: 10px;
+        }
+
+        .back-btn:hover {
+            color: white;
+            background: #06265a;
+            box-shadow: 0 0 15px rgba(22, 131, 255, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="motivation-page">
+
+    <div class="motivation-hero">
+
+        <h1>🌟 AI Motivation</h1>
+
+        <p>
+            Get positive learning motivation and take
+            one small step toward your goals.
+        </p>
+
+    </div>
+
+
+    <div class="motivation-card">
+
+        <form method="POST">
+
+            <label for="goal">
+                🎯 What is your goal?
+            </label>
+
+            <input
+                type="text"
+                id="goal"
+                name="goal"
+                placeholder="Example: Score better marks"
+                required
+            >
+
+
+            <label for="area">
+                📚 What do you want motivation for?
+            </label>
+
+            <select id="area" name="area">
+
+                <option value="Studies">📖 Studies</option>
+
+                <option value="Exams">📝 Exams</option>
+
+                <option value="Coding">💻 Coding</option>
+
+                <option value="Career">🚀 Career</option>
+
+                <option value="Sports">🏃 Sports</option>
+
+                <option value="Confidence">💪 Confidence</option>
+
+                <option value="General">🌟 General Life</option>
+
+            </select>
+
+
+            <label for="challenge">
+                💭 What is troubling you?
+            </label>
+
+            <textarea
+                id="challenge"
+                name="challenge"
+                rows="4"
+                placeholder="Example: I find it difficult to study every day..."
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="motivate-btn">
+
+                🤖 Get My Motivation
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    {% if motivation %}
+
+    <div class="result-card">
+
+        <h2>🌟 Your Motivation</h2>
+
+        <div class="motivation-text">
+            {{ motivation }}
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
+    <a
+        class="back-btn"
+        href="/youngstars">
+
+        ← Back to Young Stars
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

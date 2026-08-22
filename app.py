@@ -358,6 +358,46 @@ def ai_story():
         'youngstars/ai_story/ai_story.html',
         story=story
     )
+@app.route("/youngstars/motivation", methods=["GET", "POST"])
+def motivation():
+    motivation_text = None
+
+    if request.method == "POST":
+        goal = request.form.get("goal", "").strip()
+        area = request.form.get("area", "Studies")
+        challenge = request.form.get("challenge", "").strip()
+
+        if goal:
+            prompt = f"""
+Give a short, positive and age-appropriate motivation
+for a young student.
+
+Goal: {goal}
+Area: {area}
+Challenge: {challenge}
+
+Include:
+1. Encouraging message
+2. One practical step
+3. A positive ending
+
+Use simple language.
+"""
+
+            try:
+                response = client.models.generate_content(
+                    model="gemini-3.5-flash",
+                    contents=prompt
+                )
+                motivation_text = response.text
+
+            except Exception as exc:
+                motivation_text = f"AI Error: {exc}"
+
+    return render_template(
+        "youngstars/motivation/motivation.html",
+        motivation=motivation_text
+    )
 
 
 @app.route("/tenth")
