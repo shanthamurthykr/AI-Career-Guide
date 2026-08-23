@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Parent Guide | Young Stars</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            background:
+                radial-gradient(circle at top, #0b2a55, #020617 55%, #00040b);
+            color: white;
+        }
+
+        .parent-page {
+            max-width: 1050px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .parent-hero,
+        .guide-card {
+            background: linear-gradient(145deg, #020817, #071a38);
+            border: 1px solid #1683ff;
+            border-radius: 20px;
+            box-shadow: 0 0 18px rgba(22, 131, 255, 0.45);
+        }
+
+        .parent-hero {
+            text-align: center;
+            padding: 40px 25px;
+            margin-bottom: 28px;
+        }
+
+        .parent-hero .big-icon {
+            font-size: 55px;
+        }
+
+        .parent-hero h1 {
+            color: white;
+            text-shadow:
+                0 0 8px #1683ff,
+                0 0 20px rgba(22, 131, 255, 0.6);
+        }
+
+        .parent-hero p {
+            color: #cfe5ff;
+            line-height: 1.7;
+        }
+
+        .guides-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .guide-card {
+            padding: 25px;
+            transition: 0.25s ease;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 0 20px #1683ff,
+                0 0 35px rgba(22, 131, 255, 0.3);
+        }
+
+        .guide-icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .guide-card h2 {
+            color: #55aaff;
+            text-shadow: 0 0 8px rgba(22, 131, 255, 0.6);
+        }
+
+        .guide-card p {
+            color: #d6e8ff;
+            line-height: 1.7;
+        }
+
+        .guide-card ul {
+            padding-left: 20px;
+            color: #c5ddf8;
+            line-height: 1.8;
+        }
+
+        .tip-box {
+            margin-top: 28px;
+            padding: 25px;
+            text-align: center;
+
+            background: linear-gradient(145deg, #061a35, #020817);
+            border: 1px solid #1683ff;
+            border-radius: 18px;
+
+            box-shadow: 0 0 18px rgba(22, 131, 255, 0.4);
+        }
+
+        .tip-box h2 {
+            color: #55aaff;
+        }
+
+        .tip-box p {
+            color: #d6e8ff;
+            line-height: 1.7;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 28px auto 0;
+
+            padding: 11px 22px;
+
+            color: #55aaff;
+            text-decoration: none;
+
+            border: 1px solid #1683ff;
+            border-radius: 10px;
+
+            transition: 0.25s ease;
+        }
+
+        .back-btn:hover {
+            color: white;
+            background: #06265a;
+            box-shadow: 0 0 15px rgba(22, 131, 255, 0.7);
+        }
+
+        @media (max-width: 700px) {
+            .guides-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="parent-page">
+
+    <!-- Hero -->
+
+    <div class="parent-hero">
+
+        <div class="big-icon">👨‍👩‍👧</div>
+
+        <h1>Parent Guide</h1>
+
+        <p>
+            Helpful guidance for parents to support young learners,
+            build healthy learning habits and encourage their children's
+            curiosity and confidence.
+        </p>
+
+    </div>
+
+
+    <!-- Guide Cards -->
+
+    <div class="guides-container">
+
+
+        <!-- Study Support -->
+
+        <div class="guide-card">
+
+            <div class="guide-icon">📚</div>
+
+            <h2>Support Learning</h2>
+
+            <p>
+                Help children create a comfortable and positive
+                environment for learning.
+            </p>
+
+            <ul>
+                <li>Encourage regular study time.</li>
+                <li>Help them understand difficult topics.</li>
+                <li>Celebrate effort, not only marks.</li>
+            </ul>
+
+        </div>
+
+
+        <!-- Learning Habits -->
+
+        <div class="guide-card">
+
+            <div class="guide-icon">🧠</div>
+
+            <h2>Build Good Habits</h2>
+
+            <p>
+                Small daily habits can make learning easier and
+                more enjoyable.
+            </p>
+
+            <ul>
+                <li>Encourage reading every day.</li>
+                <li>Maintain a healthy sleep routine.</li>
+                <li>Give time for breaks and hobbies.</li>
+            </ul>
+
+        </div>
+
+
+        <!-- Communication -->
+
+        <div class="guide-card">
+
+            <div class="guide-icon">💬</div>
+
+            <h2>Communicate</h2>
+
+            <p>
+                Listening is one of the best ways parents can
+                understand a young learner.
+            </p>
+
+            <ul>
+                <li>Ask about their interests.</li>
+                <li>Listen without immediately judging.</li>
+                <li>Talk about challenges calmly.</li>
+            </ul>
+
+        </div>
+
+
+        <!-- Goals -->
+
+        <div class="guide-card">
+
+            <div class="guide-icon">🎯</div>
+
+            <h2>Set Small Goals</h2>
+
+            <p>
+                Help children turn big dreams into small,
+                achievable steps.
+            </p>
+
+            <ul>
+                <li>Choose one goal at a time.</li>
+                <li>Track progress regularly.</li>
+                <li>Encourage them when progress is slow.</li>
+            </ul>
+
+        </div>
+
+
+        <!-- Technology -->
+
+        <div class="guide-card">
+
+            <div class="guide-icon">💻</div>
+
+            <h2>Use Technology Wisely</h2>
+
+            <p>
+                Technology can be a powerful learning tool when
+                used safely and responsibly.
+            </p>
+
+            <ul>
+                <li>Encourage educational use of technology.</li>
+                <li>Teach children to protect personal information.</li>
+                <li>Balance screen time with offline activities.</li>
+            </ul>
+
+        </div>
+
+
+        <!-- Confidence -->
+
+        <div class="guide-card">
+
+            <div class="guide-icon">🌟</div>
+
+            <h2>Build Confidence</h2>
+
+            <p>
+                Children learn better when they feel supported,
+                respected and confident.
+            </p>
+
+            <ul>
+                <li>Appreciate their improvements.</li>
+                <li>Allow them to learn from mistakes.</li>
+                <li>Encourage questions and curiosity.</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- Parent Tip -->
+
+    <div class="tip-box">
+
+        <h2>💡 Parent Tip of the Day</h2>
+
+        <p>
+            Instead of asking only,
+            <strong>"How much did you score?"</strong>,
+            try asking,
+            <strong>"What interesting thing did you learn today?"</strong>
+        </p>
+
+        <p>
+            A curious learner can grow far beyond a single test score. 🌱
+        </p>
+
+    </div>
+
+
+    <!-- Back -->
+
+    <a
+        class="back-btn"
+        href="/youngstars">
+
+        ← Back to Young Stars
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

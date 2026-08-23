@@ -398,6 +398,11 @@ Use simple language.
         "youngstars/motivation/motivation.html",
         motivation=motivation_text
     )
+@app.route("/youngstars/parent-guide")
+def parent_guide():
+    return render_template(
+        "youngstars/parent_guide/parent_guide.html"
+    )
 
 
 @app.route("/tenth")
