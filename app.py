@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = "ai_career_guide_secret_2026"
 app.config["THEME"] = "blue-black"
 
-client = genai.Client(api_key="YOUR_GEMINI_API_KEY")
+client = genai.Client(api_key="YOUR_API_KEY")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -333,30 +333,52 @@ def ai_quiz():
     return render_template(
         'youngstars/ai_quiz/ai_quiz.html'
     )
-@app.route('/youngstars/ai-story', methods=['GET', 'POST'])
+@app.route("/youngstars/ai-story", methods=["GET", "POST"])
 def ai_story():
     story = None
+    error = None
 
-    if request.method == 'POST':
-        topic = request.form.get('topic')
-        category = request.form.get('category')
-        length = request.form.get('length')
-        idea = request.form.get('idea')
+    if request.method == "POST":
+        topic = request.form.get("topic", "").strip()
+        category = request.form.get("category", "General Knowledge")
+        length = request.form.get("length", "Short")
+        idea = request.form.get("idea", "").strip()
 
-        # Story generation will be connected here
-        story = f"""
-        📖 Educational Story
+        if not topic:
+            error = "Please enter a story topic."
+        else:
+            prompt = f"""
+Write an educational story for young students.
 
-        Topic: {topic}
-        Category: {category}
-        Length: {length}
+Topic: {topic}
+Learning category: {category}
+Story length: {length}
+Additional idea: {idea}
 
-        {idea}
-        """
+Requirements:
+- Use simple, age-appropriate English.
+- Make the story interesting and imaginative.
+- Teach something useful related to the selected category.
+- Include a clear lesson or moral at the end.
+- Do not just repeat the topic or form values.
+- Return only the story and its lesson.
+"""
+
+            try:
+                response = client.models.generate_content(
+                    model="gemini-3.5-flash",
+                    contents=prompt
+                )
+
+                story = response.text
+
+            except Exception as exc:
+                error = f"Story generation failed: {exc}"
 
     return render_template(
-        'youngstars/ai_story/ai_story.html',
-        story=story
+        "youngstars/ai_story/ai_story.html",
+        story=story,
+        error=error
     )
 @app.route("/youngstars/motivation", methods=["GET", "POST"])
 def motivation():
