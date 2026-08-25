@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>10th Students Career Guide</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+    .career-result {
+        display: none;
+        margin: 25px auto;
+        max-width: 700px;
+        padding: 25px;
+        border: 2px solid #2196ff;
+        border-radius: 18px;
+        background: #07111f;
+        color: white;
+        box-shadow: 0 0 20px rgba(33, 150, 255, 0.35);
+    }
+
+    .career-result h2 {
+        color: #4db8ff;
+    }
+
+    .career-result li {
+        margin: 10px 0;
+    }
+
+    .ai-tutor-button {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        background: #07111f;
+        border: 3px solid #2196ff;
+        box-shadow: 0 0 18px #2196ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        text-decoration: none;
+        z-index: 9999;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="hero">
+    <h1>🎓 10th Students Career Guide</h1>
+    <p>Choose your future after SSLC</p>
+</div>
+
+<div class="dashboard">
+
+<form onsubmit="getRecommendation(event)">
+
+    <label><b>Student Name</b></label><br>
+    <input
+        type="text"
+        id="studentName"
+        placeholder="Enter Name"
+        required>
+
+    <br><br>
+
+    <label><b>SSLC Percentage</b></label><br>
+    <input
+        type="number"
+        id="percentage"
+        placeholder="Enter Percentage"
+        min="0"
+        max="100"
+        required>
+
+    <br><br>
+
+    <label><b>Recommended Stream</b></label><br>
+
+    <select id="stream">
+        <option value="pcm">Science (PCM)</option>
+        <option value="pcb">Science (PCB)</option>
+        <option value="commerce">Commerce</option>
+        <option value="arts">Arts</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">
+        Get Recommendation
+    </button>
+
+</form>
+
+</div>
+
+<div id="careerResult" class="career-result"></div>
+
+<!-- AI Tutor -->
+
+<a href="#" class="ai-tutor-button" title="Ask AI Tutor">
+    🤖
+</a>
+
+<center>
+    <a href="/">⬅ Back to Home</a>
+</center>
+
+<script>
+
+function getRecommendation(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("studentName").value;
+
+    const percentage =
+        Number(document.getElementById("percentage").value);
+
+    const stream =
+        document.getElementById("stream").value;
+
+    let title = "";
+    let careers = [];
+    let message = "";
+
+    if (stream === "pcm") {
+
+    title = "🔬 Science (PCM)";
+
+    careers = [
+        "Engineering — B.Tech / B.E.",
+        "Computer Science — B.Tech / B.Sc",
+        "Data Science — B.Tech / B.Sc",
+        "Architecture — B.Arch",
+        "Defence / NDA — NDA → Graduation",
+        "Research & Technology — B.Sc → M.Sc"
+    ];
+
+        message =
+            "Science PCM can be a good path for students interested in Mathematics, Physics, technology and engineering.";
+
+    }
+
+    else if (stream === "pcb") {
+
+    title = "🧬 Science (PCB)";
+
+    careers = [
+        "Medicine — MBBS",
+        "Pharmacy — B.Pharm",
+        "Nursing — B.Sc Nursing",
+        "Biotechnology — B.Sc Biotechnology",
+        "Life Sciences — B.Sc Life Sciences",
+        "Medical Research — B.Sc → M.Sc"
+    ];
+
+        message =
+            "Science PCB can be useful for students interested in Biology, healthcare and life sciences.";
+
+    }
+
+    else if (stream === "commerce") {
+
+    title = "💰 Commerce";
+
+    careers = [
+        "Chartered Accountancy — CA",
+        "Company Secretary — CS",
+        "Commerce — B.Com",
+        "Business Administration — BBA",
+        "Banking & Finance — B.Com / BBA",
+        "Business & Entrepreneurship — BBA / B.Com"
+    ];
+        message =
+            "Commerce can suit students interested in business, accounting, finance and economics.";
+
+    }
+
+    else {
+
+    title = "🎨 Arts / Humanities";
+
+    careers = [
+        "Law — BA LLB / LLB",
+        "Psychology — BA / B.Sc Psychology",
+        "Journalism — BA Journalism / BJMC",
+        "Civil Services — Graduation → UPSC / State PSC",
+        "Teaching — BA / B.Ed pathway",
+        "Design & Media — B.Des / BA"
+    ];
+
+        message =
+            "Arts and Humanities can be a strong path for students interested in people, society, communication, law and creative fields.";
+    }
+
+    let html = `
+        <h2>🎯 ${name}'s Career Recommendation</h2>
+
+        <p>
+            <b>SSLC Percentage:</b> ${percentage}%
+        </p>
+
+        <h3>${title}</h3>
+
+        <p>${message}</p>
+
+        <h3>🚀 Possible Career Paths</h3>
+
+        <ul>
+    `;
+
+    careers.forEach(function(career) {
+        html += `<li>✨ ${career}</li>`;
+    });
+
+    html += `
+        </ul>
+
+        <p>
+            💡 Remember: your percentage is only one part of
+            choosing a career. Your interests, strengths and
+            goals also matter.
+        </p>
+
+        <button onclick="speakRecommendation()">
+            🔊 Listen to AI Tutor
+        </button>
+    `;
+
+    const result =
+        document.getElementById("careerResult");
+
+    result.innerHTML = html;
+    result.style.display = "block";
+
+    window.scrollTo({
+        top: result.offsetTop - 30,
+        behavior: "smooth"
+    });
+}
+
+
+function speakRecommendation() {
+
+    const text =
+        document.getElementById("careerResult").innerText;
+
+    if ("speechSynthesis" in window) {
+
+        window.speechSynthesis.cancel();
+
+        const speech =
+            new SpeechSynthesisUtterance(text);
+
+        speech.rate = 0.9;
+        speech.pitch = 1;
+
+        window.speechSynthesis.speak(speech);
+
+    } else {
+
+        alert("Voice is not supported in this browser.");
+    }
+}
+
+</script>
+
+</body>
+</html>

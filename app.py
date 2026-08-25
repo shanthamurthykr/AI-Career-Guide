@@ -429,7 +429,7 @@ def parent_guide():
 
 @app.route("/tenth")
 def tenth():
-    return render_template("tenth.html")
+    return render_template("tenth/tenth.html")
 
 
 @app.route("/puc")
