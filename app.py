@@ -431,6 +431,12 @@ def parent_guide():
 def tenth():
     return render_template("tenth/tenth.html")
 
+@app.route("/tenth/ai-tutor")
+def ai_tutor():
+    return render_template(
+        "tenth/ai-tutor/ai_tutor.html"
+    )
+
 
 @app.route("/puc")
 def puc():

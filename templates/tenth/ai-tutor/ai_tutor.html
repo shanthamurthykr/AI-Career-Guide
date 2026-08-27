@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>🤖 AI Tutor</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #050b18;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .tutor-page {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px 20px 100px;
+        }
+
+        .tutor-header {
+            text-align: center;
+            padding: 30px 20px;
+            border: 2px solid #168cff;
+            border-radius: 20px;
+            background: #081426;
+            box-shadow: 0 0 25px rgba(0, 140, 255, 0.35);
+        }
+
+        .tutor-header h1 {
+            margin: 0 0 10px;
+            color: #4db8ff;
+        }
+
+        .tutor-header p {
+            margin: 0;
+            color: #c8d8ea;
+        }
+
+        .chat-box {
+            margin-top: 25px;
+            background: #081426;
+            border: 1px solid #167ee8;
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        .message {
+            padding: 14px 16px;
+            margin-bottom: 15px;
+            border-radius: 14px;
+            line-height: 1.6;
+        }
+
+        .bot-message {
+            background: #0d2038;
+            border-left: 4px solid #168cff;
+        }
+
+        .user-message {
+            background: #102d25;
+            border-left: 4px solid #20c997;
+            text-align: right;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .input-area input {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #168cff;
+            background: #050b18;
+            color: white;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .input-area button,
+        .voice-button {
+            border: none;
+            border-radius: 12px;
+            padding: 12px 18px;
+            background: #087cff;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .input-area button:hover,
+        .voice-button:hover {
+            background: #0064d6;
+        }
+
+        .voice-button {
+            margin-top: 10px;
+            background: #173d66;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #4db8ff;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 🤖 Fixed AI Tutor button */
+        .ai-tutor-float {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+
+            width: 58px;
+            height: 58px;
+
+            border-radius: 50%;
+            border: 2px solid #168cff;
+
+            background: #07152a;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 27px;
+            cursor: pointer;
+
+            box-shadow:
+                0 0 12px #168cff,
+                0 0 28px rgba(0, 140, 255, 0.45);
+
+            z-index: 9999;
+        }
+
+        .ai-tutor-float:hover {
+            transform: scale(1.08);
+        }
+
+        /* Tutor popup */
+        .tutor-popup {
+            display: none;
+
+            position: fixed;
+            right: 22px;
+            bottom: 92px;
+
+            width: 340px;
+            max-width: calc(100vw - 40px);
+
+            background: #07101f;
+            border: 2px solid #168cff;
+            border-radius: 18px;
+
+            box-shadow: 0 0 30px rgba(0, 140, 255, 0.45);
+
+            z-index: 9998;
+            overflow: hidden;
+        }
+
+        .popup-header {
+            background: #0b1d35;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #168cff;
+        }
+
+        .popup-header strong {
+            color: #4db8ff;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .popup-content {
+            padding: 15px;
+        }
+
+        .popup-content p {
+            color: #cbd8e8;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .popup-input {
+            width: 100%;
+            padding: 12px;
+
+            border-radius: 10px;
+            border: 1px solid #168cff;
+
+            background: #050b18;
+            color: white;
+
+            outline: none;
+        }
+
+        .ask-button {
+            width: 100%;
+            margin-top: 10px;
+
+            padding: 12px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: #087cff;
+            color: white;
+
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .ask-button:hover {
+            background: #0064d6;
+        }
+
+        .popup-answer {
+            margin-top: 12px;
+            padding: 12px;
+
+            background: #0d2038;
+            border-radius: 10px;
+
+            color: #e4edf8;
+            font-size: 14px;
+            line-height: 1.5;
+
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+
+            .tutor-page {
+                padding: 20px 12px 100px;
+            }
+
+            .input-area {
+                flex-direction: column;
+            }
+
+            .input-area button {
+                width: 100%;
+            }
+
+            .ai-tutor-float {
+                right: 16px;
+                bottom: 16px;
+            }
+
+            .tutor-popup {
+                right: 16px;
+                bottom: 85px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="tutor-page">
+
+    <div class="tutor-header">
+        <h1>🤖 AI Tutor</h1>
+        <p>
+            Ask questions about courses, careers, streams and your future.
+        </p>
+    </div>
+
+    <div class="chat-box">
+
+        <div class="message bot-message">
+            🤖 <strong>AI Tutor:</strong><br>
+            Hi! I am your AI Tutor. Ask me anything about your career,
+            courses or education.
+        </div>
+
+        <div id="messages"></div>
+
+        <div class="input-area">
+            <input
+                type="text"
+                id="question"
+                placeholder="Ask your career question..."
+                onkeydown="handleEnter(event)"
+            >
+
+            <button onclick="askTutor()">
+                Ask 🤖
+            </button>
+        </div>
+
+        <button
+            class="voice-button"
+            onclick="readLastAnswer()"
+        >
+            🔊 Read Answer
+        </button>
+
+    </div>
+
+    <a href="/tenth" class="back-link">
+        ← Back to 10th Career Guide
+    </a>
+
+</div>
+
+
+<!-- 🤖 Floating Tutor Button -->
+
+<button
+    class="ai-tutor-float"
+    onclick="toggleTutor()"
+    title="Ask AI Tutor"
+>
+    🤖
+</button>
+
+
+<!-- Tutor Popup -->
+
+<div class="tutor-popup" id="tutorPopup">
+
+    <div class="popup-header">
+        <strong>🤖 AI Tutor</strong>
+
+        <button
+            class="close-btn"
+            onclick="toggleTutor()"
+        >
+            ×
+        </button>
+    </div>
+
+    <div class="popup-content">
+
+        <p>
+            Ask me about 10th streams, courses, careers,
+            skills and future opportunities.
+        </p>
+
+        <input
+            class="popup-input"
+            id="popupQuestion"
+            type="text"
+            placeholder="Example: What is B.Tech?"
+        >
+
+        <button
+            class="ask-button"
+            onclick="popupAsk()"
+        >
+            Ask AI 🤖
+        </button>
+
+        <div
+            class="popup-answer"
+            id="popupAnswer"
+        ></div>
+
+        <button
+            class="voice-button"
+            id="popupVoice"
+            onclick="readPopupAnswer()"
+            style="display:none;"
+        >
+            🔊 Read Answer
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let lastAnswer = "";
+
+
+/* Open / close tutor */
+
+function toggleTutor() {
+
+    const popup = document.getElementById("tutorPopup");
+
+    if (popup.style.display === "block") {
+        popup.style.display = "none";
+    } else {
+        popup.style.display = "block";
+    }
+}
+
+
+/* Main tutor */
+
+function askTutor() {
+
+    const input = document.getElementById("question");
+    const question = input.value.trim();
+
+    if (!question) {
+        return;
+    }
+
+    addMessage("You", question, "user-message");
+
+    input.value = "";
+
+    const answer =
+        getBasicAnswer(question);
+
+    lastAnswer = answer;
+
+    addMessage(
+        "AI Tutor",
+        answer,
+        "bot-message"
+    );
+}
+
+
+/* Popup tutor */
+
+function popupAsk() {
+
+    const input =
+        document.getElementById("popupQuestion");
+
+    const answerBox =
+        document.getElementById("popupAnswer");
+
+    const voiceButton =
+        document.getElementById("popupVoice");
+
+    const question =
+        input.value.trim();
+
+    if (!question) {
+        return;
+    }
+
+    const answer =
+        getBasicAnswer(question);
+
+    answerBox.innerHTML =
+        "🤖 " + answer;
+
+    answerBox.style.display = "block";
+
+    voiceButton.style.display = "block";
+
+    lastAnswer = answer;
+}
+
+
+/* Simple starter answers */
+
+function getBasicAnswer(question) {
+
+    const q =
+        question.toLowerCase();
+
+    if (q.includes("b.tech")) {
+
+        return "B.Tech means Bachelor of Technology. It is usually a 4-year undergraduate engineering degree. Students can choose areas such as Computer Science, Mechanical, Civil, Electronics and other engineering fields.";
+
+    }
+
+    if (q.includes("b.arch")) {
+
+        return "B.Arch means Bachelor of Architecture. It is an undergraduate course focused on architecture, building design, planning and related subjects.";
+
+    }
+
+    if (q.includes("mbbs")) {
+
+        return "MBBS is the undergraduate medical degree for students who want to become doctors. It involves studying medical sciences and clinical subjects.";
+
+    }
+
+    if (q.includes("pcm")) {
+
+        return "PCM means Physics, Chemistry and Mathematics. It is commonly chosen by students interested in engineering, technology, architecture and related fields.";
+
+    }
+
+    if (q.includes("pcb")) {
+
+        return "PCB means Physics, Chemistry and Biology. It is commonly chosen by students interested in medicine, pharmacy, nursing, biotechnology and life sciences.";
+
+    }
+
+    if (q.includes("commerce")) {
+
+        return "Commerce can lead to areas such as B.Com, BBA, finance, accounting, banking, CA and Company Secretary. Choose based on your interests and strengths.";
+
+    }
+
+    if (q.includes("career")) {
+
+        return "A good career choice depends on your interests, strengths, subjects you enjoy and the kind of work you want to do. Don't choose a career only because it is popular.";
+
+    }
+
+    if (q.includes("salary")) {
+
+        return "Career salaries can vary a lot depending on skills, experience, location and employer. It is better to compare career growth and required skills along with salary.";
+
+    }
+
+    return "That's a good question! Think about your interests, strengths and goals first. For a detailed AI-generated answer, this tutor can be connected to the Gemini API through Flask.";
+}
+
+
+/* Add chat message */
+
+function addMessage(sender, text, className) {
+
+    const messages =
+        document.getElementById("messages");
+
+    const div =
+        document.createElement("div");
+
+    div.className =
+        "message " + className;
+
+    div.innerHTML =
+        "<strong>" +
+        sender +
+        ":</strong><br>" +
+        text;
+
+    messages.appendChild(div);
+}
+
+
+/* Enter key */
+
+function handleEnter(event) {
+
+    if (event.key === "Enter") {
+        askTutor();
+    }
+}
+
+
+/* Read main answer */
+
+function readLastAnswer() {
+
+    if (!lastAnswer) {
+        return;
+    }
+
+    speakText(lastAnswer);
+}
+
+
+/* Read popup answer */
+
+function readPopupAnswer() {
+
+    if (!lastAnswer) {
+        return;
+    }
+
+    speakText(lastAnswer);
+}
+
+
+/* Browser voice */
+
+function speakText(text) {
+
+    if (!("speechSynthesis" in window)) {
+
+        alert(
+            "Voice reading is not supported in this browser."
+        );
+
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const speech =
+        new SpeechSynthesisUtterance(text);
+
+    speech.rate = 0.95;
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(speech);
+}
+
+</script>
+
+</body>
+</html>
