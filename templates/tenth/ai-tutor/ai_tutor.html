@@ -289,43 +289,59 @@
             Ask questions about courses, careers, streams and your future.
         </p>
     </div>
+<div class="chat-box">
 
-    <div class="chat-box">
-
-        <div class="message bot-message">
-            🤖 <strong>AI Tutor:</strong><br>
-            Hi! I am your AI Tutor. Ask me anything about your career,
-            courses or education.
-        </div>
-
-        <div id="messages"></div>
-
-        <div class="input-area">
-            <input
-                type="text"
-                id="question"
-                placeholder="Ask your career question..."
-                onkeydown="handleEnter(event)"
-            >
-
-            <button onclick="askTutor()">
-                Ask 🤖
-            </button>
-        </div>
-
-        <button
-            class="voice-button"
-            onclick="readLastAnswer()"
-        >
-            🔊 Read Answer
-        </button>
-
+    <div class="message bot-message">
+        🤖 <strong>AI Tutor:</strong><br>
+        Hi! I am your AI Tutor. Ask me anything about careers,
+        courses, streams or education.
     </div>
 
-    <a href="/tenth" class="back-link">
-        ← Back to 10th Career Guide
-    </a>
+    {% if answer %}
 
+    <div class="message user-message">
+        👤 <strong>You:</strong><br>
+        {{ request.form.get("question") }}
+    </div>
+
+    <div class="message bot-message">
+        🤖 <strong>AI Tutor:</strong><br>
+        {{ answer }}
+    </div>
+
+    <button
+        class="voice-button"
+        onclick="speakText(`{{ answer|e }}`)"
+    >
+        🔊 Read Answer
+    </button>
+
+    {% endif %}
+
+    <form method="POST">
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                name="question"
+                placeholder="Ask your career question..."
+                required
+            >
+
+            <button type="submit">
+                Ask 🤖
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<a href="/tenth" class="back-link">
+    ← Back to 10th Career Guide
+</a>
 </div>
 
 
@@ -597,18 +613,20 @@ function readPopupAnswer() {
 function speakText(text) {
 
     if (!("speechSynthesis" in window)) {
-
-        alert(
-            "Voice reading is not supported in this browser."
-        );
-
+        alert("Voice reading is not supported in this browser.");
         return;
     }
+
+    // Remove emojis before speaking
+    const cleanText = text.replace(
+        /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu,
+        ""
+    );
 
     window.speechSynthesis.cancel();
 
     const speech =
-        new SpeechSynthesisUtterance(text);
+        new SpeechSynthesisUtterance(cleanText);
 
     speech.rate = 0.95;
     speech.pitch = 1;

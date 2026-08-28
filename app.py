@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = "ai_career_guide_secret_2026"
 app.config["THEME"] = "blue-black"
 
-client = genai.Client(api_key="YOUR_API_KEY")
+client = genai.Client(api_key="GEMINI_API_KEY")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -431,10 +431,48 @@ def parent_guide():
 def tenth():
     return render_template("tenth/tenth.html")
 
-@app.route("/tenth/ai-tutor")
+@app.route("/tenth/ai-tutor", methods=["GET", "POST"])
 def ai_tutor():
+
+    answer = None
+
+    if request.method == "POST":
+
+        question = request.form.get("question", "").strip()
+
+        if question:
+
+            prompt = f"""
+You are a friendly AI Career Tutor for 10th standard students.
+
+Student question:
+{question}
+
+Give a simple, clear and age-appropriate answer.
+
+If the question is about careers, explain:
+- What the career is
+- Which course/degree is usually needed
+- Important skills
+- Possible future opportunities
+
+Do not make unrealistic promises.
+"""
+
+            try:
+                response = client.models.generate_content(
+                    model="gemini-3.5-flash",
+                    contents=prompt
+                )
+
+                answer = response.text
+
+            except Exception as exc:
+                answer = f"AI Error: {exc}"
+
     return render_template(
-        "tenth/ai-tutor/ai_tutor.html"
+        "tenth/ai-tutor/ai_tutor.html",
+        answer=answer
     )
 
 
