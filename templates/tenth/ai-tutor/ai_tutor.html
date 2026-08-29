@@ -1,73 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>🤖 AI Tutor</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Tutor</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #050b18;
-            color: white;
-            min-height: 100vh;
-        }
 
         .tutor-page {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 30px 20px 100px;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
         }
 
         .tutor-header {
             text-align: center;
-            padding: 30px 20px;
-            border: 2px solid #168cff;
-            border-radius: 20px;
-            background: #081426;
-            box-shadow: 0 0 25px rgba(0, 140, 255, 0.35);
+            margin-bottom: 25px;
         }
 
         .tutor-header h1 {
-            margin: 0 0 10px;
-            color: #4db8ff;
+            font-size: 38px;
         }
 
         .tutor-header p {
-            margin: 0;
-            color: #c8d8ea;
+            font-size: 18px;
+            opacity: 0.85;
         }
 
         .chat-box {
-            margin-top: 25px;
-            background: #081426;
-            border: 1px solid #167ee8;
-            border-radius: 18px;
-            padding: 20px;
+            background: rgba(20, 30, 50, 0.95);
+            border: 1px solid #168cff;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 0 25px rgba(0, 140, 255, 0.25);
         }
 
         .message {
-            padding: 14px 16px;
-            margin-bottom: 15px;
-            border-radius: 14px;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 15px;
             line-height: 1.6;
         }
 
         .bot-message {
-            background: #0d2038;
+            background: #102746;
             border-left: 4px solid #168cff;
         }
 
         .user-message {
-            background: #102d25;
-            border-left: 4px solid #20c997;
+            background: #103d31;
+            border-left: 4px solid #20d9a0;
             text-align: right;
+        }
+
+        .language-settings {
+            margin-top: 25px;
+            padding: 18px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 15px;
+        }
+
+        .language-settings h3 {
+            margin-top: 0;
+        }
+
+        .language-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .language-buttons button {
+            border: none;
+            padding: 9px 13px;
+            border-radius: 9px;
+            cursor: pointer;
+            background: #eeeeee;
+            color: #111111;
+        }
+
+        .language-buttons button.active {
+            background: #168cff;
+            color: white;
+        }
+
+        #selectedLanguage {
+            margin-top: 12px;
+            font-weight: bold;
         }
 
         .input-area {
@@ -76,337 +103,216 @@
             margin-top: 20px;
         }
 
-        .input-area input {
+        #question {
             flex: 1;
-            padding: 14px;
+            padding: 15px;
             border-radius: 12px;
             border: 1px solid #168cff;
-            background: #050b18;
+            background: #07152b;
             color: white;
-            outline: none;
-            font-size: 15px;
+            font-size: 16px;
         }
 
-        .input-area button,
-        .voice-button {
+        #askButton {
+            padding: 15px 22px;
             border: none;
             border-radius: 12px;
-            padding: 12px 18px;
-            background: #087cff;
+            background: #168cff;
             color: white;
             cursor: pointer;
             font-weight: bold;
         }
 
-        .input-area button:hover,
-        .voice-button:hover {
-            background: #0064d6;
+        #askButton:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         .voice-button {
-            margin-top: 10px;
-            background: #173d66;
+            margin-top: 15px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #eeeeee;
+            color: #111111;
         }
 
         .back-link {
             display: block;
             text-align: center;
             margin-top: 25px;
-            color: #4db8ff;
+            color: #168cff;
             text-decoration: none;
         }
 
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        /* 🤖 Fixed AI Tutor button */
-        .ai-tutor-float {
-            position: fixed;
-            right: 22px;
-            bottom: 22px;
-
-            width: 58px;
-            height: 58px;
-
-            border-radius: 50%;
-            border: 2px solid #168cff;
-
-            background: #07152a;
-            color: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 27px;
-            cursor: pointer;
-
-            box-shadow:
-                0 0 12px #168cff,
-                0 0 28px rgba(0, 140, 255, 0.45);
-
-            z-index: 9999;
-        }
-
-        .ai-tutor-float:hover {
-            transform: scale(1.08);
-        }
-
-        /* Tutor popup */
-        .tutor-popup {
-            display: none;
-
-            position: fixed;
-            right: 22px;
-            bottom: 92px;
-
-            width: 340px;
-            max-width: calc(100vw - 40px);
-
-            background: #07101f;
-            border: 2px solid #168cff;
-            border-radius: 18px;
-
-            box-shadow: 0 0 30px rgba(0, 140, 255, 0.45);
-
-            z-index: 9998;
-            overflow: hidden;
-        }
-
-        .popup-header {
-            background: #0b1d35;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #168cff;
-        }
-
-        .popup-header strong {
-            color: #4db8ff;
-        }
-
-        .close-btn {
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .popup-content {
-            padding: 15px;
-        }
-
-        .popup-content p {
-            color: #cbd8e8;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .popup-input {
-            width: 100%;
-            padding: 12px;
-
-            border-radius: 10px;
-            border: 1px solid #168cff;
-
-            background: #050b18;
-            color: white;
-
-            outline: none;
-        }
-
-        .ask-button {
-            width: 100%;
-            margin-top: 10px;
-
-            padding: 12px;
-
-            border: none;
-            border-radius: 10px;
-
-            background: #087cff;
-            color: white;
-
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .ask-button:hover {
-            background: #0064d6;
-        }
-
-        .popup-answer {
-            margin-top: 12px;
-            padding: 12px;
-
-            background: #0d2038;
-            border-radius: 10px;
-
-            color: #e4edf8;
-            font-size: 14px;
-            line-height: 1.5;
-
-            display: none;
+        .loading {
+            opacity: 0.7;
         }
 
         @media (max-width: 600px) {
-
-            .tutor-page {
-                padding: 20px 12px 100px;
-            }
 
             .input-area {
                 flex-direction: column;
             }
 
-            .input-area button {
+            #askButton {
                 width: 100%;
             }
 
-            .ai-tutor-float {
-                right: 16px;
-                bottom: 16px;
-            }
-
-            .tutor-popup {
-                right: 16px;
-                bottom: 85px;
+            .tutor-header h1 {
+                font-size: 28px;
             }
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <div class="tutor-page">
 
+
+    <!-- HEADER -->
+
     <div class="tutor-header">
+
         <h1>🤖 AI Tutor</h1>
+
         <p>
-            Ask questions about courses, careers, streams and your future.
+            Ask questions about courses,
+            careers, streams and your future.
         </p>
-    </div>
-<div class="chat-box">
 
-    <div class="message bot-message">
-        🤖 <strong>AI Tutor:</strong><br>
-        Hi! I am your AI Tutor. Ask me anything about careers,
-        courses, streams or education.
     </div>
 
-    {% if answer %}
 
-    <div class="message user-message">
-        👤 <strong>You:</strong><br>
-        {{ request.form.get("question") }}
-    </div>
+    <!-- CHAT -->
 
-    <div class="message bot-message">
-        🤖 <strong>AI Tutor:</strong><br>
-        {{ answer }}
-    </div>
+    <div class="chat-box">
 
-    <button
-        class="voice-button"
-        onclick="speakText(`{{ answer|e }}`)"
-    >
-        🔊 Read Answer
-    </button>
 
-    {% endif %}
+        <!-- Initial message -->
 
-    <form method="POST">
+        <div class="message bot-message">
+
+            🤖 <strong>AI Tutor:</strong>
+
+            <br>
+
+            Hi! I am your AI Tutor.
+            Ask me anything about careers,
+            courses, streams or education.
+
+        </div>
+
+
+        <!-- Messages -->
+
+        <div id="messages"></div>
+
+
+        <!-- LANGUAGE SETTINGS -->
+
+        <div class="language-settings">
+
+            <h3>⚙️ Language Settings</h3>
+
+            <div class="language-buttons">
+
+                <button
+                    onclick="selectLanguage('English', 'en-IN', this)"
+                    class="active">
+                    🇬🇧 English
+                </button>
+
+                <button
+                    onclick="selectLanguage('Kannada', 'kn-IN', this)">
+                    🇮🇳 ಕನ್ನಡ
+                </button>
+
+                <button
+                    onclick="selectLanguage('Telugu', 'te-IN', this)">
+                    🇮🇳 తెలుగు
+                </button>
+
+                <button
+                    onclick="selectLanguage('Marathi', 'mr-IN', this)">
+                    🇮🇳 मराठी
+                </button>
+
+                <button
+                    onclick="selectLanguage('Hindi', 'hi-IN', this)">
+                    🇮🇳 हिन्दी
+                </button>
+
+                <button
+                    onclick="selectLanguage('Tamil', 'ta-IN', this)">
+                    🇮🇳 தமிழ்
+                </button>
+
+            </div>
+
+
+            <div id="selectedLanguage">
+
+                Selected language:
+                <strong>English</strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- INPUT -->
 
         <div class="input-area">
 
             <input
                 type="text"
-                name="question"
+                id="question"
                 placeholder="Ask your career question..."
-                required
+                onkeydown="handleEnter(event)"
             >
 
-            <button type="submit">
+            <button
+                id="askButton"
+                onclick="askTutor()">
+
                 Ask 🤖
+
             </button>
 
         </div>
 
-    </form>
 
-</div>
-
-<a href="/tenth" class="back-link">
-    ← Back to 10th Career Guide
-</a>
-</div>
-
-
-<!-- 🤖 Floating Tutor Button -->
-
-<button
-    class="ai-tutor-float"
-    onclick="toggleTutor()"
-    title="Ask AI Tutor"
->
-    🤖
-</button>
-
-
-<!-- Tutor Popup -->
-
-<div class="tutor-popup" id="tutorPopup">
-
-    <div class="popup-header">
-        <strong>🤖 AI Tutor</strong>
-
-        <button
-            class="close-btn"
-            onclick="toggleTutor()"
-        >
-            ×
-        </button>
-    </div>
-
-    <div class="popup-content">
-
-        <p>
-            Ask me about 10th streams, courses, careers,
-            skills and future opportunities.
-        </p>
-
-        <input
-            class="popup-input"
-            id="popupQuestion"
-            type="text"
-            placeholder="Example: What is B.Tech?"
-        >
-
-        <button
-            class="ask-button"
-            onclick="popupAsk()"
-        >
-            Ask AI 🤖
-        </button>
-
-        <div
-            class="popup-answer"
-            id="popupAnswer"
-        ></div>
+        <!-- VOICE -->
 
         <button
             class="voice-button"
-            id="popupVoice"
-            onclick="readPopupAnswer()"
-            style="display:none;"
-        >
+            onclick="readLastAnswer()">
+
             🔊 Read Answer
+
         </button>
 
+
     </div>
+
+
+    <!-- BACK -->
+
+    <a
+        href="/tenth"
+        class="back-link">
+
+        ← Back to 10th Career Guide
+
+    </a>
+
 
 </div>
 
@@ -415,226 +321,420 @@
 
 let lastAnswer = "";
 
+let selectedLanguage = "English";
 
-/* Open / close tutor */
+let selectedVoiceLanguage = "en-IN";
 
-function toggleTutor() {
 
-    const popup = document.getElementById("tutorPopup");
+/* =========================
+   LANGUAGE SELECTION
+========================= */
 
-    if (popup.style.display === "block") {
-        popup.style.display = "none";
-    } else {
-        popup.style.display = "block";
-    }
+function selectLanguage(language, voiceLanguage, button) {
+
+    selectedLanguage = language;
+
+    selectedVoiceLanguage = voiceLanguage;
+
+
+    document
+        .querySelectorAll(".language-buttons button")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    document.getElementById(
+        "selectedLanguage"
+    ).innerHTML =
+        "Selected language: <strong>" +
+        language +
+        "</strong>";
+
 }
 
 
-/* Main tutor */
+/* =========================
+   ASK AI TUTOR
+========================= */
 
-function askTutor() {
-
-    const input = document.getElementById("question");
-    const question = input.value.trim();
-
-    if (!question) {
-        return;
-    }
-
-    addMessage("You", question, "user-message");
-
-    input.value = "";
-
-    const answer =
-        getBasicAnswer(question);
-
-    lastAnswer = answer;
-
-    addMessage(
-        "AI Tutor",
-        answer,
-        "bot-message"
-    );
-}
-
-
-/* Popup tutor */
-
-function popupAsk() {
+async function askTutor() {
 
     const input =
-        document.getElementById("popupQuestion");
-
-    const answerBox =
-        document.getElementById("popupAnswer");
-
-    const voiceButton =
-        document.getElementById("popupVoice");
+        document.getElementById("question");
 
     const question =
         input.value.trim();
 
+    const askButton =
+        document.getElementById("askButton");
+
+
     if (!question) {
+
         return;
+
     }
 
-    const answer =
-        getBasicAnswer(question);
 
-    answerBox.innerHTML =
-        "🤖 " + answer;
+    addMessage(
+        "You",
+        question,
+        "user-message"
+    );
 
-    answerBox.style.display = "block";
 
-    voiceButton.style.display = "block";
+    input.value = "";
 
-    lastAnswer = answer;
+
+    askButton.disabled = true;
+
+    askButton.innerText = "Thinking...";
+
+
+    const loadingMessage =
+        addMessage(
+            "AI Tutor",
+            "Thinking... 🤖",
+            "bot-message loading"
+        );
+
+
+    try {
+
+        /*
+         IMPORTANT:
+         Flask expects request.form.
+         Therefore use FormData.
+        */
+
+        const formData =
+            new FormData();
+
+        formData.append(
+            "question",
+            question
+        );
+
+        formData.append(
+            "language",
+            selectedLanguage
+        );
+
+
+        const response =
+            await fetch(
+                "/tenth/ai-tutor",
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        /*
+         Remove loading message
+        */
+
+        if (loadingMessage) {
+
+            loadingMessage.remove();
+
+        }
+
+
+        const answer =
+            data.answer ||
+            "Sorry, I could not generate an answer.";
+
+
+        lastAnswer = answer;
+
+
+        addMessage(
+            "AI Tutor",
+            answer,
+            "bot-message"
+        );
+
+
+        /*
+         Automatically speak
+         Gemini answer in selected language
+        */
+
+        speakText(answer);
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "AI Tutor Error:",
+            error
+        );
+
+
+        if (loadingMessage) {
+
+            loadingMessage.remove();
+
+        }
+
+
+        addMessage(
+            "AI Tutor",
+            "Sorry, something went wrong. Please try again.",
+            "bot-message"
+        );
+
+    }
+
+
+    askButton.disabled = false;
+
+    askButton.innerText = "Ask 🤖";
+
 }
 
 
-/* Simple starter answers */
+/* =========================
+   ADD MESSAGE
+========================= */
 
-function getBasicAnswer(question) {
-
-    const q =
-        question.toLowerCase();
-
-    if (q.includes("b.tech")) {
-
-        return "B.Tech means Bachelor of Technology. It is usually a 4-year undergraduate engineering degree. Students can choose areas such as Computer Science, Mechanical, Civil, Electronics and other engineering fields.";
-
-    }
-
-    if (q.includes("b.arch")) {
-
-        return "B.Arch means Bachelor of Architecture. It is an undergraduate course focused on architecture, building design, planning and related subjects.";
-
-    }
-
-    if (q.includes("mbbs")) {
-
-        return "MBBS is the undergraduate medical degree for students who want to become doctors. It involves studying medical sciences and clinical subjects.";
-
-    }
-
-    if (q.includes("pcm")) {
-
-        return "PCM means Physics, Chemistry and Mathematics. It is commonly chosen by students interested in engineering, technology, architecture and related fields.";
-
-    }
-
-    if (q.includes("pcb")) {
-
-        return "PCB means Physics, Chemistry and Biology. It is commonly chosen by students interested in medicine, pharmacy, nursing, biotechnology and life sciences.";
-
-    }
-
-    if (q.includes("commerce")) {
-
-        return "Commerce can lead to areas such as B.Com, BBA, finance, accounting, banking, CA and Company Secretary. Choose based on your interests and strengths.";
-
-    }
-
-    if (q.includes("career")) {
-
-        return "A good career choice depends on your interests, strengths, subjects you enjoy and the kind of work you want to do. Don't choose a career only because it is popular.";
-
-    }
-
-    if (q.includes("salary")) {
-
-        return "Career salaries can vary a lot depending on skills, experience, location and employer. It is better to compare career growth and required skills along with salary.";
-
-    }
-
-    return "That's a good question! Think about your interests, strengths and goals first. For a detailed AI-generated answer, this tutor can be connected to the Gemini API through Flask.";
-}
-
-
-/* Add chat message */
-
-function addMessage(sender, text, className) {
+function addMessage(
+    sender,
+    text,
+    className
+) {
 
     const messages =
-        document.getElementById("messages");
+        document.getElementById(
+            "messages"
+        );
+
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     div.className =
-        "message " + className;
+        "message " +
+        className;
 
-    div.innerHTML =
-        "<strong>" +
-        sender +
-        ":</strong><br>" +
-        text;
 
-    messages.appendChild(div);
+    const strong =
+        document.createElement(
+            "strong"
+        );
+
+
+    strong.innerText =
+        sender + ":";
+
+
+    div.appendChild(
+        strong
+    );
+
+
+    div.appendChild(
+        document.createElement(
+            "br"
+        )
+    );
+
+
+    const textNode =
+        document.createTextNode(
+            text
+        );
+
+
+    div.appendChild(
+        textNode
+    );
+
+
+    messages.appendChild(
+        div
+    );
+
+
+    messages.scrollTop =
+        messages.scrollHeight;
+
+
+    return div;
+
 }
 
 
-/* Enter key */
+/* =========================
+   ENTER KEY
+========================= */
 
 function handleEnter(event) {
 
-    if (event.key === "Enter") {
+    if (
+        event.key === "Enter"
+    ) {
+
+        event.preventDefault();
+
         askTutor();
+
     }
+
 }
 
 
-/* Read main answer */
+/* =========================
+   VOICE
+========================= */
 
 function readLastAnswer() {
 
     if (!lastAnswer) {
+
         return;
+
     }
 
-    speakText(lastAnswer);
+
+    speakText(
+        lastAnswer
+    );
+
 }
 
 
-/* Read popup answer */
-
-function readPopupAnswer() {
-
-    if (!lastAnswer) {
-        return;
-    }
-
-    speakText(lastAnswer);
-}
-
-
-/* Browser voice */
+/* =========================
+   SPEAK TEXT
+========================= */
 
 function speakText(text) {
 
-    if (!("speechSynthesis" in window)) {
-        alert("Voice reading is not supported in this browser.");
+    if (
+        !("speechSynthesis" in window)
+    ) {
+
+        alert(
+            "Voice reading is not supported in this browser."
+        );
+
         return;
+
     }
 
-    // Remove emojis before speaking
-    const cleanText = text.replace(
-        /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu,
-        ""
-    );
+
+    /*
+     Remove emojis and markdown
+     before speaking.
+    */
+
+    const cleanText =
+        text
+            .replace(
+                /[\u{1F300}-\u{1FAFF}]/gu,
+                ""
+            )
+            .replace(
+                /[*#_`]/g,
+                ""
+            );
+
 
     window.speechSynthesis.cancel();
 
-    const speech =
-        new SpeechSynthesisUtterance(cleanText);
 
-    speech.rate = 0.95;
+    const speech =
+        new SpeechSynthesisUtterance(
+            cleanText
+        );
+
+
+    /*
+     IMPORTANT:
+     Set selected language.
+    */
+
+    speech.lang =
+        selectedVoiceLanguage;
+
+
+    speech.rate = 0.9;
+
     speech.pitch = 1;
 
-    window.speechSynthesis.speak(speech);
+
+    /*
+     Find matching browser voice
+    */
+
+    const voices =
+        window.speechSynthesis
+            .getVoices();
+
+
+    const matchingVoice =
+        voices.find(
+            voice =>
+                voice.lang
+                    .toLowerCase()
+                    .startsWith(
+                        selectedVoiceLanguage
+                            .toLowerCase()
+                            .split("-")[0]
+                    )
+        );
+
+
+    if (matchingVoice) {
+
+        speech.voice =
+            matchingVoice;
+
+    }
+
+
+    window.speechSynthesis.speak(
+        speech
+    );
+
 }
+
+
+/*
+Some browsers load voices
+after page load.
+*/
+
+window.speechSynthesis
+    .onvoiceschanged =
+    function() {
+
+        window.speechSynthesis
+            .getVoices();
+
+    };
+
 
 </script>
 
+
 </body>
+
 </html>

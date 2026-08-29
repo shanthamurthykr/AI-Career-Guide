@@ -1934,3 +1934,50 @@ body {
         width: 100% !important;
     }
 }
+
+.tutor-settings {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 9999;
+}
+
+.settings-button {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+}
+
+.settings-panel {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 65px;
+    width: 220px;
+    padding: 15px;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+.settings-panel h3 {
+    margin-top: 0;
+}
+
+.settings-panel button {
+    display: block;
+    width: 100%;
+    margin: 7px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.read-button {
+    margin-top: 12px !important;
+}

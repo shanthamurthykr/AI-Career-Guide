@@ -1,4 +1,4 @@
-﻿from flask import Flask, render_template, request,redirect
+﻿from flask import Flask, render_template, request,redirect, jsonify
 from google import genai
 from career_data import (career_data, kcet_colleges,comedk_colleges, percentage_courses, scholarships,roadmaps,skills_data,free_courses)
 from flask import send_file
@@ -434,46 +434,101 @@ def tenth():
 @app.route("/tenth/ai-tutor", methods=["GET", "POST"])
 def ai_tutor():
 
-    answer = None
+    # Open AI Tutor page
+    if request.method == "GET":
+        return render_template("tenth/ai-tutor/ai_tutor.html")
 
-    if request.method == "POST":
-
+    try:
+        # IMPORTANT:
+        # Frontend uses FormData(), so use request.form
+        # NOT request.get_json()
         question = request.form.get("question", "").strip()
+        language = request.form.get("language", "English").strip()
 
-        if question:
+        if not question:
+            return jsonify({
+                "answer": "Please enter a question."
+            }), 400
 
-            prompt = f"""
-You are a friendly AI Career Tutor for 10th standard students.
+        # Language mapping
+        language_map = {
+            "English": "English",
+            "Kannada": "Kannada",
+            "Telugu": "Telugu",
+            "Marathi": "Marathi",
+            "Hindi": "Hindi",
+            "Tamil": "Tamil"
+        }
+
+        selected_language = language_map.get(
+            language,
+            "English"
+        )
+
+        # Prompt for Gemini
+        prompt = f"""
+You are an AI Career Tutor for school students.
 
 Student question:
 {question}
 
-Give a simple, clear and age-appropriate answer.
+IMPORTANT LANGUAGE RULE:
+Answer ONLY in {selected_language}.
 
-If the question is about careers, explain:
-- What the career is
-- Which course/degree is usually needed
-- Important skills
-- Possible future opportunities
+Do not answer in English if the selected language is
+Kannada, Telugu, Marathi, Hindi or Tamil.
 
-Do not make unrealistic promises.
+Give a simple, clear and student-friendly answer.
+
+The student may ask about:
+- 10th standard
+- Streams
+- Science PCM
+- Science PCB
+- Commerce
+- Arts
+- Polytechnic
+- ITI
+- B.Tech
+- B.Sc
+- B.Arch
+- Medicine
+- Pharmacy
+- Nursing
+- Biotechnology
+- Life Sciences
+- Careers
+- Courses
+- Scholarships
+- Skills
+- Education
+
+Keep the answer practical and easy to understand.
 """
 
-            try:
-                response = client.models.generate_content(
-                    model="gemini-3.5-flash",
-                    contents=prompt
-                )
+        # Gemini API call
+        response = client.models.generate_content(
+            model="gemini-3.7-flash",
+            contents=prompt
+        )
 
-                answer = response.text
+        answer = response.text
 
-            except Exception as exc:
-                answer = f"AI Error: {exc}"
+        if not answer:
+            answer = "Sorry, I could not generate an answer."
 
-    return render_template(
-        "tenth/ai-tutor/ai_tutor.html",
-        answer=answer
-    )
+        return jsonify({
+            "answer": answer,
+            "language": selected_language
+        })
+
+    except Exception as e:
+
+        print("AI TUTOR ERROR:", e)
+
+        return jsonify({
+            "answer": "Sorry, something went wrong. Please try again."
+        }), 500
 
 
 @app.route("/puc")
