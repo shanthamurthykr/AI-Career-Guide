@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Science Career Guide</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background:
+            radial-gradient(circle at top, #172554 0%, #07111f 45%, #030712 100%);
+        color: white;
+    }
+
+    .science-page {
+        max-width: 1200px;
+        margin: auto;
+        padding: 40px 20px 70px;
+    }
+
+    /* HERO */
+
+    .science-hero {
+        text-align: center;
+        padding: 35px 20px 45px;
+    }
+
+    .science-hero .main-icon {
+        font-size: 55px;
+        margin-bottom: 10px;
+    }
+
+    .science-hero h1 {
+        margin: 0;
+        font-size: 42px;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .science-hero p {
+        margin-top: 12px;
+        color: #b9c7dc;
+        font-size: 18px;
+    }
+
+    /* SECTION */
+
+    .career-section {
+        margin-top: 35px;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .section-title h2 {
+        margin: 0;
+        font-size: 28px;
+    }
+
+    .section-title p {
+        color: #9fb0c8;
+        margin-top: 8px;
+    }
+
+    /* COURSE GRID */
+
+    .course-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+
+    /* COURSE CARD */
+
+    .course-card {
+        background: rgba(8, 20, 38, 0.92);
+        border: 1px solid rgba(124, 92, 255, 0.45);
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow:
+            0 10px 35px rgba(0, 0, 0, 0.25);
+        transition: 0.25s ease;
+    }
+
+    .course-card:hover {
+        transform: translateY(-5px);
+        border-color: #8b5cf6;
+        box-shadow:
+            0 15px 40px rgba(124, 92, 255, 0.20);
+    }
+
+    .course-icon {
+        font-size: 38px;
+        margin-bottom: 10px;
+    }
+
+    .course-card h3 {
+        margin: 0;
+        font-size: 23px;
+    }
+
+    .course-name {
+        color: #a78bfa;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
+    .course-description {
+        color: #b8c5d8;
+        line-height: 1.6;
+        margin: 12px 0 18px;
+    }
+
+    /* WORK INFO */
+
+    .work-box {
+        background: rgba(30, 41, 59, 0.55);
+        border-left: 4px solid #8b5cf6;
+        border-radius: 10px;
+        padding: 13px 15px;
+        margin-bottom: 17px;
+    }
+
+    .work-box strong {
+        color: #ddd6fe;
+    }
+
+    .work-box p {
+        margin: 6px 0 0;
+        color: #c5d0df;
+        line-height: 1.5;
+    }
+
+    /* WATCH BUTTON */
+
+    .watch-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 17px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #dbeafe;
+        background: rgba(37, 99, 235, 0.10);
+        border: 2px solid #6366f1;
+        font-weight: bold;
+        transition: 0.25s ease;
+    }
+
+    .watch-button:hover {
+        background: rgba(99, 102, 241, 0.18);
+        border-color: #a78bfa;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    /* TAGS */
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .tag {
+        padding: 6px 10px;
+        border-radius: 20px;
+        background: rgba(99, 102, 241, 0.12);
+        border: 1px solid rgba(129, 140, 248, 0.35);
+        color: #c7d2fe;
+        font-size: 13px;
+    }
+
+    /* BACK BUTTON */
+
+    .back-area {
+        text-align: center;
+        margin-top: 45px;
+    }
+
+    .back-button {
+        display: inline-block;
+        padding: 12px 22px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: white;
+        border: 1px solid #475569;
+        background: rgba(15, 23, 42, 0.8);
+        transition: 0.2s ease;
+    }
+
+    .back-button:hover {
+        border-color: #8b5cf6;
+        background: rgba(99, 102, 241, 0.12);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+        .course-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .science-hero h1 {
+            font-size: 32px;
+        }
+
+        .science-page {
+            padding: 25px 15px 50px;
+        }
+
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="science-page">
+
+
+<!-- HERO -->
+
+<header class="science-hero">
+
+    <div class="main-icon">
+        🔬
+    </div>
+
+    <h1>
+        Science Career Guide
+    </h1>
+
+    <p>
+        Explore courses, understand the work,
+        and discover your future career.
+    </p>
+
+</header>
+
+
+<!-- ENGINEERING -->
+
+<section class="career-section">
+
+    <div class="section-title">
+
+        <h2>🎓 Engineering & Technology</h2>
+
+        <p>
+            Build technology, software, machines,
+            infrastructure and intelligent systems.
+        </p>
+
+    </div>
+
+
+    <div class="course-grid">
+
+
+        <!-- CSE -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                💻
+            </div>
+
+            <h3>
+                Computer Science Engineering
+            </h3>
+
+            <div class="course-name">
+                B.Tech / B.E. CSE
+            </div>
+
+            <p class="course-description">
+                Learn programming, software development,
+                databases, algorithms and computer systems.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Java</span>
+                <span class="tag">Web Development</span>
+                <span class="tag">SQL</span>
+                <span class="tag">AI</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Software development, application building,
+                    websites, backend systems and technology products.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=computer+science+engineer+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- AI ML -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🤖
+            </div>
+
+            <h3>
+                Artificial Intelligence & Machine Learning
+            </h3>
+
+            <div class="course-name">
+                B.Tech / B.E. AI & ML
+            </div>
+
+            <p class="course-description">
+                Learn how computers learn from data
+                and build intelligent applications.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Deep Learning</span>
+                <span class="tag">Data</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Build AI models, prediction systems,
+                    recommendation systems and intelligent software.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=AI+machine+learning+engineer+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- DATA SCIENCE -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                📊
+            </div>
+
+            <h3>
+                Data Science
+            </h3>
+
+            <div class="course-name">
+                B.Tech / B.Sc Data Science
+            </div>
+
+            <p class="course-description">
+                Work with data to discover patterns,
+                insights and predictions.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Statistics</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Machine Learning</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Analyze datasets, create dashboards,
+                    build models and help organizations make decisions.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=data+scientist+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- MECHANICAL -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                ⚙️
+            </div>
+
+            <h3>
+                Mechanical Engineering
+            </h3>
+
+            <div class="course-name">
+                B.Tech / B.E. Mechanical
+            </div>
+
+            <p class="course-description">
+                Study machines, manufacturing,
+                thermodynamics and mechanical systems.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Machines</span>
+                <span class="tag">CAD</span>
+                <span class="tag">Manufacturing</span>
+                <span class="tag">Design</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Design machines, work with manufacturing systems,
+                    production equipment and mechanical products.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=mechanical+engineer+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- CIVIL -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🏗️
+            </div>
+
+            <h3>
+                Civil Engineering
+            </h3>
+
+            <div class="course-name">
+                B.Tech / B.E. Civil
+            </div>
+
+            <p class="course-description">
+                Learn about construction, structures,
+                roads, buildings and infrastructure.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Construction</span>
+                <span class="tag">Structures</span>
+                <span class="tag">CAD</span>
+                <span class="tag">Infrastructure</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Work on building projects, structural design,
+                    construction and infrastructure development.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=civil+engineer+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- ECE -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Electronics & Communication
+            </h3>
+
+            <div class="course-name">
+                B.Tech / B.E. ECE
+            </div>
+
+            <p class="course-description">
+                Study electronics, communication systems,
+                embedded systems and hardware.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Electronics</span>
+                <span class="tag">Embedded</span>
+                <span class="tag">IoT</span>
+                <span class="tag">Communication</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Develop electronic systems, embedded products,
+                    communication technologies and hardware solutions.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=electronics+engineer+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- IT -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                ☁️
+            </div>
+
+            <h3>
+                Information Technology
+            </h3>
+
+            <div class="course-name">
+                B.Tech / B.E. IT
+            </div>
+
+            <p class="course-description">
+                Focus on software, networks,
+                databases and modern IT infrastructure.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Cloud</span>
+                <span class="tag">Networking</span>
+                <span class="tag">Software</span>
+                <span class="tag">Cybersecurity</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Manage software systems, cloud infrastructure,
+                    networks and enterprise technology.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=IT+engineer+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ARCHITECTURE -->
+
+<section class="career-section">
+
+    <div class="section-title">
+
+        <h2>🏛️ Architecture & Design</h2>
+
+        <p>
+            Explore building design, planning and creative spaces.
+        </p>
+
+    </div>
+
+
+    <div class="course-grid">
+
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🏛️
+            </div>
+
+            <h3>
+                Architecture
+            </h3>
+
+            <div class="course-name">
+                B.Arch
+            </div>
+
+            <p class="course-description">
+                Learn architectural design, planning,
+                structures and building concepts.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Design</span>
+                <span class="tag">CAD</span>
+                <span class="tag">Buildings</span>
+                <span class="tag">Planning</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Design buildings, prepare plans,
+                    work with clients and develop architectural concepts.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=architect+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🏙️
+            </div>
+
+            <h3>
+                Urban Planning
+            </h3>
+
+            <div class="course-name">
+                Architecture / Planning Pathway
+            </div>
+
+            <p class="course-description">
+                Learn how cities, communities and public spaces
+                are planned and developed.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Cities</span>
+                <span class="tag">Planning</span>
+                <span class="tag">Design</span>
+                <span class="tag">Infrastructure</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Work on land use, transportation,
+                    public spaces and city development plans.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=urban+planner+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- MEDICINE -->
+
+<section class="career-section">
+
+    <div class="section-title">
+
+        <h2>🩺 Medicine & Healthcare</h2>
+
+        <p>
+            Explore healthcare, medicine, pharmacy and nursing.
+        </p>
+
+    </div>
+
+
+    <div class="course-grid">
+
+
+        <!-- MBBS -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🩺
+            </div>
+
+            <h3>
+                Medicine
+            </h3>
+
+            <div class="course-name">
+                MBBS
+            </div>
+
+            <p class="course-description">
+                Study medical sciences and patient care
+                through medical education and clinical training.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Medicine</span>
+                <span class="tag">Healthcare</span>
+                <span class="tag">Clinical</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Doctors work in healthcare settings,
+                    examining patients and supporting diagnosis and treatment.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=doctor+day+in+the+life+MBBS"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- PHARMACY -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                💊
+            </div>
+
+            <h3>
+                Pharmacy
+            </h3>
+
+            <div class="course-name">
+                B.Pharm
+            </div>
+
+            <p class="course-description">
+                Learn about medicines, pharmaceutical sciences,
+                drug development and safe medication use.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Medicines</span>
+                <span class="tag">Pharmaceuticals</span>
+                <span class="tag">Research</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Pharmacy professionals can work in pharmaceutical,
+                    healthcare, research and related areas.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=pharmacist+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- NURSING -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                👩‍⚕️
+            </div>
+
+            <h3>
+                Nursing
+            </h3>
+
+            <div class="course-name">
+                B.Sc Nursing
+            </div>
+
+            <p class="course-description">
+                Study patient care, nursing science,
+                healthcare practices and clinical skills.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Healthcare</span>
+                <span class="tag">Patient Care</span>
+                <span class="tag">Clinical</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Nurses support patient care and healthcare teams
+                    in hospitals and other healthcare environments.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=nurse+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- LIFE SCIENCE -->
+
+<section class="career-section">
+
+    <div class="section-title">
+
+        <h2>🧬 Biotechnology & Life Sciences</h2>
+
+        <p>
+            Explore biology, biotechnology and scientific research.
+        </p>
+
+    </div>
+
+
+    <div class="course-grid">
+
+
+        <!-- BIOTECH -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🧬
+            </div>
+
+            <h3>
+                Biotechnology
+            </h3>
+
+            <div class="course-name">
+                B.Sc / B.Tech Biotechnology
+            </div>
+
+            <p class="course-description">
+                Combine biology and technology to study
+                cells, organisms, biotechnology and applications.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Biology</span>
+                <span class="tag">Genetics</span>
+                <span class="tag">Research</span>
+                <span class="tag">Biotech</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Work in laboratories, biotechnology companies,
+                    research environments and life-science industries.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=biotechnology+career+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- LIFE SCIENCE -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🔬
+            </div>
+
+            <h3>
+                Life Sciences
+            </h3>
+
+            <div class="course-name">
+                B.Sc Life Sciences
+            </div>
+
+            <p class="course-description">
+                Study living organisms, biology and
+                different areas of life-science research.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Biology</span>
+                <span class="tag">Research</span>
+                <span class="tag">Laboratory</span>
+            </div>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Work in laboratories, research organizations,
+                    education and life-science related industries.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=life+science+career+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- RESEARCH -->
+
+<section class="career-section">
+
+    <div class="section-title">
+
+        <h2>🧪 Pure Science & Research</h2>
+
+        <p>
+            Explore scientific study, research and higher education.
+        </p>
+
+    </div>
+
+
+    <div class="course-grid">
+
+
+        <!-- PHYSICS -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🌌
+            </div>
+
+            <h3>
+                Physics
+            </h3>
+
+            <div class="course-name">
+                B.Sc Physics
+            </div>
+
+            <p class="course-description">
+                Study matter, energy, motion, forces,
+                electricity and the physical universe.
+            </p>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Physics graduates can move into research,
+                    education, technology and higher studies.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=physicist+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- CHEMISTRY -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                ⚗️
+            </div>
+
+            <h3>
+                Chemistry
+            </h3>
+
+            <div class="course-name">
+                B.Sc Chemistry
+            </div>
+
+            <p class="course-description">
+                Study substances, reactions, materials
+                and chemical processes.
+            </p>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Work can involve laboratories, research,
+                    education, materials and chemical industries.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=chemist+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- MATHEMATICS -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🧮
+            </div>
+
+            <h3>
+                Mathematics
+            </h3>
+
+            <div class="course-name">
+                B.Sc Mathematics
+            </div>
+
+            <p class="course-description">
+                Develop mathematical reasoning,
+                problem-solving and analytical skills.
+            </p>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Mathematics can lead toward research,
+                    teaching, analytics, computing and higher studies.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=mathematician+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+        <!-- MEDICAL RESEARCH -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🧪
+            </div>
+
+            <h3>
+                Medical Research
+            </h3>
+
+            <div class="course-name">
+                Life Science → Higher Studies / Research
+            </div>
+
+            <p class="course-description">
+                Explore scientific research related to
+                biology, health and medical sciences.
+            </p>
+
+            <div class="work-box">
+
+                <strong>
+                    💼 What kind of work?
+                </strong>
+
+                <p>
+                    Research teams investigate scientific questions,
+                    analyze results and contribute to new knowledge.
+                </p>
+
+            </div>
+
+            <a
+                class="watch-button"
+                href="https://www.youtube.com/results?search_query=medical+researcher+day+in+the+life"
+                target="_blank">
+
+                ▶ Watch & Learn
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- BACK -->
+
+<div class="back-area">
+
+    <a
+        href="/tenth"
+        class="back-button">
+
+        ← Back to 10th Career Guide
+
+    </a>
+
+</div>
+
+
+</div>
+
+</body>
+
+</html>
