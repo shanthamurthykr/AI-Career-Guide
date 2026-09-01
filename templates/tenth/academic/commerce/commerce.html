@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Commerce Career Paths | AI Career Guide</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, #24113d, transparent 35%),
+                radial-gradient(circle at bottom right, #101c45, transparent 35%),
+                #070914;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .commerce-hero {
+            text-align: center;
+            padding: 70px 20px 45px;
+        }
+
+        .commerce-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .commerce-hero h1 {
+            font-size: 46px;
+            margin-bottom: 15px;
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #b58cff,
+                #6fc7ff
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .commerce-hero p {
+            color: #c9c9d8;
+            font-size: 18px;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 30px 0 35px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #aaaabd;
+        }
+
+        .career-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(310px, 1fr));
+            gap: 25px;
+            padding-bottom: 45px;
+        }
+
+        .career-card {
+            background: rgba(18, 18, 35, 0.92);
+            border: 1px solid #6f3cff;
+            border-radius: 22px;
+            padding: 28px;
+            box-shadow:
+                0 0 25px rgba(111, 60, 255, 0.12);
+            transition: 0.3s ease;
+        }
+
+        .career-card:hover {
+            transform: translateY(-7px);
+            border-color: #a678ff;
+            box-shadow:
+                0 0 30px rgba(111, 60, 255, 0.35);
+        }
+
+        .card-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .career-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .career-card > p {
+            color: #bdbdcc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-bottom: 22px;
+        }
+
+        .course {
+            padding: 8px 12px;
+            border: 1px solid #7147d9;
+            border-radius: 20px;
+            background: rgba(111, 60, 255, 0.08);
+            color: #d9caff;
+            font-size: 13px;
+        }
+
+        .learn-title {
+            font-size: 17px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .video-button {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            padding: 13px 18px;
+            border-radius: 12px;
+            border: 2px solid #7347ff;
+            color: #cdbbff;
+            background: rgba(115, 71, 255, 0.08);
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .video-button:hover {
+            background: #7347ff;
+            color: white;
+            box-shadow: 0 0 20px rgba(115, 71, 255, 0.45);
+        }
+
+        .career-info {
+            margin-top: 15px;
+            padding: 15px;
+            border-left: 3px solid #7347ff;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            color: #bfc0cf;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .bottom-section {
+            text-align: center;
+            padding: 30px 20px 60px;
+        }
+
+        .bottom-section p {
+            color: #aaaabd;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            border: 2px solid #7347ff;
+            padding: 12px 22px;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #7347ff;
+            box-shadow: 0 0 18px rgba(115, 71, 255, 0.4);
+        }
+
+        @media (max-width: 600px) {
+
+            .commerce-hero {
+                padding-top: 45px;
+            }
+
+            .commerce-hero h1 {
+                font-size: 32px;
+            }
+
+            .commerce-hero p {
+                font-size: 15px;
+            }
+
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .career-card {
+                padding: 22px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- HERO -->
+
+<section class="commerce-hero">
+
+    <div class="commerce-icon">
+        💼
+    </div>
+
+    <h1>Commerce Career Paths</h1>
+
+    <p>
+        Explore business, finance, accounting,
+        management and entrepreneurship career
+        opportunities after choosing Commerce.
+    </p>
+
+</section>
+
+
+
+<!-- MAIN CONTENT -->
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            🎓 Explore Commerce Careers
+        </h2>
+
+        <p>
+            Learn what each career does,
+            what you can study and where it can lead.
+        </p>
+
+    </div>
+
+
+    <div class="career-grid">
+
+
+        <!-- B.COM -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                📚
+            </div>
+
+            <h3>
+                B.Com
+            </h3>
+
+            <p>
+                Bachelor of Commerce is a popular
+                undergraduate course for students
+                interested in accounting, finance,
+                taxation and business.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Accounting
+                </span>
+
+                <span class="course">
+                    Finance
+                </span>
+
+                <span class="course">
+                    Taxation
+                </span>
+
+                <span class="course">
+                    Banking
+                </span>
+
+                <span class="course">
+                    Business
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+BCom+graduate+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ How Does B.Com Work?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Accountant, Finance Executive,
+                Tax Assistant, Banking Executive
+                and Business Analyst.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BBA -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                📊
+            </div>
+
+            <h3>
+                BBA
+            </h3>
+
+            <p>
+                Bachelor of Business Administration
+                focuses on management, marketing,
+                business operations and leadership.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Management
+                </span>
+
+                <span class="course">
+                    Marketing
+                </span>
+
+                <span class="course">
+                    HR
+                </span>
+
+                <span class="course">
+                    Finance
+                </span>
+
+                <span class="course">
+                    Business Strategy
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+BBA+graduate+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ How Does BBA Work?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Business Development Executive,
+                Marketing Executive, HR Executive
+                and Management Trainee.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CA -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                📚
+            </div>
+
+            <h3>
+                Chartered Accountancy — CA
+            </h3>
+
+            <p>
+                CA is a professional career focused
+                on accounting, auditing, taxation,
+                financial reporting and advisory.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Accounting
+                </span>
+
+                <span class="course">
+                    Auditing
+                </span>
+
+                <span class="course">
+                    Taxation
+                </span>
+
+                <span class="course">
+                    Finance
+                </span>
+
+                <span class="course">
+                    Audit
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+chartered+accountant+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a CA Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Chartered Accountant,
+                Auditor, Tax Consultant,
+                Financial Advisor and Accountant.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- COMPANY SECRETARY -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🏢
+            </div>
+
+            <h3>
+                Company Secretary — CS
+            </h3>
+
+            <p>
+                Company Secretaries work with
+                corporate governance, compliance,
+                company law and important corporate
+                documentation.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Company Law
+                </span>
+
+                <span class="course">
+                    Corporate Governance
+                </span>
+
+                <span class="course">
+                    Compliance
+                </span>
+
+                <span class="course">
+                    Legal Studies
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+company+secretary+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a CS Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Company Secretary,
+                Compliance Officer and
+                Corporate Governance Executive.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BANKING -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🏦
+            </div>
+
+            <h3>
+                Banking & Finance
+            </h3>
+
+            <p>
+                Banking and finance careers involve
+                financial services, banking operations,
+                investment analysis and customer
+                financial solutions.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Banking
+                </span>
+
+                <span class="course">
+                    Finance
+                </span>
+
+                <span class="course">
+                    Investment
+                </span>
+
+                <span class="course">
+                    Economics
+                </span>
+
+                <span class="course">
+                    Financial Analysis
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=banking+and+finance+career+what+does+a+banker+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ How Does Banking Work?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Bank Officer, Financial Analyst,
+                Investment Associate and
+                Banking Operations Executive.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ENTREPRENEURSHIP -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🚀
+            </div>
+
+            <h3>
+                Entrepreneurship
+            </h3>
+
+            <p>
+                Entrepreneurship focuses on building
+                businesses, solving problems,
+                developing products and managing
+                business operations.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Business
+                </span>
+
+                <span class="course">
+                    Marketing
+                </span>
+
+                <span class="course">
+                    Finance
+                </span>
+
+                <span class="course">
+                    Sales
+                </span>
+
+                <span class="course">
+                    Innovation
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=how+entrepreneurs+build+a+business"
+                target="_blank"
+                class="video-button">
+
+                ▶ How Does Entrepreneurship Work?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible paths:
+                Startup Founder, Business Owner,
+                Product Builder and Entrepreneur.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ECONOMICS -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                📈
+            </div>
+
+            <h3>
+                Economics
+            </h3>
+
+            <p>
+                Economics studies how people,
+                businesses and governments make
+                decisions about resources, markets
+                and economic activity.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Economics
+                </span>
+
+                <span class="course">
+                    Statistics
+                </span>
+
+                <span class="course">
+                    Data Analysis
+                </span>
+
+                <span class="course">
+                    Research
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+an+economist+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does an Economist Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Economic Analyst, Research Assistant,
+                Data Analyst and Policy Researcher.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FINANCIAL ANALYST -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                💰
+            </div>
+
+            <h3>
+                Financial Analyst
+            </h3>
+
+            <p>
+                Financial analysts study financial
+                information and help organizations
+                understand business and investment
+                decisions.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Finance
+                </span>
+
+                <span class="course">
+                    Accounting
+                </span>
+
+                <span class="course">
+                    Excel
+                </span>
+
+                <span class="course">
+                    Data Analysis
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+financial+analyst+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Financial Analyst Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Financial Analyst,
+                Investment Analyst and
+                Business Analyst.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DIGITAL MARKETING -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                📱
+            </div>
+
+            <h3>
+                Digital Marketing
+            </h3>
+
+            <p>
+                Digital marketing combines business,
+                communication and technology to
+                promote products and services online.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    SEO
+                </span>
+
+                <span class="course">
+                    Social Media
+                </span>
+
+                <span class="course">
+                    Content Marketing
+                </span>
+
+                <span class="course">
+                    Analytics
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+digital+marketer+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Digital Marketer Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Digital Marketing Executive,
+                SEO Specialist, Social Media Manager
+                and Content Strategist.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BUSINESS ANALYTICS -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                📊
+            </div>
+
+            <h3>
+                Business Analytics
+            </h3>
+
+            <p>
+                Business analytics uses data and
+                analytical techniques to help
+                organizations make better decisions.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Statistics
+                </span>
+
+                <span class="course">
+                    Excel
+                </span>
+
+                <span class="course">
+                    SQL
+                </span>
+
+                <span class="course">
+                    Data Visualization
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+business+analyst+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Business Analyst Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Business Analyst,
+                Data Analyst and
+                Business Intelligence Analyst.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- HOTEL MANAGEMENT -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🏨
+            </div>
+
+            <h3>
+                Hotel & Hospitality Management
+            </h3>
+
+            <p>
+                Hospitality careers involve hotel
+                operations, customer service,
+                tourism and event management.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Hotel Management
+                </span>
+
+                <span class="course">
+                    Tourism
+                </span>
+
+                <span class="course">
+                    Event Management
+                </span>
+
+                <span class="course">
+                    Hospitality
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+hotel+manager+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ How Does Hotel Management Work?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Hotel Manager, Event Manager,
+                Guest Relations Executive and
+                Hospitality Manager.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LAW -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                ⚖️
+            </div>
+
+            <h3>
+                Law
+            </h3>
+
+            <p>
+                Commerce students can also explore
+                legal education and careers in
+                corporate law, business law and
+                related fields.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    BA LLB
+                </span>
+
+                <span class="course">
+                    BBA LLB
+                </span>
+
+                <span class="course">
+                    Corporate Law
+                </span>
+
+                <span class="course">
+                    Business Law
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+corporate+lawyer+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Corporate Lawyer Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Corporate Lawyer, Legal Associate
+                and Legal Consultant.
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- BOTTOM -->
+
+<div class="bottom-section">
+
+    <p>
+        💡 Remember: choose a career based on
+        your interests, strengths, skills and
+        long-term goals.
+    </p>
+
+    <a
+        href="/tenth"
+        class="back-button">
+
+        ← Back to 10th Career Guide
+
+    </a>
+
+</div>
+
+
+</body>
+</html>

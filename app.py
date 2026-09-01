@@ -536,6 +536,12 @@ Keep the answer practical and easy to understand.
             "answer": "Sorry, something went wrong. Please try again."
         }), 500
 
+@app.route("/tenth/academic/commerce")
+def commerce():
+    return render_template(
+        "tenth/academic/commerce/commerce.html"
+    )
+
 
 @app.route("/puc")
 def puc():
