@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Arts & Humanities Career Paths</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, #301442, transparent 35%),
+                radial-gradient(circle at bottom right, #17254c, transparent 35%),
+                #080914;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .arts-hero {
+            text-align: center;
+            padding: 70px 20px 45px;
+        }
+
+        .arts-icon {
+            font-size: 58px;
+            margin-bottom: 15px;
+        }
+
+        .arts-hero h1 {
+            font-size: 46px;
+            margin-bottom: 15px;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #c08cff,
+                #74caff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .arts-hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #c8c8d8;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 30px 0 35px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #aaaabd;
+        }
+
+        .career-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(310px, 1fr));
+
+            gap: 25px;
+
+            padding-bottom: 50px;
+        }
+
+        .career-card {
+            background: rgba(18, 18, 35, 0.94);
+
+            border: 1px solid #7347ff;
+
+            border-radius: 22px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 0 25px rgba(115, 71, 255, 0.12);
+
+            transition: 0.3s ease;
+        }
+
+        .career-card:hover {
+            transform: translateY(-7px);
+
+            border-color: #a678ff;
+
+            box-shadow:
+                0 0 32px rgba(115, 71, 255, 0.35);
+        }
+
+        .card-icon {
+            font-size: 43px;
+            margin-bottom: 15px;
+        }
+
+        .career-card h3 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .career-card > p {
+            color: #bfc0cf;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+
+            margin-bottom: 22px;
+        }
+
+        .course {
+            padding: 8px 12px;
+
+            border: 1px solid #7147d9;
+
+            border-radius: 20px;
+
+            background:
+                rgba(111, 60, 255, 0.08);
+
+            color: #d9caff;
+
+            font-size: 13px;
+        }
+
+        .learn-title {
+            font-size: 17px;
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        .video-button {
+            display: block;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            padding: 13px 18px;
+
+            border-radius: 12px;
+
+            border: 2px solid #7347ff;
+
+            color: #d1c2ff;
+
+            background:
+                rgba(115, 71, 255, 0.08);
+
+            font-weight: bold;
+
+            transition: 0.3s ease;
+        }
+
+        .video-button:hover {
+            background: #7347ff;
+
+            color: white;
+
+            box-shadow:
+                0 0 20px rgba(115, 71, 255, 0.45);
+        }
+
+        .career-info {
+            margin-top: 15px;
+
+            padding: 15px;
+
+            border-left: 3px solid #7347ff;
+
+            background:
+                rgba(255, 255, 255, 0.03);
+
+            border-radius: 8px;
+
+            color: #bfc0cf;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+        }
+
+        .bottom-section {
+            text-align: center;
+
+            padding: 25px 20px 60px;
+        }
+
+        .bottom-section p {
+            color: #aaaabd;
+
+            max-width: 700px;
+
+            margin: 0 auto 20px;
+
+            line-height: 1.6;
+        }
+
+        .back-button {
+            display: inline-block;
+
+            text-decoration: none;
+
+            color: white;
+
+            border: 2px solid #7347ff;
+
+            padding: 12px 22px;
+
+            border-radius: 12px;
+
+            transition: 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #7347ff;
+
+            box-shadow:
+                0 0 18px rgba(115, 71, 255, 0.4);
+        }
+
+        @media (max-width: 600px) {
+
+            .arts-hero {
+                padding-top: 45px;
+            }
+
+            .arts-hero h1 {
+                font-size: 32px;
+            }
+
+            .arts-hero p {
+                font-size: 15px;
+            }
+
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .career-card {
+                padding: 22px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- HERO -->
+
+<section class="arts-hero">
+
+    <div class="arts-icon">
+        🎨
+    </div>
+
+    <h1>
+        Arts & Humanities Career Paths
+    </h1>
+
+    <p>
+        Explore careers in law, psychology, media,
+        communication, civil services, design,
+        social sciences and creative fields.
+    </p>
+
+</section>
+
+
+
+<!-- CONTENT -->
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            🎓 Explore Arts & Humanities Careers
+        </h2>
+
+        <p>
+            Understand what you can study,
+            what the work looks like and
+            where each career can take you.
+        </p>
+
+    </div>
+
+
+    <div class="career-grid">
+
+
+        <!-- BA -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🎓
+            </div>
+
+            <h3>
+                BA — Bachelor of Arts
+            </h3>
+
+            <p>
+                BA provides a broad foundation in
+                subjects such as history, political
+                science, sociology, languages and
+                other humanities disciplines.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    History
+                </span>
+
+                <span class="course">
+                    Political Science
+                </span>
+
+                <span class="course">
+                    Sociology
+                </span>
+
+                <span class="course">
+                    English
+                </span>
+
+                <span class="course">
+                    Economics
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+can+you+do+after+BA"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Can You Do After BA?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible paths:
+                Teaching, research, public administration,
+                media, social sector and further studies.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LAW -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                ⚖️
+            </div>
+
+            <h3>
+                Law
+            </h3>
+
+            <p>
+                Law is suitable for students interested
+                in legal systems, rights, business law,
+                courts and problem-solving.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    BA LLB
+                </span>
+
+                <span class="course">
+                    BBA LLB
+                </span>
+
+                <span class="course">
+                    LLB
+                </span>
+
+                <span class="course">
+                    Corporate Law
+                </span>
+
+                <span class="course">
+                    Legal Research
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+lawyer+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Lawyer Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Lawyer, Legal Associate,
+                Corporate Legal Professional
+                and Legal Researcher.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PSYCHOLOGY -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🧠
+            </div>
+
+            <h3>
+                Psychology
+            </h3>
+
+            <p>
+                Psychology studies human behaviour,
+                thoughts, emotions and mental processes.
+                It can lead to careers in education,
+                research and many people-focused fields.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    BA Psychology
+                </span>
+
+                <span class="course">
+                    B.Sc Psychology
+                </span>
+
+                <span class="course">
+                    Cognitive Science
+                </span>
+
+                <span class="course">
+                    Research
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+psychologist+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Psychologist Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible paths:
+                Psychology research, education,
+                counselling-related fields and
+                further specialization.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- JOURNALISM -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                📰
+            </div>
+
+            <h3>
+                Journalism
+            </h3>
+
+            <p>
+                Journalism focuses on researching,
+                verifying and communicating information
+                through newspapers, digital platforms,
+                television and other media.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    BA Journalism
+                </span>
+
+                <span class="course">
+                    BJMC
+                </span>
+
+                <span class="course">
+                    News Writing
+                </span>
+
+                <span class="course">
+                    Reporting
+                </span>
+
+                <span class="course">
+                    Digital Media
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+journalist+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Journalist Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Reporter, Journalist,
+                News Researcher, Editor
+                and Content Writer.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MEDIA -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🎤
+            </div>
+
+            <h3>
+                Media & Communication
+            </h3>
+
+            <p>
+                Media careers combine communication,
+                storytelling, content creation,
+                production and digital platforms.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Mass Communication
+                </span>
+
+                <span class="course">
+                    Media Studies
+                </span>
+
+                <span class="course">
+                    Public Relations
+                </span>
+
+                <span class="course">
+                    Advertising
+                </span>
+
+                <span class="course">
+                    Content Creation
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=media+and+communication+career+what+does+a+media+professional+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ How Does Media Work?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Content Creator, PR Executive,
+                Media Producer, Copywriter
+                and Communication Specialist.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CIVIL SERVICES -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🏛️
+            </div>
+
+            <h3>
+                Civil Services
+            </h3>
+
+            <p>
+                Civil services careers involve public
+                administration, governance and working
+                with government institutions.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    BA
+                </span>
+
+                <span class="course">
+                    Political Science
+                </span>
+
+                <span class="course">
+                    History
+                </span>
+
+                <span class="course">
+                    Public Administration
+                </span>
+
+                <span class="course">
+                    Economics
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+an+IAS+officer+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Civil Servant Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible paths:
+                Civil services, state government
+                services and other public-sector
+                administrative careers.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DESIGN -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🎨
+            </div>
+
+            <h3>
+                Design
+            </h3>
+
+            <p>
+                Design careers combine creativity,
+                problem-solving and visual communication
+                to create useful products, experiences
+                and digital content.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    B.Des
+                </span>
+
+                <span class="course">
+                    Graphic Design
+                </span>
+
+                <span class="course">
+                    UI/UX Design
+                </span>
+
+                <span class="course">
+                    Fashion Design
+                </span>
+
+                <span class="course">
+                    Product Design
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+designer+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Designer Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                UI/UX Designer, Graphic Designer,
+                Product Designer and Visual Designer.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SOCIAL SCIENCE -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🌍
+            </div>
+
+            <h3>
+                Social Sciences
+            </h3>
+
+            <p>
+                Social sciences help students understand
+                people, society, culture, politics and
+                how communities work.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Sociology
+                </span>
+
+                <span class="course">
+                    Political Science
+                </span>
+
+                <span class="course">
+                    Anthropology
+                </span>
+
+                <span class="course">
+                    Social Work
+                </span>
+
+                <span class="course">
+                    Research
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+sociologist+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Social Scientist Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible paths:
+                Research, social development,
+                policy research, education
+                and public-sector work.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ENGLISH -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                ✍️
+            </div>
+
+            <h3>
+                English & Languages
+            </h3>
+
+            <p>
+                Language-focused studies can build
+                strong communication, writing,
+                research and content skills.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    BA English
+                </span>
+
+                <span class="course">
+                    Literature
+                </span>
+
+                <span class="course">
+                    Linguistics
+                </span>
+
+                <span class="course">
+                    Translation
+                </span>
+
+                <span class="course">
+                    Writing
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=careers+after+English+literature+degree"
+                target="_blank"
+                class="video-button">
+
+                ▶ Careers After English
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible paths:
+                Writing, editing, teaching,
+                translation, publishing and
+                communication-related careers.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FINE ARTS -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🖌️
+            </div>
+
+            <h3>
+                Fine Arts
+            </h3>
+
+            <p>
+                Fine arts focuses on visual creativity,
+                artistic expression, drawing, painting
+                and other creative practices.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    BFA
+                </span>
+
+                <span class="course">
+                    Painting
+                </span>
+
+                <span class="course">
+                    Drawing
+                </span>
+
+                <span class="course">
+                    Illustration
+                </span>
+
+                <span class="course">
+                    Visual Arts
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+fine+artist+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Fine Artist Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible paths:
+                Artist, Illustrator, Art Educator,
+                Visual Artist and Creative Professional.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TEACHING -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                Teaching & Education
+            </h3>
+
+            <p>
+                Students interested in education can
+                build careers in teaching, training,
+                academic support and education-related
+                fields.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    BA
+                </span>
+
+                <span class="course">
+                    B.Ed
+                </span>
+
+                <span class="course">
+                    Education
+                </span>
+
+                <span class="course">
+                    Teaching
+                </span>
+
+                <span class="course">
+                    Educational Research
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+a+teacher+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ What Does a Teacher Do?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible paths:
+                Teacher, educator, academic support
+                professional and education researcher.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- EVENT MANAGEMENT -->
+
+        <div class="career-card">
+
+            <div class="card-icon">
+                🎪
+            </div>
+
+            <h3>
+                Event Management
+            </h3>
+
+            <p>
+                Event management involves planning,
+                organizing and coordinating events,
+                programs and experiences.
+            </p>
+
+            <div class="course-list">
+
+                <span class="course">
+                    Event Management
+                </span>
+
+                <span class="course">
+                    Communication
+                </span>
+
+                <span class="course">
+                    Marketing
+                </span>
+
+                <span class="course">
+                    Public Relations
+                </span>
+
+                <span class="course">
+                    Management
+                </span>
+
+            </div>
+
+            <div class="learn-title">
+                ▶ Watch & Learn
+            </div>
+
+            <a
+                href="https://www.youtube.com/results?search_query=what+does+an+event+manager+do"
+                target="_blank"
+                class="video-button">
+
+                ▶ How Does Event Management Work?
+
+            </a>
+
+            <div class="career-info">
+
+                💼 Possible roles:
+                Event Coordinator, Event Manager,
+                Production Coordinator and
+                Event Marketing Executive.
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- FOOTER -->
+
+<div class="bottom-section">
+
+    <p>
+        💡 Arts & Humanities is not limited to one
+        career. Explore your interests, build useful
+        skills and choose a path that matches your
+        strengths and goals.
+    </p>
+
+    <a
+        href="/tenth"
+        class="back-button">
+
+        ← Back to 10th Career Guide
+
+    </a>
+
+</div>
+
+
+</body>
+
+</html>

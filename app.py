@@ -541,6 +541,11 @@ def commerce():
     return render_template(
         "tenth/academic/commerce/commerce.html"
     )
+@app.route("/tenth/academic/arts")
+def tenth_arts():
+    return render_template(
+        "tenth/academic/arts/arts.html"
+    )
 
 
 @app.route("/puc")
