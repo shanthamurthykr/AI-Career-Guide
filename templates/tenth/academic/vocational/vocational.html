@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vocational & Skills | AI Career Guide</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top left, #1e1b4b 0%, transparent 35%),
+                radial-gradient(circle at bottom right, #172554 0%, transparent 35%),
+                #070b18;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 35px 0 60px;
+        }
+
+        /* Back Button */
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border: 1px solid #7c3aed;
+            border-radius: 10px;
+            color: #c4b5fd;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #7c3aed;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+
+        .hero {
+            text-align: center;
+            padding: 25px 10px 45px;
+        }
+
+        .hero-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(32px, 5vw, 55px);
+            background: linear-gradient(
+                90deg,
+                #a78bfa,
+                #60a5fa,
+                #c084fc
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+
+        .hero-line {
+            width: 90px;
+            height: 4px;
+            margin: 22px auto 0;
+            border-radius: 10px;
+            background: #8b5cf6;
+        }
+
+        /* Career Grid */
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        /* Cards */
+
+        .career-card {
+            position: relative;
+            background: rgba(15, 23, 42, 0.88);
+            border: 1px solid rgba(139, 92, 246, 0.45);
+            border-radius: 18px;
+            padding: 25px;
+            min-height: 330px;
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            transition: 0.3s ease;
+            overflow: hidden;
+        }
+
+        .career-card::before {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: #7c3aed;
+            filter: blur(70px);
+            opacity: 0.12;
+            top: -40px;
+            right: -30px;
+        }
+
+        .career-card:hover {
+            transform: translateY(-7px);
+            border-color: #a78bfa;
+            box-shadow:
+                0 15px 45px rgba(124, 58, 237, 0.22);
+        }
+
+        .card-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .career-card h2 {
+            margin: 0 0 10px;
+            font-size: 24px;
+            color: #f8fafc;
+        }
+
+        .career-card .description {
+            color: #94a3b8;
+            line-height: 1.6;
+            font-size: 14px;
+            min-height: 68px;
+        }
+
+        /* Course Tags */
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 17px 0;
+        }
+
+        .tag {
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            color: #c4b5fd;
+            background: rgba(124, 58, 237, 0.08);
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* Roles */
+
+        .roles {
+            margin-top: 15px;
+        }
+
+        .roles-title {
+            color: #e2e8f0;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .roles p {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Button */
+
+        .watch-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            border: 1px solid #8b5cf6;
+            border-radius: 9px;
+            color: #ddd6fe;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .watch-btn:hover {
+            background: #7c3aed;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Bottom Note */
+
+        .info-box {
+            margin-top: 45px;
+            padding: 22px;
+            border-radius: 15px;
+            border: 1px solid rgba(96, 165, 250, 0.35);
+            background: rgba(30, 41, 59, 0.5);
+            text-align: center;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            color: #bfdbfe;
+        }
+
+        .info-box p {
+            color: #94a3b8;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 950px) {
+            .career-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                width: 94%;
+                padding-top: 20px;
+            }
+
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-bottom: 30px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .career-card {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="/tenth" class="back-btn">
+        ← Back to 10th Career Guide
+    </a>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-icon">🔧</div>
+
+        <h1>Vocational & Skills</h1>
+
+        <p>
+            Practical, technical & job-oriented career paths.
+        </p>
+
+        <div class="hero-line"></div>
+
+    </section>
+
+
+    <!-- CAREER CARDS -->
+
+    <section class="career-grid">
+
+        <!-- Polytechnic -->
+
+        <div class="career-card">
+
+            <div class="card-icon">🏗️</div>
+
+            <h2>Polytechnic</h2>
+
+            <p class="description">
+                Polytechnic offers practical engineering education
+                with strong technical and hands-on learning.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Civil Engineering</span>
+                <span class="tag">Mechanical</span>
+                <span class="tag">Electrical</span>
+                <span class="tag">Computer</span>
+            </div>
+
+            <div class="roles">
+                <div class="roles-title">Possible Roles</div>
+                <p>
+                    Junior Engineer • Technician • CAD Operator •
+                    Technical Assistant
+                </p>
+            </div>
+
+            <a class="watch-btn"
+               href="https://www.youtube.com/results?search_query=polytechnic+courses+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+
+        </div>
+
+
+        <!-- Diploma -->
+
+        <div class="career-card">
+
+            <div class="card-icon">⚙️</div>
+
+            <h2>Diploma Courses</h2>
+
+            <p class="description">
+                Diploma programs focus on technical knowledge,
+                practical skills and industry-oriented education.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Engineering</span>
+                <span class="tag">Technology</span>
+                <span class="tag">Design</span>
+                <span class="tag">Healthcare</span>
+            </div>
+
+            <div class="roles">
+                <div class="roles-title">Possible Roles</div>
+                <p>
+                    Technician • Assistant Engineer •
+                    Designer • Technical Executive
+                </p>
+            </div>
+
+            <a class="watch-btn"
+               href="https://www.youtube.com/results?search_query=diploma+courses+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+
+        </div>
+
+
+        <!-- ITI -->
+
+        <div class="career-card">
+
+            <div class="card-icon">🔨</div>
+
+            <h2>ITI</h2>
+
+            <p class="description">
+                ITI provides trade-based practical training for
+                students interested in technical and skilled work.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Electrician</span>
+                <span class="tag">Fitter</span>
+                <span class="tag">Welder</span>
+                <span class="tag">COPA</span>
+            </div>
+
+            <div class="roles">
+                <div class="roles-title">Possible Roles</div>
+                <p>
+                    Electrician • Fitter • Technician •
+                    Machine Operator
+                </p>
+            </div>
+
+            <a class="watch-btn"
+               href="https://www.youtube.com/results?search_query=ITI+courses+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+
+        </div>
+
+
+        <!-- Computer Courses -->
+
+        <div class="career-card">
+
+            <div class="card-icon">💻</div>
+
+            <h2>Computer Courses</h2>
+
+            <p class="description">
+                Learn practical digital and computer skills that
+                can support further education and entry-level work.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Programming</span>
+                <span class="tag">Web Design</span>
+                <span class="tag">Office Tools</span>
+                <span class="tag">Graphic Design</span>
+            </div>
+
+            <div class="roles">
+                <div class="roles-title">Possible Roles</div>
+                <p>
+                    Web Developer • Computer Operator •
+                    Designer • IT Support Assistant
+                </p>
+            </div>
+
+            <a class="watch-btn"
+               href="https://www.youtube.com/results?search_query=computer+courses+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+
+        </div>
+
+
+        <!-- Technical Skills -->
+
+        <div class="career-card">
+
+            <div class="card-icon">🛠️</div>
+
+            <h2>Technical Skills</h2>
+
+            <p class="description">
+                Build hands-on technical abilities through
+                practical learning, projects and skill development.
+            </p>
+
+            <div class="tags">
+                <span class="tag">CAD</span>
+                <span class="tag">Electronics</span>
+                <span class="tag">Robotics</span>
+                <span class="tag">Automation</span>
+            </div>
+
+            <div class="roles">
+                <div class="roles-title">Possible Roles</div>
+                <p>
+                    CAD Technician • Electronics Technician •
+                    Automation Assistant • Service Technician
+                </p>
+            </div>
+
+            <a class="watch-btn"
+               href="https://www.youtube.com/results?search_query=technical+skills+courses+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+
+        </div>
+
+
+        <!-- Skill Training -->
+
+        <div class="career-card">
+
+            <div class="card-icon">🎯</div>
+
+            <h2>Skill Training</h2>
+
+            <p class="description">
+                Short-term skill training can help students develop
+                practical abilities in different industries.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Automobile</span>
+                <span class="tag">Healthcare</span>
+                <span class="tag">Retail</span>
+                <span class="tag">Hospitality</span>
+            </div>
+
+            <div class="roles">
+                <div class="roles-title">Possible Roles</div>
+                <p>
+                    Service Assistant • Technician •
+                    Customer Support • Operations Assistant
+                </p>
+            </div>
+
+            <a class="watch-btn"
+               href="https://www.youtube.com/results?search_query=skill+development+courses+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+
+    <div class="info-box">
+
+        <h3>💡 Choose Skills Based on Your Interest</h3>
+
+        <p>
+            Vocational education is useful for students who enjoy
+            practical learning, technology, machines, computers,
+            design or hands-on work. Before choosing a course,
+            check the course duration, eligibility, institution,
+            fees and future study options.
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -547,6 +547,12 @@ def tenth_arts():
         "tenth/academic/arts/arts.html"
     )
 
+@app.route("/tenth/vocational")
+def vocational_academic():
+    return render_template(
+        "tenth/academic/vocational/vocational.html"
+    )
+
 
 @app.route("/puc")
 def puc():
