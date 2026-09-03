@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Explorer | AI Career Guide</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top left, #1e1b4b, transparent 35%),
+                radial-gradient(circle at bottom right, #172554, transparent 35%),
+                #070b18;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 35px 0 60px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border: 1px solid #7c3aed;
+            border-radius: 10px;
+            color: #c4b5fd;
+            text-decoration: none;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #7c3aed;
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 25px 10px 45px;
+        }
+
+        .hero-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(34px, 5vw, 56px);
+            background: linear-gradient(
+                90deg,
+                #a78bfa,
+                #60a5fa,
+                #c084fc
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+
+        .hero-line {
+            width: 90px;
+            height: 4px;
+            margin: 22px auto 0;
+            background: #8b5cf6;
+            border-radius: 10px;
+        }
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .career-card {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(139, 92, 246, 0.45);
+            border-radius: 18px;
+            padding: 25px;
+            min-height: 300px;
+            transition: 0.3s;
+        }
+
+        .career-card:hover {
+            transform: translateY(-7px);
+            border-color: #a78bfa;
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.2);
+        }
+
+        .icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .career-card h2 {
+            margin: 0 0 12px;
+            font-size: 23px;
+        }
+
+        .career-card p {
+            color: #94a3b8;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .path {
+            margin-top: 18px;
+            padding: 12px;
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 3px solid #8b5cf6;
+            border-radius: 8px;
+            color: #cbd5e1;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 15px;
+            border: 1px solid #8b5cf6;
+            border-radius: 9px;
+            color: #ddd6fe;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .explore-btn:hover {
+            background: #7c3aed;
+            color: white;
+        }
+
+        .info-box {
+            margin-top: 45px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(96, 165, 250, 0.35);
+            border-radius: 16px;
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .info-box h3 {
+            color: #bfdbfe;
+            margin-top: 0;
+        }
+
+        .info-box p {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 950px) {
+            .career-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="/tenth" class="back-btn">
+        ← Back to 10th Career Guide
+    </a>
+
+    <section class="hero">
+
+        <div class="hero-icon">🎯</div>
+
+        <h1>Career Explorer</h1>
+
+        <p>
+            Explore careers, courses, skills and possible career paths.
+        </p>
+
+        <div class="hero-line"></div>
+
+    </section>
+
+
+    <section class="career-grid">
+
+        <!-- AI & Technology -->
+
+        <div class="career-card">
+            <div class="icon">🤖</div>
+
+            <h2>AI & Technology</h2>
+
+            <p>
+                Explore technology careers involving programming,
+                artificial intelligence, software and data.
+            </p>
+
+            <div class="path">
+                10th → PUC / Diploma → Degree → Skills → Projects → Career
+            </div>
+
+            <a class="explore-btn"
+               href="https://www.youtube.com/results?search_query=AI+ML+career+roadmap"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+        </div>
+
+
+        <!-- Engineering -->
+
+        <div class="career-card">
+            <div class="icon">🏗️</div>
+
+            <h2>Engineering</h2>
+
+            <p>
+                Engineering offers different technical paths such as
+                computer, mechanical, civil, electrical and electronics.
+            </p>
+
+            <div class="path">
+                10th → PUC / Diploma → Engineering → Skills → Projects
+            </div>
+
+            <a class="explore-btn"
+               href="https://www.youtube.com/results?search_query=engineering+career+roadmap+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+        </div>
+
+
+        <!-- Healthcare -->
+
+        <div class="career-card">
+            <div class="icon">🩺</div>
+
+            <h2>Healthcare</h2>
+
+            <p>
+                Explore healthcare and life-science pathways including
+                medicine, nursing, pharmacy and allied health fields.
+            </p>
+
+            <div class="path">
+                10th → PUC / Science → Professional Course → Training
+            </div>
+
+            <a class="explore-btn"
+               href="https://www.youtube.com/results?search_query=healthcare+careers+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+        </div>
+
+
+        <!-- Finance & Business -->
+
+        <div class="career-card">
+            <div class="icon">💰</div>
+
+            <h2>Finance & Business</h2>
+
+            <p>
+                Discover careers in accounting, banking, finance,
+                business management, economics and entrepreneurship.
+            </p>
+
+            <div class="path">
+                10th → Commerce / Degree → Professional Skills → Career
+            </div>
+
+            <a class="explore-btn"
+               href="https://www.youtube.com/results?search_query=finance+business+careers+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+        </div>
+
+
+        <!-- Law -->
+
+        <div class="career-card">
+            <div class="icon">⚖️</div>
+
+            <h2>Law & Legal</h2>
+
+            <p>
+                Explore legal education and careers involving law,
+                legal research, corporate law and public service.
+            </p>
+
+            <div class="path">
+                10th → PUC → Law Degree → Legal Training → Career
+            </div>
+
+            <a class="explore-btn"
+               href="https://www.youtube.com/results?search_query=law+career+after+10th+India"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+        </div>
+
+
+        <!-- Design & Media -->
+
+        <div class="career-card">
+            <div class="icon">🎨</div>
+
+            <h2>Design & Media</h2>
+
+            <p>
+                Build creative careers in graphic design, UI/UX,
+                animation, filmmaking, photography and media.
+            </p>
+
+            <div class="path">
+                10th → Course → Portfolio → Creative Skills → Career
+            </div>
+
+            <a class="explore-btn"
+               href="https://www.youtube.com/results?search_query=design+media+careers+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+        </div>
+
+
+        <!-- Government -->
+
+        <div class="career-card">
+            <div class="icon">🏛️</div>
+
+            <h2>Government & Civil Services</h2>
+
+            <p>
+                Explore education and preparation pathways for
+                government jobs and civil service examinations.
+            </p>
+
+            <div class="path">
+                10th → Higher Education → Exam Preparation → Selection
+            </div>
+
+            <a class="explore-btn"
+               href="https://www.youtube.com/results?search_query=government+jobs+career+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+        </div>
+
+
+        <!-- Education -->
+
+        <div class="career-card">
+            <div class="icon">🧑‍🏫</div>
+
+            <h2>Education</h2>
+
+            <p>
+                Teaching and education careers combine subject knowledge,
+                communication and learning skills.
+            </p>
+
+            <div class="path">
+                10th → Higher Education → Teacher Training → Career
+            </div>
+
+            <a class="explore-btn"
+               href="https://www.youtube.com/results?search_query=teaching+career+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+        </div>
+
+
+        <!-- Technical Skills -->
+
+        <div class="career-card">
+            <div class="icon">🔧</div>
+
+            <h2>Technical & Skilled Careers</h2>
+
+            <p>
+                Practical pathways such as ITI, Polytechnic, technical
+                training and industry-focused skill development.
+            </p>
+
+            <div class="path">
+                10th → ITI / Polytechnic → Practical Skills → Career
+            </div>
+
+            <a class="explore-btn"
+               href="https://www.youtube.com/results?search_query=ITI+polytechnic+career+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+        </div>
+
+
+        <!-- Science -->
+
+        <div class="career-card">
+            <div class="icon">🧪</div>
+
+            <h2>Science & Research</h2>
+
+            <p>
+                Explore careers based on scientific study, laboratory
+                work, research, mathematics and scientific innovation.
+            </p>
+
+            <div class="path">
+                10th → Science → Degree → Higher Studies → Research
+            </div>
+
+            <a class="explore-btn"
+               href="https://www.youtube.com/results?search_query=science+research+careers+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+        </div>
+
+
+        <!-- Hospitality -->
+
+        <div class="career-card">
+            <div class="icon">🏨</div>
+
+            <h2>Hospitality & Tourism</h2>
+
+            <p>
+                Explore careers in hotels, tourism, travel, food services,
+                event operations and hospitality management.
+            </p>
+
+            <div class="path">
+                10th → Course / Diploma → Training → Industry Career
+            </div>
+
+            <a class="explore-btn"
+               href="https://www.youtube.com/results?search_query=hospitality+tourism+careers+after+10th"
+               target="_blank">
+                ▶ Watch & Learn
+            </a>
+        </div>
+
+    </section>
+
+
+    <div class="info-box">
+
+        <h3>💡 Choose a Career Based on Your Interest</h3>
+
+        <p>
+            There is no single best career for everyone. Explore the
+            subjects you enjoy, understand the required education and
+            skills, and compare different pathways before making a decision.
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

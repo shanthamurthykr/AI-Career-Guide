@@ -553,6 +553,12 @@ def vocational_academic():
         "tenth/academic/vocational/vocational.html"
     )
 
+@app.route("/tenth/career-explorer")
+def career_explorer():
+    return render_template(
+        "tenth/career-explorer/career_explorer.html"
+    )
+
 
 @app.route("/puc")
 def puc():
